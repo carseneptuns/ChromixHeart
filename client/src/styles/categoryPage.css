@@ -1,0 +1,581 @@
+/* =========================
+   CATEGORY PAGE
+========================= */
+
+.category-page {
+    background:
+        radial-gradient(circle at top,
+            rgba(120, 0, 0, .12),
+            transparent 40%),
+
+        linear-gradient(180deg,
+            #020202,
+            #090909,
+            #111111,
+            #050505);
+
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.category-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.category-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, .35),
+
+            rgba(0, 0, 0, .65),
+
+            rgba(0, 0, 0, .9));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.category-content {
+    max-width: 950px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: contentFade 8s infinite;
+}
+
+.category-subtitle {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #a56b3d;
+    letter-spacing: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.category-subtitle::before,
+.category-subtitle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 70px;
+    height: 1px;
+    background: #6b0000;
+}
+
+.category-subtitle::before {
+    right: 110%;
+}
+
+.category-subtitle::after {
+    left: 110%;
+}
+
+.category-content h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 110px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin-bottom: 25px;
+    line-height: 1;
+    background: linear-gradient(90deg,
+            #1f1f1f 0%,
+            #6f6f6f 18%,
+            #f2f2f2 38%,
+            #8b8b8b 55%,
+            #dcdcdc 72%,
+            #4a4a4a 88%,
+            #111111 100%);
+
+
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 35px rgba(255, 255, 255, .08);
+    animation:
+        titleFloat 7s ease-in-out infinite,
+        titleShine 8s linear infinite;
+    position: relative;
+
+}
+
+.category-content h1::before,
+.category-content h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            #764141,
+            #f8e0b9,
+            #5e2525,
+            transparent);
+
+}
+
+/* ===================================
+   COLLECTION HEADING
+=================================== */
+
+.collection-heading {
+    width: 72%;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.collection-heading span {
+    display: inline-block;
+    color: #a7a7a7;
+    font-size: 13px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.collection-heading span::before,
+.collection-heading span::after {
+    content: "";
+    display: inline-block;
+    width: 70px;
+    height: 1px;
+    background: #444;
+    vertical-align: middle;
+    margin: 0 18px;
+}
+
+.category-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 72px;
+    color: #fff;
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.collection-heading p {
+    width: 70%;
+    margin: auto;
+    color: #a8a8a8;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.category-content h1::before {
+    top: -18px;
+}
+
+.category-content h1::after {
+    bottom: -18px;
+}
+
+.category-content p {
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+    color: #dadada;
+    line-height: 2;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: .8px;
+    opacity: .9;
+}
+
+/* ===================================
+   BRAND STORY
+=================================== */
+
+.brand-story {
+    width: 75%;
+    margin: 120px auto 60px;
+    text-align: center;
+}
+
+.brand-story-logo {
+    width: 95px;
+    margin-bottom: 25px;
+    opacity: .95;
+}
+
+.brand-story-subtitle {
+    display: block;
+    color: #b8b8b8;
+    letter-spacing: 6px;
+    font-size: 13px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.brand-story-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 58px;
+    color: #fff;
+    margin-bottom: 35px;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.brand-story-text {
+    max-width: 920px;
+    margin: auto;
+    color: #d8d8d8;
+    font-size: 18px;
+    line-height: 2.1;
+    font-weight: 300;
+    letter-spacing: .3px;
+}
+
+.brand-story::before,
+.brand-story::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 1px;
+    margin: 35px auto;
+    background: linear-gradient(90deg,
+            transparent,
+            #7a7a7a,
+            #d6d6d6,
+            #7a7a7a,
+            transparent);
+}
+
+/* =========================
+   HERO CONTENT ANIMATION
+========================= */
+
+@keyframes contentFade {
+
+    /* Muncul */
+
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Diam */
+
+    40% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Hilang */
+
+    50% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    /* Tetap hilang */
+
+    90% {
+        opacity: 0;
+    }
+
+    /* Muncul lagi */
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes titleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+@keyframes paragraphFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+
+}
+
+/* =========================
+   EDITORIAL
+========================= */
+
+.editorial-section {
+    width: 92%;
+    margin: 90px auto 120px
+}
+
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+
+}
+
+.editorial-card {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    border-radius: 0;
+}
+
+.editorial-card img {
+    width: 100%;
+    height: 680px;
+    object-fit: cover;
+    display: block;
+    transition: .7s;
+}
+
+.editorial-card:hover img {
+    transform: scale(1.05);
+}
+
+.editorial-caption {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 20px;
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.product-category {
+    display: inline-block;
+    color: #8b8b8b;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.category-products {
+    width: 92%;
+    margin: 120px auto 0;
+    padding-bottom: 120px;
+}
+
+.collection-heading {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.collection-heading span {
+    display: inline-block;
+    color: #b7b7b7;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.category-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* ===============================
+   PRODUCT GRID
+=================================*/
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+/* ===============================
+   CARD
+=================================*/
+
+.category-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .025);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 38px;
+    transition: .55s;
+    padding: 16px;
+
+}
+
+.category-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(150, 0, 0, .4);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, .45),
+        inset 0 0 0 1px rgba(255, 255, 255, .03);
+}
+
+/* ===============================
+   IMAGE
+=================================*/
+
+.category-card img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    display: block;
+    transition: .8s;
+    border-radius:
+        180px 180px 35px 35px;
+
+}
+
+.category-card img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    display: block;
+    transition: .8s;
+    border-radius:
+        220px 220px 26px 26px;
+}
+
+.category-card:hover {
+    transform: translateY(-14px);
+    border-color: rgba(125, 0, 0, .4);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, .5);
+}
+
+.category-card:hover img {
+    transform: scale(1.06);
+}
+
+/* ===============================
+   INFO
+=================================*/
+
+.category-info {
+    text-align: center;
+    padding: 25px 12px 10px;
+}
+
+.product-category {
+    color: #9d9d9d;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 11px;
+}
+
+.category-name {
+    margin-top: 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    color: white;
+    font-weight: 600;
+}
+
+.category-price {
+    margin-top: 10px;
+    color: #c9a36d;
+    font-size: 21px;
+}
+
+.category-card::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border-radius: 34px;
+    border: 1px solid rgba(255, 255, 255, .05);
+    pointer-events: none;
+}
+
+.category-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: .5s;
+}
+
+.category-card:hover::after {
+    opacity: 1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1200px) {
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media(max-width:900px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+    .category-title {
+        font-size: 52px;
+    }
+}
+
+@media(max-width:600px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card img {
+        height: 420px;
+    }
+
+    .category-title {
+        font-size: 42px;
+    }
+
+}

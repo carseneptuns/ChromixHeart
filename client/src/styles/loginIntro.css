@@ -1,0 +1,361 @@
+.login-intro{
+
+    position:fixed;
+    inset:0;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(120,0,0,.15),
+        transparent 45%),
+        #040404;
+
+    z-index:99999;
+
+}
+
+/* ===========================
+   RED FOG
+=========================== */
+.smoke{
+
+    position:absolute;
+
+    top:50%;
+
+    width:900px;
+    height:900px;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(circle at 50% 50%,
+        rgba(255,40,40,.45) 0%,
+        rgba(180,0,0,.35) 20%,
+        rgba(120,0,0,.22) 40%,
+        rgba(90,0,0,.12) 60%,
+        transparent 78%),
+
+        radial-gradient(circle at 35% 45%,
+        rgba(255,80,80,.22) 0%,
+        transparent 45%),
+
+        radial-gradient(circle at 65% 60%,
+        rgba(255,30,30,.18) 0%,
+        transparent 40%),
+
+        radial-gradient(circle at 50% 50%,
+        rgba(255,255,255,.05) 0%,
+        transparent 60%);
+
+    filter:
+        blur(70px)
+        saturate(180%)
+        drop-shadow(0 0 90px rgba(180,0,0,.8));
+
+    mix-blend-mode:screen;
+
+    opacity:.95;
+
+    animation:
+        smokeFloat 6s ease-in-out infinite,
+        smokePulse 3.5s ease-in-out infinite;
+
+}
+.smoke-left{
+    left:-42%;
+}
+
+.smoke-right{
+    right:-42%;
+    transform:
+        translateY(-50%)
+        scaleX(-1);
+}
+@keyframes smokePulse{
+
+    0%{
+
+        filter:
+            blur(70px)
+            saturate(180%)
+            drop-shadow(0 0 70px rgba(170,0,0,.7));
+
+        opacity:.75;
+
+    }
+
+    50%{
+
+        filter:
+            blur(90px)
+            saturate(240%)
+            drop-shadow(0 0 140px rgba(255,0,0,1));
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        filter:
+            blur(70px)
+            saturate(180%)
+            drop-shadow(0 0 70px rgba(170,0,0,.7));
+
+        opacity:.75;
+
+    }
+
+}
+
+@keyframes smokeFloat{
+
+    0%{
+
+        transform:
+            translateY(-50%)
+            scale(.95);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(calc(-50% - 25px))
+            scale(1.12);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-50%)
+            scale(.95);
+
+    }
+
+}
+/* ===========================
+   AMBIENT RED LIGHT
+=========================== */
+
+.login-intro::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+
+        radial-gradient(circle,
+
+        rgba(170,0,0,.15),
+
+        transparent 60%);
+
+    animation:redPulse 2.5s infinite alternate;
+
+}
+
+@keyframes redPulse{
+
+0%{
+
+    opacity:.4;
+
+}
+
+100%{
+
+    opacity:.9;
+
+}
+
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.intro-text{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+
+        translate(-50%,-50%);
+
+    text-align:center;
+
+    transform-style:preserve-3d;
+
+}
+
+/* WELCOME */
+
+.intro-text h3{
+
+    margin:0;
+
+    font-size:58px;
+
+    letter-spacing:18px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:300;
+
+    color:#f8f8f8;
+
+    text-transform:uppercase;
+
+    text-shadow:
+
+        0 1px 0 #fff,
+
+        0 2px 0 #d8d8d8,
+
+        0 4px 10px rgba(255,255,255,.35),
+
+        0 15px 30px rgba(255,255,255,.15);
+
+}
+
+/* CHROMIXHEART */
+
+.intro-text h1{
+
+    margin-top:12px;
+
+    font-size:128px;
+
+    letter-spacing:10px;
+
+    text-transform:uppercase;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:700;
+
+    background:
+
+        linear-gradient(
+
+        180deg,
+
+        #ffffff 0%,
+
+        #e6e6e6 12%,
+
+        #9c9c9c 25%,
+
+        #ffffff 40%,
+
+        #b30000 50%,
+
+        #ff2a2a 58%,
+
+        #870000 70%,
+
+        #ffffff 82%,
+
+        #bdbdbd 100%);
+
+    background-size:100% 450%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:chromeMove 2s linear infinite;
+
+    text-shadow:
+
+        0 3px 6px rgba(255,255,255,.2),
+
+        0 0 18px rgba(255,0,0,.45),
+
+        0 0 35px rgba(170,0,0,.4),
+
+        0 0 60px rgba(255,0,0,.25);
+
+}
+
+/* Chrome bergerak */
+
+@keyframes chromeMove{
+
+0%{
+
+    background-position:center top;
+
+}
+
+100%{
+
+    background-position:center bottom;
+
+}
+
+}
+
+/* ===========================
+   PARTICLE GLOW
+=========================== */
+
+.login-intro::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(circle,
+
+        rgba(255,0,0,.28),
+
+        transparent 70%);
+
+    filter:blur(45px);
+
+    animation:centerGlow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes centerGlow{
+
+0%{
+
+    transform:scale(.8);
+
+    opacity:.45;
+
+}
+
+100%{
+
+    transform:scale(1.25);
+
+    opacity:.8;
+
+}
+
+}

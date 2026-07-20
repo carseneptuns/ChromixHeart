@@ -1,0 +1,142 @@
+.orders-page{
+    min-height:100vh;
+    padding:120px 8%;
+    background:
+    radial-gradient(circle at top,
+    rgba(120,0,0,.18),
+    transparent 35%),
+    linear-gradient(
+    180deg,
+    #020202,
+    #0b0b0b,
+    #090909);
+}
+
+.orders-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.orders-container h1{
+    color:white;
+    font-size:52px;
+    text-align:center;
+    font-family:"Cormorant Garamond",serif;
+}
+
+.orders-subtitle{
+    text-align:center;
+    color:#9a9a9a;
+    margin-bottom:60px;
+}
+
+.order-card{
+    background:#111;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:30px;
+    margin-bottom:35px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.order-card:hover{
+    transform:translateY(-6px);
+    border-color:#850000;
+    box-shadow:0 20px 45px rgba(120,0,0,.22);
+}
+
+/* ================= HEADER ================= */
+
+.order-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 35px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.order-header h3{
+    color:#fff;
+    font-size:32px;
+    font-family:"Cormorant Garamond",serif;
+    margin-bottom:8px;
+}
+
+.order-header p{
+    color:#999;
+}
+
+/* ================= ITEM ================= */
+
+.order-item{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding:28px 35px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.order-item:last-child{
+    border-bottom:none;
+}
+
+.order-item img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.order-item h4{
+    color:#fff;
+    font-size:26px;
+    font-family:"Cormorant Garamond",serif;
+    margin-bottom:12px;
+}
+
+.order-item p{
+    color:#cfcfcf;
+    margin:8px 0;
+}
+
+/* ================= FOOTER ================= */
+
+.order-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 35px;
+    background:#0d0d0d;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.order-footer p{
+    color:#bfbfbf;
+}
+
+.order-footer h2{
+    color:#d4b06d;
+    font-size:34px;
+    text-align:right;
+    font-family:"Cormorant Garamond",serif;
+}
+
+.order-status{
+    padding:10px 24px;
+    border-radius:40px;
+    font-size:14px;
+    font-weight:600;
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:110px;
+}
+
+.order-status.paid{
+    background:#006b2f;
+}
+
+.order-status.pending{
+    background:#7b0000;
+}

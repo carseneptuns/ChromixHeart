@@ -1,0 +1,283 @@
+.best-seller {
+    padding: 140px 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+   /* LAYOUT */
+
+.best-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    align-items: center;
+    gap: 80px;
+}
+   /* LEFT CONTENT */
+.best-left span {
+    display: inline-block;
+    letter-spacing: 5px;
+    color: #8b0000;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    animation: breathe 3.5s ease-in-out infinite;
+}
+@keyframes breathe {
+
+    0% {
+        transform: scale(1);
+        opacity: .75;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .75;
+    }
+
+}
+.best-left h2 {
+    font-size: 62px;
+    color: #000000;
+    font-family: "Cormorant Garamond", serif;
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+.best-left p {
+    color: #000000;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+/* BUTTON */
+.best-btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:10px;
+
+    padding:16px 34px;
+
+    text-decoration:none;
+
+    background:#111;
+    color:#fff;
+
+    border-radius:40px;
+
+    font-weight:600;
+    letter-spacing:.5px;
+
+    position:relative;
+    overflow:hidden;
+
+    transition:
+        transform .35s,
+        background .35s,
+        color .35s,
+        box-shadow .35s;
+
+}
+
+/* Shimmer Effect */
+
+.best-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-130%;
+
+    width:55%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:left .8s ease;
+
+}
+
+.best-btn:hover{
+
+    background:#6d0000;
+    color:#fff;
+    transform:translateY(-5px);
+    box-shadow:
+        0 15px 35px rgba(109,0,0,.35);
+}
+
+.best-btn:hover::before{
+    left:170%;
+}
+   /* COVER FLOW */
+.best-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.coverflow{
+    position:relative;
+    width:900px;
+    height:500px;
+    perspective:1800px;
+    overflow:hidden;
+}
+
+.cover-item{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    cursor:pointer;
+
+    transition:
+        transform .9s cubic-bezier(.22,1,.36,1),
+        opacity .8s ease,
+        filter .8s ease;
+
+    transform-style:preserve-3d;
+}
+
+.cover-item img{
+    width:240px;
+    height:340px;
+    object-fit:cover;
+    border-radius:24px;
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.45);
+}
+
+.cover-item:hover img{
+    transform:translateY(-12px);
+}
+
+/* CENTER */
+.center{
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.15);
+
+    opacity:1;
+    z-index:10;
+
+}
+
+.center img{
+    filter:none;
+    box-shadow:
+        0 0 35px rgba(212, 185, 185, 0.3),
+        0 25px 70px rgba(0,0,0,.55);
+}
+
+/* Left */
+.left{
+
+    transform:
+        translate(-165%,-50%)
+        rotateY(28deg)
+        scale(.88);
+
+    opacity:.75;
+    z-index:8;
+
+}
+
+.left img{
+    filter:
+        brightness(.8)
+        blur(.8px);
+}
+
+/* RIGHT */
+.right{
+    transform:
+        translate(65%,-50%)
+        rotateY(-28deg)
+        scale(.88);
+
+    opacity:.75;
+    z-index:8;
+
+}
+
+.right img{
+    filter:
+        brightness(.8)
+        blur(.8px);
+}
+/* FAR LEFT */
+
+.far-left{
+    transform:
+        translate(-255%,-50%)
+        rotateY(40deg)
+        scale(.68);
+
+    opacity:.22;
+    z-index:5;
+
+}
+
+.far-left img{
+    filter:
+        blur(3px)
+        brightness(.45);
+
+}
+
+/* far right */
+.far-right{
+
+    transform:
+        translate(155%,-50%)
+        rotateY(-40deg)
+        scale(.68);
+
+    opacity:.22;
+    z-index:5;
+
+}
+
+.far-right img{
+    filter:
+        blur(3px)
+        brightness(.45);
+}
+
+/* hidden */
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
+}
+
+/* hover */
+
+.cover-item:hover{
+    z-index:20;
+}

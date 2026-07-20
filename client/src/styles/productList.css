@@ -1,0 +1,696 @@
+.shop-container {
+    min-height: 250vh;
+    padding: 60px 5%;
+    background: radial-gradient(circle at top, rgba(120,0,0,.12), transparent 40%),
+
+    linear-gradient(
+        180deg,
+        #020202,
+        #090909,
+        #111111,
+        #050505);
+
+    overflow: hidden;
+}
+
+.shop-title{
+    position:relative;
+    text-align:center;
+    font-family:"Cormorant Garamond",serif;
+    font-size:72px;
+    font-weight:700;
+    letter-spacing:8px;
+    margin-bottom:70px;
+    text-transform:uppercase;
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    shimmerTitle 5s linear infinite,
+    floatingTitle 4s ease-in-out infinite;
+
+    text-shadow:
+    0 0 12px rgba(130,0,0,.4);
+}
+
+.shop-title::before,
+.shop-title::after{
+    content:"✦";
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    color:#7a0000;
+    font-size:20px;
+    opacity:.8;
+}
+
+.shop-title::before{
+    left:-45px;
+}
+
+.shop-title::after{
+    right:-45px;
+}
+@keyframes shimmerTitle{
+
+    0%{
+        background-position:-300%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+
+}
+@keyframes floatingTitle{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    align-items:stretch;
+}
+
+.product-card{
+    display:flex;
+    flex-direction:column;
+
+    background:linear-gradient(
+        180deg,
+        rgba(18,18,18,.98),
+        rgba(10,10,10,.98)
+    );
+
+    border:1px solid rgba(150,0,0,.18);
+    border-radius:28px;
+
+    overflow:hidden;
+    position:relative;
+
+    transition:.45s;
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#2d2d2d;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.45);
+
+}
+
+.shop-product-image{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+
+    display:block;
+
+    transition:.6s;
+}
+
+.product-card:hover .shop-product-image{
+    transform:scale(1.05);
+    filter:brightness(.9);
+}
+
+.product-info{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+
+    padding:24px;
+    color:#fff;
+
+    position:relative;
+    z-index:2;
+}
+
+.product-info h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    color:#fff;
+    margin:10px 0;
+}
+
+.description{
+    color:#9f9f9f;
+    line-height:1.8;
+    margin-bottom:20px;
+    flex:1;
+}
+
+.product-footer{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-top:auto;
+}
+
+.price{
+    font-size:26px;
+    font-weight:700;
+    color:#d8b26e;
+    font-family:"Cormorant Garamond",serif;
+}
+/* button */
+.product-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.view-btn,
+.buy-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:48px;
+
+    border-radius:50px;
+    text-decoration:none;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.view-btn{
+    background:transparent ;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.view-btn:hover{
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+}
+
+.buy-btn{
+    background: linear-gradient(
+        135deg,
+        #2b0000,
+        #720000
+    );
+
+    color: #fff;
+}
+
+.buy-btn:hover{
+    color:#fff;
+    text-decoration:none;
+
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #720000,
+        #b40000
+    );
+
+    box-shadow:
+        0 0 18px rgba(160,0,0,.45);
+}
+
+@media(max-width:1000px){
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+}
+.cart-btn{
+
+    width:100%;
+    height:50px;
+
+    margin-top: 10px;
+    border-radius:50px;
+
+    border:1px solid #444;
+
+    background:transparent;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.cart-btn:hover{
+
+    background:#1d1d1d;
+
+    border-color:#777;
+
+}
+.shop-banner{
+
+    margin-top:100px;
+
+    width:100%;
+    height:300px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    align-items:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.shop-banner::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.78) 0%,
+        rgba(0,0,0,.45) 45%,
+        rgba(0,0,0,.25) 100%
+    );
+
+}
+
+.shop-banner-overlay{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    padding:55px 70px;
+
+    color:#fff;
+
+}
+
+.banner-subtitle{
+
+    display:inline-block;
+
+    font-size:13px;
+
+    letter-spacing:4px;
+
+    color:#b98b56;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+.banner-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:54px;
+
+    font-weight:700;
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+    color:#fff;
+
+}
+
+.banner-description{
+
+    width:520px;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    color:#d6d6d6;
+
+}
+
+.banner-sign{
+
+    position:absolute;
+
+    right:50px;
+
+    bottom:30px;
+
+    color:rgba(255,255,255,.75);
+
+    font-size:17px;
+
+    font-style:italic;
+
+    letter-spacing:2px;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+/* =========================
+   EDITORIAL
+========================= */
+
+.editorial-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin:100px 0;
+
+}
+
+.editorial-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:700px;
+
+    border-radius:24px;
+
+    background:#111;
+
+    cursor:pointer;
+
+}
+
+.editorial-card img,
+.editorial-video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:transform .8s ease;
+
+}
+
+.editorial-card:hover img,
+.editorial-card:hover .editorial-video{
+
+    transform:scale(1.06);
+
+}
+
+/* Overlay */
+
+.editorial-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+
+    padding:50px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.05) 15%,
+        rgba(0,0,0,.35) 55%,
+        rgba(0,0,0,.88) 100%
+    );
+
+}
+
+/* Small Text */
+
+.editorial-overlay span{
+
+    color:#d7b47c;
+
+    font-size:13px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+    opacity:.95;
+
+}
+
+/* Title */
+
+.editorial-overlay h3{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:52px;
+
+    font-weight:600;
+
+    line-height:1.1;
+
+    color:#fff;
+
+    margin:0;
+
+    text-shadow:
+        0 8px 25px rgba(0,0,0,.45);
+
+}
+
+/* Hover Overlay */
+
+.editorial-overlay::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(255,255,255,.04);
+
+    opacity:0;
+
+    transition:.45s;
+
+}
+
+.editorial-card:hover .editorial-overlay::after{
+
+    opacity:1;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    .editorial-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .editorial-card{
+
+        height:520px;
+
+    }
+
+    .editorial-overlay{
+
+        padding:35px;
+
+    }
+
+    .editorial-overlay h3{
+
+        font-size:42px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .editorial-card{
+
+        height:420px;
+
+    }
+
+    .editorial-overlay{
+
+        padding:25px;
+
+    }
+
+    .editorial-overlay h3{
+
+        font-size:34px;
+
+    }
+
+    .editorial-overlay span{
+
+        font-size:12px;
+
+        letter-spacing:3px;
+
+    }
+
+}
+/* =========================
+   SHOP HERO
+========================= */
+
+.shop-hero{
+
+    width:100%;
+
+    height:75vh;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:100px;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+.shop-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(120,0,0,.25),
+        transparent 60%
+    );
+
+}
+
+.shop-hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    max-width:850px;
+
+    padding:40px;
+
+}
+
+.shop-hero-content span{
+
+    color:#c49b63;
+
+    letter-spacing:6px;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+}
+
+.shop-hero-content h1{
+
+    margin:25px 0;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:96px;
+
+    font-weight:700;
+
+    color:white;
+
+    letter-spacing:6px;
+
+}
+
+.shop-hero-content p{
+
+    color:#d7d7d7;
+
+    font-size:18px;
+
+    line-height:2;
+
+    width:75%;
+
+    margin:auto;
+
+}

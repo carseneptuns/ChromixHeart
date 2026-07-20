@@ -1,0 +1,17 @@
+.text-type{
+    display:inline-block;
+}
+
+.text-type__content{
+    display:inline;
+}
+
+.text-type__cursor{
+    margin-left:2px;
+    display:inline-block;
+    user-select:none;
+}
+
+.text-type__cursor--hidden{
+    opacity:0;
+}

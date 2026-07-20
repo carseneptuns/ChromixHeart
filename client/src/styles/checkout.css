@@ -1,0 +1,221 @@
+/* checkout page */
+
+.checkout-page{
+    min-height: 100vh;
+    padding: 120px 6% 70px;
+    background: 
+    radial-gradient(circle at top, rgba(120,0,0,.10),
+    transparent 40%),
+    
+    linear-gradient(
+        180deg,
+        #020202,
+        #090909,
+        #111111,
+        #050505
+    );
+}
+
+/* card */
+.checkout-card{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap:50px;
+    background: #111111;
+    border: 1px solid rgba(150,0,0.18);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .55);
+}
+
+/* image */
+.checkout-image{
+    width: 45%;
+    background: #0d000d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.checkout-image img{
+    width:100;
+    max-width: 360px;
+    height: 470px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 2px solid #2f2f2f;
+    transition: .4s;
+}
+
+.checkout-image img:hover{
+    transform:scale(1.04);
+    border-color: #8b0000;
+    box-shadow: 0 15px 35px rgba(139, 0, 0, .35);
+}
+
+/* content */
+
+.checkout-content{
+    flex: 1;
+    padding: 45px;
+    color: white;
+}
+
+.checkout-content h2{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 44px;
+    color: #d8b26e;
+    margin-bottom: 20px;
+}
+
+.checkout-content h3{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.checkout-content p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    color: #9f9f9f;
+    font-size: 16px;
+}
+
+.checkout-content p span{
+    color: white;
+    font-weight: 600;
+}
+
+/* quantiry */
+
+.quantity-box{
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.quantity-box button{
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: #6d0000;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.quantity-box button:hover{
+    background: #9b0000;
+    transform: scale(1.08);
+}
+
+.quantity-box span{
+    font-size: 26px;
+    font-weight: bold;
+    color: #d8b26e;
+    width: 40px;
+    text-align: center;
+}
+
+/* subtotal */
+.subtotal{
+    margin-top: 40px;
+    padding: 22px;
+    border-radius: 18px;
+    background: #181818;
+    border: 1px solid rgba(255, 255, 255, .05);
+}
+
+.subtotal h4{
+    color: #9f9f9f;
+    margin-bottom: 10px;
+}
+
+.subtotal h3{
+    color: #d8b26e;
+    font-size: 38px;
+    margin: 0;
+}
+
+/* button */
+.place-order{
+    width: 100%;
+    margin-top: 35px;
+    padding: 17px;
+    border: none;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    background: 
+    linear-gradient(
+        135deg, 
+        #3a0000,
+        #8b0000);
+
+        transition: .35s;
+        cursor: pointer;
+}
+
+.place-order:hover{
+    transform: translateY(-4x);
+    background: 
+    linear-gradient(
+    135deg,
+    #640000,
+    #b00000);
+
+    box-shadow: 
+    0 12px 25px rgba(139, 0, 0, .45);
+}
+
+/* loading */
+.loading{
+    margin-top: 180px;
+    text-align: center;
+    color: white;
+}
+
+/* mobile */
+@media(max-width:900px){
+
+.checkout-card{
+
+    flex-direction:column;
+
+}
+
+.checkout-image{
+
+    width:100%;
+
+}
+
+.checkout-content{
+
+    padding:30px;
+
+}
+
+.checkout-content h2{
+
+    font-size:34px;
+
+}
+
+.checkout-content h3{
+
+    font-size:28px;
+
+}
+
+}

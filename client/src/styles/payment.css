@@ -1,0 +1,417 @@
+.payment-page{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:120px 5%;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(120,0,0,.18),
+    transparent 35%),
+
+    linear-gradient(
+        180deg,
+        #020202,
+        #090909,
+        #111111,
+        #050505);
+
+}
+
+/* ========================= */
+
+.payment-wrapper{
+
+    width:100%;
+    max-width:1350px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    overflow:hidden;
+
+    border-radius:35px;
+
+    background:#0b0b0b;
+
+    border:1px solid rgba(120,0,0,.25);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.7);
+
+}
+
+/* ========================= */
+/* LEFT */
+/* ========================= */
+
+.payment-left{
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:60px;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgb(0, 0, 0),
+
+        rgb(0, 0, 0)
+
+    );
+
+}
+
+.payment-left::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(120,0,0,.15),
+
+        transparent 70%
+
+    );
+
+}
+
+.payment-logo{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:56px;
+
+    margin-bottom:45px;
+
+    color:white;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:8px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+
+    0 0 18px rgba(170,0,0,.5);
+
+}
+
+.payment-banner{
+
+    width:100%;
+
+    max-width:470px;
+
+    border-radius:22px;
+
+    object-fit:cover;
+
+    box-shadow:
+
+    0 0 45px rgba(120,0,0,.25);
+
+}
+
+/* ========================= */
+/* RIGHT */
+/* ========================= */
+
+.payment-right{
+
+    padding:55px;
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        #111,
+
+        #080808
+
+    );
+
+    color:white;
+
+}
+
+.payment-right h2{
+
+    font-size:42px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:2px;
+
+}
+
+.payment-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    margin:28px 0;
+
+}
+
+.payment-right h4{
+
+    margin-bottom:18px;
+
+    font-size:23px;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+/* ========================= */
+
+.payment-order-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.payment-order-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:#161616;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+.payment-order-item p{
+
+    margin:0;
+
+    font-size:18px;
+
+    color:white;
+
+}
+
+.payment-order-item small{
+
+    color:#888;
+
+}
+
+.payment-order-item span{
+
+    color:#d8b26e;
+
+    font-weight:700;
+
+}
+
+/* ========================= */
+
+.payment-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:28px 0;
+
+    font-size:22px;
+
+}
+
+.payment-total strong{
+
+    color:#d8b26e;
+
+    font-size:28px;
+
+}
+
+/* ========================= */
+
+.payment-method-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.payment-method-box label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#151515;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.payment-method-box label:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#900000;
+
+    background:#1c1c1c;
+
+}
+
+.payment-method-box input{
+
+    accent-color:#960000;
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ========================= */
+
+.confirm-payment{
+
+    width:100%;
+
+    margin-top:40px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:60px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #2b0000,
+
+        #7a0000
+
+    );
+
+    transition:.35s;
+
+}
+
+.confirm-payment:hover{
+
+    transform:translateY(-3px);
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #7b0000,
+
+        #bf0000
+
+    );
+
+    box-shadow:
+
+    0 0 30px rgba(170,0,0,.4);
+
+}
+
+/* ========================= */
+
+@media(max-width:980px){
+
+    .payment-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .payment-left{
+
+        padding:45px;
+
+    }
+
+    .payment-right{
+
+        padding:35px;
+
+    }
+
+    .payment-logo{
+
+        font-size:42px;
+
+    }
+
+}

@@ -1,0 +1,452 @@
+/* ===================================================
+   PRODUCT PAGE
+=================================================== */
+
+.product-page{
+    width:88%;
+    max-width:1250px;
+    margin:95px auto 70px;
+}
+
+/* ===================================================
+   HEADER
+=================================================== */
+
+.product-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:35px;
+}
+
+.product-header h2{
+    margin:0;
+    font-family:"Cormorant Garamond", serif;
+    font-size:42px;
+    font-weight:700;
+    color:#c70000;
+    letter-spacing:2px;
+    position:relative;
+}
+
+.product-header h2::after{
+    content:"";
+    width:90px;
+    height:2px;
+    display:block;
+    margin-top:10px;
+    background:linear-gradient(to right,#8b0000,#d8b26e);
+}
+
+.product-header .btn-success{
+    background:linear-gradient(135deg,#7b1113,#3d0909)!important;
+    border:1px solid #b08a47!important;
+    color:#fff!important;
+    padding:12px 22px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(139,0,0,.3);
+}
+
+.product-header .btn-success:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(135deg,#971919,#560b0b)!important;
+    box-shadow:0 15px 35px rgba(139,0,0,.45);
+}
+
+/* ===================================================
+   TABLE
+=================================================== */
+
+.table{
+    width:100%;
+    border-collapse:separate!important;
+    border-spacing:0;
+    overflow:hidden;
+    border-radius:18px;
+    background:#151515;
+    border:1px solid #2d2d2d;
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
+
+.table thead{
+    background:linear-gradient(135deg,#1a1a1a,#090909);
+}
+
+.table thead th{
+    background:transparent;
+    border:none!important;
+    color:#d8b26e;
+    padding:18px;
+    text-transform:uppercase;
+    font-size:13px;
+    letter-spacing:2px;
+    font-weight:600;
+}
+
+.table tbody td{
+    background:#171717;
+    color:#f5f5f5;
+    padding:18px 14px;
+    vertical-align:middle;
+    border-top:1px solid rgba(255,255,255,.05)!important;
+    border-bottom:none!important;
+}
+
+.table tbody tr:nth-child(even) td{
+    background:#131313;
+}
+
+.table-hover tbody tr:hover td{
+    background:#1d1d1d!important;
+}
+
+.table-hover tbody tr:hover{
+    box-shadow:inset 4px 0 0 #8b0000;
+}
+
+/* ===================================================
+   IMAGE
+=================================================== */
+
+.table td img{
+    width:78px!important;
+    height:78px!important;
+    object-fit:cover;
+    border-radius:12px;
+    border:2px solid #363636;
+    transition:.35s;
+}
+
+.table td img:hover{
+    transform:scale(1.12);
+    border-color:#8b0000;
+    box-shadow:0 10px 30px rgba(139,0,0,.4);
+}
+
+/* ===================================================
+   PRICE & STOCK
+=================================================== */
+
+.table td:nth-child(5){
+    color:#d8b26e;
+    font-weight:700;
+}
+
+.table td:nth-child(6){
+    color:#7ef59c;
+    font-weight:600;
+}
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.table .btn{
+    border:none;
+    border-radius:8px;
+    padding:7px 13px;
+    transition:.3s;
+    margin:2px;
+}
+
+.table .btn-info{
+    background:#1f3557;
+    color:white;
+}
+
+.table .btn-warning{
+    background:#9d6900;
+    color:white;
+}
+
+.table .btn-danger{
+    background:#7b1113;
+    color:white;
+}
+
+.table .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+
+/* ===================================================
+   PRODUCT DETAIL
+=================================================== */
+
+.detail-page{
+    width:88%;
+    max-width:1200px;
+    margin:95px auto 60px;
+}
+
+.detail-card{
+    display:flex;
+    gap:45px;
+    background:#141414;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #2d2d2d;
+    box-shadow:0 20px 55px rgba(0,0,0,.55);
+}
+
+/* IMAGE */
+
+.detail-image{
+    width:42%;
+    background:#0e0e0e;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.detail-image img{
+    width:100%;
+    max-width:340px;
+    height:450px;
+    object-fit:cover;
+    border-radius:18px;
+    border:2px solid #383838;
+    transition:.4s;
+}
+
+.detail-image img:hover{
+    transform:scale(1.03);
+    border-color:#8b0000;
+    box-shadow:0 15px 35px rgba(139,0,0,.35);
+}
+
+/* CONTENT */
+
+.detail-content{
+    flex:1;
+    padding:45px;
+}
+
+.detail-content h2{
+    font-family:"Cormorant Garamond",serif;
+    color:#d8b26e;
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+/* INFO */
+
+.detail-info{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.detail-label{
+    color:#9d9d9d;
+    font-weight:600;
+}
+
+.detail-value{
+    color:white;
+    font-weight:600;
+}
+
+.detail-info:nth-child(4) .detail-value{
+    color:#d8b26e;
+    font-size:21px;
+}
+
+/* DESCRIPTION */
+
+.detail-description{
+    margin-top:35px;
+}
+
+.detail-description h5{
+    color:#d8b26e;
+    margin-bottom:14px;
+}
+
+.detail-description p{
+    color:#d0d0d0;
+    line-height:1.9;
+    text-align:justify;
+}
+
+/* BACK BUTTON */
+
+/* ===================================================
+   ACTION BUTTON
+=================================================== */
+
+.detail-actions{
+    display:flex;
+    gap:15px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:180px;
+
+    padding:13px 24px;
+
+    background:linear-gradient(
+        135deg,
+        #7b1113,
+        #3d0909
+    );
+
+    color:#f8f4ec !important;
+
+    text-decoration:none !important;
+
+    border:1px solid #b08a47;
+
+    border-radius:12px;
+
+    font-weight:600;
+    letter-spacing:1px;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 25px rgba(139,0,0,.35);
+}
+
+.back-btn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #981717,
+        #5a0b0b
+    );
+
+    color:#fff !important;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(139,0,0,.45);
+}
+
+.edit-btn-detail{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:180px;
+
+    padding:13px 24px;
+
+    background:linear-gradient(
+        135deg,
+        #b8860b,
+        #7d5a05
+    );
+
+    color:#fff !important;
+
+    text-decoration:none !important;
+
+    border:1px solid #d8b26e;
+
+    border-radius:12px;
+
+    font-weight:600;
+    letter-spacing:1px;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 25px rgba(184,134,11,.25);
+
+}
+
+.edit-btn-detail:hover{
+
+    background:linear-gradient(
+        135deg,
+        #d29a0d,
+        #926805
+    );
+
+    color:#fff !important;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(184,134,11,.4);
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:992px){
+
+.product-page,
+.detail-page{
+    width:94%;
+}
+
+.product-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.product-header h2{
+    font-size:34px;
+}
+
+.detail-card{
+    flex-direction:column;
+}
+
+.detail-image{
+    width:100%;
+}
+
+.detail-content{
+    padding:30px;
+}
+
+.detail-content h2{
+    font-size:30px;
+}
+
+}
+
+@media(max-width:768px){
+
+.table{
+    font-size:12px;
+}
+
+.table th,
+.table td{
+    padding:10px;
+}
+
+.table td img{
+    width:60px!important;
+    height:60px!important;
+}
+
+.product-header h2{
+    font-size:30px;
+}
+
+.product-header .btn-success{
+    width:100%;
+    text-align:center;
+}
+
+}

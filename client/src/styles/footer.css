@@ -1,0 +1,141 @@
+.footer{
+    background:#050505;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:90px 0 35px;
+}
+
+.footer-top{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.3fr;
+    gap:70px;
+}
+
+.footer-brand h2{
+    color:#fff;
+    font-size:42px;
+    font-family:"Cormorant Garamond",serif;
+    margin-bottom:20px;
+}
+
+.footer-brand p{
+    color:#9f9f9f;
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+/* ==========================
+SOCIAL
+========================== */
+
+.footer-social{
+    display:flex;
+    gap:15px;
+}
+
+.footer-social a{
+    width:46px;
+    height:46px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    color:white;
+    text-decoration:none;
+    background:#111;
+    transition:.35s;
+}
+
+.footer-social a:hover{
+    background:#7b0000;
+    transform:translateY(-6px);
+}
+
+/* ==========================
+TITLE
+========================== */
+
+.footer h4{
+    color:white;
+    margin-bottom:22px;
+    font-size:22px;
+}
+
+/* ==========================
+LIST
+========================== */
+
+.footer ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.footer li{
+    margin-bottom:16px;
+}
+
+.footer a{
+    color:#9d9d9d;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer a:hover{
+    color:white;
+    padding-left:8px;
+}
+
+/* ==========================
+CONTACT
+========================== */
+
+.contact li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#a8a8a8;
+}
+/* ==========================
+BOTTOM
+========================== */
+
+.footer-bottom{
+    margin-top:70px;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-bottom p{
+    color:#8c8c8c;
+    margin:0;
+}
+
+.footer-bottom span{
+    color:#8c8c8c;
+}
+
+/* ==========================
+RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+.footer-top{
+
+grid-template-columns:1fr;
+gap:45px;
+
+}
+
+.footer-bottom{
+
+flex-direction:column;
+gap:15px;
+text-align:center;
+
+}
+
+}
