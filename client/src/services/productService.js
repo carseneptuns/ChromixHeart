@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/products";
+const API = "http://chromixheart-production-6072.up.railway.app/api/products";
 
 // Get All Products
 export const getProducts = () => axios.get(API);
