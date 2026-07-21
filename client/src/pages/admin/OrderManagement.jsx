@@ -14,7 +14,7 @@ function OrderManagement() {
     const fetchOrders = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/api/orders"
+                "http://chromixheart-production-6072.up.railway.app/api/orders"
             );
             setOrders(res.data);
         } catch (err) {
@@ -25,7 +25,7 @@ function OrderManagement() {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                `http://localhost:5000/api/orders/${id}`,
+                `http://chromixheart-production-6072.up.railway.app/api/orders/${id}`,
                 { status }
             );
             fetchOrders();
@@ -156,7 +156,7 @@ function OrderManagement() {
                                 <h4>Bukti Pembayaran</h4>
                                 {selectedOrder.proof_payment ? (
                                     <img
-                                        src={`http://localhost:5000/uploads/${selectedOrder.proof_payment}`}
+                                        src={`http://chromixheart-production-6072.up.railway.app/uploads/${selectedOrder.proof_payment}`}
                                         alt="Proof of Payment"
                                         style={{
                                             width: "280px",
