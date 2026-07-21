@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/profile";
+const API = "http://chromixheart-production-6072.up.railway.app/api/profile";
 
 export const getProfile = (id) =>
     axios.get(`${API}/${id}`);
