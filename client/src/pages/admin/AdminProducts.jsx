@@ -13,7 +13,7 @@ export default function AdminProducts() {
   const [showEdit, setShowEdit] = useState(false);
 
   // URL endpoint API backend menuju controller (tbl_produk)
-  const API_URL = "http://localhost:5000/api/products";
+  const API_URL = "http://chromixheart-production-6072.up.railway.app/api/products";
 
   // 1. mengambil data awal dari database
   const fetchProducts = async () => {
