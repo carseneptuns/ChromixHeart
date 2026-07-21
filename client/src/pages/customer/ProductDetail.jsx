@@ -43,7 +43,7 @@ function ProductDetail() {
             <div className="detail-image">
 
                 <img
-                    src={`http://localhost:5000/uploads/products/${product.gambar}`}
+                    src={`http://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`}
                     alt={product.nama_produk}
                 />
 
