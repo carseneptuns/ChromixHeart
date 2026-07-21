@@ -26,7 +26,7 @@ function Profile() {
 
     const fetchUserOrders = async (userId) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/transactions/user/${userId}`);
+            const res = await axios.get(`http://chromixheart-production-6072.up.railway.app/api/transactions/user/${userId}`);
             const orderList = Array.isArray(res.data) ? res.data : (res.data.data || []);
             const uniqueOrders = Array.from(new Set(orderList.map(item => item.id)));
             setOrderCount(uniqueOrders.length);
