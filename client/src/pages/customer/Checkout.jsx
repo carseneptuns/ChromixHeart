@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProduct } from "../../services/productService";
 import { createTransaction } from "../../services/transactionService";
+import LocationPicker from "../../components/LocationPicker";
 
 import "../../styles/checkout.css";
 
@@ -12,6 +13,9 @@ function Checkout() {
 
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [position, setPosition] = useState(null);
+
+    const [address, setAddress] = useState("");
 
     useEffect(() => {
         fetchProduct();
@@ -56,8 +60,11 @@ function Checkout() {
 
                 user_id: user.id,
                 produk_id: product.id,
-                quantity: quantity
+                quantity: quantity,
 
+                alamat: address,
+                latitude: position ? position[0] : null,
+                longitude: position ? position[1] : null
             });
 
             alert("Order berhasil dibuat!");
@@ -144,6 +151,16 @@ function Checkout() {
                         </h3>
 
                     </div>
+
+                    <LocationPicker
+
+                        position={position}
+                        setPosition={setPosition}
+
+                        address={address}
+                        setAddress={setAddress}
+
+                    />
 
                     <button
                         className="place-order"

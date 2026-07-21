@@ -6,6 +6,8 @@ function CreateProduct() {
 
     const navigate = useNavigate();
 
+    const [preview, setPreview] = useState(null);
+
     const [formData, setFormData] = useState({
         kode_produk: "",
         nama_produk: "",
@@ -29,10 +31,18 @@ function CreateProduct() {
 
     const handleImage = (e) => {
 
+        const file = e.target.files[0];
+
         setFormData({
             ...formData,
-            gambar: e.target.files[0]
+            gambar: file
         });
+
+        if (file) {
+            setPreview(URL.createObjectURL(file));
+        } else {
+            setPreview(null);
+        }
 
     };
 
@@ -156,21 +166,40 @@ function CreateProduct() {
                     />
 
                 </div>
-
                 <div className="mb-3">
 
                     <label>Gambar</label>
 
                     <input
                         type="file"
+                        name="gambar"
                         className="form-control"
                         accept="image/*"
                         onChange={handleImage}
-                        required
                     />
 
-                </div>
+                    {preview && (
 
+                        <div style={{ marginTop: "20px" }}>
+
+                            <img
+                                src={preview}
+                                alt="Preview"
+                                style={{
+                                    width: "220px",
+                                    height: "220px",
+                                    objectFit: "cover",
+                                    borderRadius: "12px",
+                                    border: "2px solid #8b0000",
+                                    boxShadow: "0 10px 25px rgba(0,0,0,.2)"
+                                }}
+                            />
+
+                        </div>
+
+                    )}
+
+                </div>
                 <div className="mb-3">
 
                     <label>Deskripsi</label>

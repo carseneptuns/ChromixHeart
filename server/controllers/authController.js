@@ -45,6 +45,7 @@ const login = async (req, res) => {
                 id: user.id,
                 username: user.username,
                 nama_lengkap: user.nama_lengkap,
+                alamat: user.alamat,
                 role: user.role
             }
         });
@@ -74,8 +75,9 @@ const register = async (req, res) => {
 
         const {
             username,
-            password,
-            nama_lengkap
+            nama_lengkap,
+            alamat,
+            password
         } = req.body;
 
         const [users] = await Auth.getUserByUsername(username);
@@ -98,6 +100,7 @@ const register = async (req, res) => {
             username,
             password: hashedPassword,
             nama_lengkap,
+            alamat,
             role: "customer"
         });
 

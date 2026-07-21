@@ -19,6 +19,7 @@ function EditProduct() {
         gambar: null,
         deskripsi: ""
     });
+    const [preview, setPreview] = useState(null);
 
     useEffect(() => {
         fetchProduct();
@@ -30,10 +31,16 @@ function EditProduct() {
 
             const res = await getProduct(id);
 
+            const product = res.data.data;
+
             setFormData({
-                ...res.data.data,
+                ...product,
                 gambar: null
             });
+
+            setPreview(
+                `http://localhost:5000/uploads/products/${product.gambar}`
+            );
 
         } catch (err) {
 
@@ -54,13 +61,18 @@ function EditProduct() {
 
     const handleImage = (e) => {
 
+        const file = e.target.files[0];
+
         setFormData({
             ...formData,
-            gambar: e.target.files[0]
+            gambar: file
         });
 
-    };
+        if (file) {
+            setPreview(URL.createObjectURL(file));
+        }
 
+    };
     const handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -168,13 +180,37 @@ function EditProduct() {
                 </div>
 
                 <div className="mb-3">
+
                     <label>Gambar Baru (Opsional)</label>
 
                     <input
                         type="file"
                         className="form-control"
+                        accept="image/*"
                         onChange={handleImage}
                     />
+
+                    {preview && (
+
+                        <div style={{ marginTop: "20px" }}>
+
+                            <img
+                                src={preview}
+                                alt="Preview"
+                                style={{
+                                    width: "220px",
+                                    height: "220px",
+                                    objectFit: "cover",
+                                    borderRadius: "12px",
+                                    border: "2px solid #8b0000",
+                                    boxShadow: "0 10px 25px rgba(0,0,0,.2)"
+                                }}
+                            />
+
+                        </div>
+
+                    )}
+
                 </div>
 
                 <div className="mb-3">

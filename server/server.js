@@ -17,6 +17,7 @@ const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 // ======================
 // MIDDLEWARE
@@ -60,6 +61,8 @@ console.log("Products Folder  :", path.join(__dirname, "uploads", "products"));
 // ======================
 // API ROUTES
 // ======================
+
+app.use("/api/profile", profileRoutes);
 
 app.use("/api/auth", authRoutes);
 

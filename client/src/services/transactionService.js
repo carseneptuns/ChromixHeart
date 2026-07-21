@@ -8,10 +8,8 @@ export const createTransaction = (data) => {
 };
 
 // CART CHECKOUT
-export const checkoutCart = (user_id) => {
-    return axios.post(`${API}/checkout`, {
-        user_id
-    });
+export const checkoutCart = (data) => {
+    return axios.post(`${API}/checkout`, data);
 };
 
 // GET DETAIL TRANSACTION
@@ -27,11 +25,5 @@ export const confirmPayment = (id, payment_method) => {
 };
 
 export const getUserTransactions = (user_id) => {
-
-    return axios.get(
-
-        `${API}/user/${user_id}`
-
-    );
-
+    return axios.get(`${API}/user/${user_id}`);
 };

@@ -1,30 +1,43 @@
 import "../styles/orderSummary.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
+import LocationPicker from "./LocationPicker";
+import { checkoutCart } from "../services/transactionService";
 
 function OrderSummary({ cart, subtotal }) {
 
      const navigate = useNavigate();
 
-    const handleCheckout = async () => {
+     const [position, setPosition] = useState(null);
+
+    const [address, setAddress] = useState("");
+const handleCheckout = async () => {
 
     try {
 
-        console.log("Checkout diklik");
-
         const user = JSON.parse(localStorage.getItem("user"));
 
-        //endpoint check out
-        const res = await axios.post(
-            "http://localhost:5000/api/transactions/checkout",
-            {
-                user_id: user.id
-            }
-        );
+        if (!address) {
+
+            alert("Silakan pilih alamat pengiriman terlebih dahulu.");
+
+            return;
+
+        }
+
+        console.log("Checkout diklik");
+
+        const res = await checkoutCart({
+
+            user_id: user.id,
+            alamat: address,
+            latitude: position[0],
+            longitude: position[1] 
+
+        });
 
         console.log(res.data);
-        
-        //mengalihkan halaman penggona ke pembayaran spesifik
+
         navigate(`/payment/${res.data.transaction_id}`);
 
     } catch (err) {
@@ -67,6 +80,15 @@ function OrderSummary({ cart, subtotal }) {
                 </strong>
             </div>
 
+            <LocationPicker
+
+                position={position}
+                setPosition={setPosition}
+
+                address={address}
+                setAddress={setAddress}
+
+            />
              <button
                 className="checkout-btn"
                 onClick={handleCheckout}

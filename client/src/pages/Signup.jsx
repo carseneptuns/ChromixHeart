@@ -10,6 +10,7 @@ function Signup() {
     const [formData, setFormData] = useState({
         username: "",
         nama_lengkap: "",
+        alamat:"",
         password: "",
         confirmPassword: ""
     });
@@ -39,6 +40,7 @@ function Signup() {
                 {
                     username: formData.username,
                     nama_lengkap: formData.nama_lengkap,
+                    alamat: formData.alamat,
                     password: formData.password
                 }
             );
@@ -88,6 +90,15 @@ function Signup() {
                         name="nama_lengkap"
                         placeholder="Full Name"
                         value={formData.nama_lengkap}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        type="text"
+                        name="alamat"
+                        placeholder="Alamat"
+                        value={formData.alamat}
                         onChange={handleChange}
                         required
                     />

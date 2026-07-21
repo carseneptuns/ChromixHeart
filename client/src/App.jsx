@@ -17,6 +17,7 @@ import ProductManagement from "./pages/admin/ProductManagement";
 import CreateProduct from "./pages/admin/CreateProduct";
 import EditProduct from "./pages/admin/EditProduct";
 import BrandAbout from "./pages/BrandAbout";
+import Profile from "./pages/Profile";
 
 // Admin
 import AdminProductDetail from "./pages/admin/ProductDetail";
@@ -89,6 +90,7 @@ function App() {
           }
         />
 
+
         <Route
           path="/checkout/:id"
           element={
@@ -112,6 +114,14 @@ function App() {
           element={
             <ProtectedRoute>
               <MyOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           }
         />

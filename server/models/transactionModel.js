@@ -6,7 +6,10 @@ const db = require("../config/db");
 const createTransaction = async (
     user_id,
     produk_id,
-    quantity
+    quantity,
+    alamat,
+    latitude,
+    longitude
 ) => {
 
     const connection = await db.getConnection();
@@ -41,14 +44,20 @@ const createTransaction = async (
                 user_id,
                 tanggal,
                 total,
-                status
+                status,
+                alamat,
+                latitude,
+                longitude
             )
             VALUES
-            (?, NOW(), ?, 'Pending')
+            (?, NOW(), ?, 'Pending', ?, ?, ?)
             `,
             [
                 user_id,
-                total
+                total,
+                alamat,
+                latitude,
+                longitude
             ]
         );
 
@@ -56,16 +65,16 @@ const createTransaction = async (
 
         await connection.query(
             `
-INSERT INTO detail_transaksi
-(
-    transaksi_id,
-    produk_id,
-    quantity,
-    harga,
-    subtotal
-)
-VALUES (?,?,?,?,?)
-`,
+            INSERT INTO detail_transaksi
+            (
+                transaksi_id,
+                produk_id,
+                quantity,
+                harga,
+                subtotal
+            )
+            VALUES (?,?,?,?,?)
+            `,
             [
                 transactionId,
                 produk_id,
@@ -74,7 +83,6 @@ VALUES (?,?,?,?,?)
                 total
             ]
         );
-
 
         await connection.commit();
 
@@ -94,11 +102,10 @@ VALUES (?,?,?,?,?)
     }
 
 };
-
 // ==========================================
 // CHECKOUT CART
 // ==========================================
-const checkoutCart = async (user_id) => {
+const checkoutCart = async (user_id, alamat, latitude, longitude) => {
 
     const connection = await db.getConnection();
 
@@ -150,14 +157,20 @@ const checkoutCart = async (user_id) => {
                 user_id,
                 tanggal,
                 total,
-                status
+                status,
+                alamat,
+                latitude,
+                longitude
             )
             VALUES
-            (?, NOW(), ?, 'Pending')
+            (?, NOW(), ?, 'Pending', ?, ?, ?)
             `,
             [
                 user_id,
-                total
+                total,
+                alamat,
+                latitude,
+                longitude
             ]
         );
 
@@ -243,6 +256,9 @@ const getTransaction = async (id) => {
             tt.total,
             tt.status,
             tt.payment_method,
+            tt.alamat,
+            tt.latitude,
+            tt.longitude,
 
             dt.produk_id,
             dt.quantity,
@@ -278,6 +294,9 @@ const getTransaction = async (id) => {
         total: rows[0].total,
         status: rows[0].status,
         payment_method: rows[0].payment_method,
+        alamat: rows[0].alamat,
+        latitude: rows[0].latitude,
+        longitude: rows[0].longitude,
 
         items: rows.map(item => ({
             produk_id: item.produk_id,
@@ -296,15 +315,10 @@ const getTransaction = async (id) => {
 // ==========================================
 // CONFIRM PAYMENT
 // ==========================================
-const confirmPayment = async (
-    id,
-    payment_method
-) => {
-
+const confirmPayment = async (id, payment_method, proof_payment) => {
     const connection = await db.getConnection();
 
     try {
-
         await connection.beginTransaction();
 
         // Cek transaksi
@@ -315,12 +329,13 @@ const confirmPayment = async (
                 tt.user_id,
                 tt.total,
                 tt.status,
+                tt.alamat,
+                tt.latitude,
+                tt.longitude,
                 u.nama_lengkap
             FROM tbl_transaksi tt
-
             JOIN tbl_login u
             ON tt.user_id = u.id
-
             WHERE tt.id = ?
             `,
             [id]
@@ -348,7 +363,6 @@ const confirmPayment = async (
 
         // Kurangi stok
         for (const item of items) {
-
             const [product] = await connection.query(
                 `
                 SELECT stok
@@ -377,25 +391,26 @@ const confirmPayment = async (
                     item.produk_id
                 ]
             );
-
         }
 
-        // Update transaksi
+        // Update transaksi (Menyimpan payment_method, proof_payment, dan status)
         await connection.query(
             `
-            UPDATE tbl_transaksi
-            SET
-                payment_method = ?,
-                status = 'Paid'
+           UPDATE tbl_transaksi
+           SET
+             payment_method = ?,
+             proof_payment = ?,
+             status = 'Paid'
             WHERE id = ?
             `,
             [
                 payment_method,
+                proof_payment,
                 id
             ]
         );
 
-        // Simpan ke tabel orders
+        // Simpan ke tabel orders (untuk OrderManagement admin)
         await connection.query(
             `
             INSERT INTO orders
@@ -404,32 +419,36 @@ const confirmPayment = async (
                 customer_name,
                 payment_method,
                 total,
-                status
+                status,
+                alamat,
+                latitude,
+                longitude,
+                proof_payment
             )
-            VALUES (?,?,?,?,?)
+            VALUES (?,?,?,?,?,?,?,?,?)
             `,
             [
                 trx[0].user_id,
                 trx[0].nama_lengkap,
                 payment_method,
                 trx[0].total,
-                "Paid"
+                "Paid",
+                trx[0].alamat,
+                trx[0].latitude,
+                trx[0].longitude,
+                proof_payment
             ]
         );
 
         await connection.commit();
+        return { success: true };
 
     } catch (err) {
-
         await connection.rollback();
         throw err;
-
     } finally {
-
         connection.release();
-
     }
-
 };
 const getUserTransactions = async (user_id) => {
 

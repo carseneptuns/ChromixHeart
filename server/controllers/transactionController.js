@@ -5,10 +5,15 @@ const createTransaction = async (req, res) => {
 
     try {
 
+        console.log(req.body);
+
         const {
             user_id,
             produk_id,
-            quantity
+            quantity,
+            alamat,
+            latitude,
+            longitude
         } = req.body;
 
         if (!user_id || !produk_id || !quantity) {
@@ -25,7 +30,10 @@ const createTransaction = async (req, res) => {
         const result = await transactionModel.createTransaction(
             user_id,
             produk_id,
-            quantity
+            quantity,
+            alamat,
+            latitude,
+            longitude
         );
 
         res.status(201).json({
@@ -58,7 +66,20 @@ const checkout = async (req, res) => {
     console.log(req.body);
     try {
 
-        const { user_id } = req.body;
+        const { 
+            user_id, 
+            alamat, 
+            latitude, 
+            longitude 
+        } = req.body;
+
+        console.log({
+            user_id,
+            alamat,
+            latitude,
+            longitude
+        });
+        
 
         if (!user_id) {
 
@@ -72,7 +93,11 @@ const checkout = async (req, res) => {
         }
 
         const result = await transactionModel.checkoutCart(
-            user_id
+            user_id,
+            alamat,
+            latitude,
+            longitude
+
         );
 
         res.json({
@@ -130,38 +155,44 @@ const getTransaction = async (req, res) => {
 
 // CONFIRM PAYMENT
 const confirmPayment = async (req, res) => {
-
     try {
+        console.log("=== confirmPayment ===");
+        console.log("Body:", req.body);
+        console.log("File:", req.file);
 
-        const { payment_method } = req.body;
+        // Ambil payment_method dari req.body dengan aman
+        const payment_method = req.body ? req.body.payment_method : null;
+        
+        // Ambil nama file dari multer jika ada yang diupload
+        const proof_payment = req.file ? req.file.filename : null;
 
+        if (!payment_method) {
+            return res.status(400).json({
+                success: false,
+                message: "Metode pembayaran tidak boleh kosong"
+            });
+        }
+
+        // Panggil model dengan menyertakan proof_payment
         await transactionModel.confirmPayment(
             req.params.id,
-            payment_method
+            payment_method,
+            proof_payment
         );
 
         res.json({
-
             success: true,
-            message: "Pembayaran berhasil"
-
+            message: "Pembayaran berhasil dikonfirmasi"
         });
 
     } catch (err) {
-
         console.log(err);
-
         res.status(500).json({
-
             success: false,
             message: err.message
-
         });
-
     }
-
 };
-
 const getUserTransactions = async (req, res) => {
 
     try {

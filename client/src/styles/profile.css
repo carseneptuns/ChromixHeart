@@ -1,0 +1,229 @@
+.profile-container {
+    min-height: 100vh;
+    background-color: #0a0b0c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-card {
+    background: #857f7f;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+    position: relative; /* Menjadi acuan posisi absolute anak elemennya */
+}
+
+/* Tombol Kembali di Pojok Kiri Atas Card */
+.back-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: #f8f9fa; /* Memberikan background tipis agar terlihat jelas */
+    border: 1px solid #eaeaea;
+    color: #333 !important; /* Memaksa warna teks menjadi gelap */
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.back-btn svg {
+    color: #333;
+    font-size: 16px;
+}
+
+.back-btn:hover {
+    background: #111;
+    color: #fff !important;
+    border-color: #111;
+}
+
+.back-btn:hover svg {
+    color: #fff;
+} 
+/* Header Profil */
+.profile-header {
+    text-align: center;
+    position: relative;
+    padding-top: 15px; /* Memberi ruang agar tidak menabrak tombol kembali */
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c0000, #b30000);
+    color: white;
+    font-size: 38px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(124, 0, 0, 0.25);
+}
+
+.profile-header h2 {
+    margin: 0 0 6px 0;
+    font-size: 24px;
+    color: #111;
+}
+
+.role-badge {
+    background: #f0f0f0;
+    color: #555;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Ringkasan Statistik */
+.profile-stats {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.stat-item {
+    background: #fafafa;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.stat-icon {
+    font-size: 28px;
+    color: #7c0000;
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #111;
+}
+
+.stat-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Detail Informasi */
+.profile-info {
+    margin: 25px 0;
+}
+
+.profile-info h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.info-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 10px;
+}
+
+.info-icon {
+    font-size: 20px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.info-text label {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.info-text p {
+    margin: 2px 0 0 0;
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+.role-text {
+    text-transform: capitalize;
+}
+
+/* Tombol Aksi */
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-orders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-orders:hover {
+    background: #333;
+}
+
+.btn-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-logout:hover {
+    background: #b91c1c;
+}
