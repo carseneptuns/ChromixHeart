@@ -36,7 +36,7 @@ function Signup() {
         try {
 
             const res = await axios.post(
-                "http://localhost:5000/api/auth/register",
+                "http://chromixheart-production-6072.up.railway.app/api/auth/register",
                 {
                     username: formData.username,
                     nama_lengkap: formData.nama_lengkap,
