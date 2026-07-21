@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/transactions";
+const API = "http://chromixheart-production-6072.up.railway.app/api/transactions";
 
 // BUY NOW
 export const createTransaction = (data) => {
