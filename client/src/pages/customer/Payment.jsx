@@ -50,7 +50,7 @@ function Payment() {
                 formData.append("proof_payment", proofImage);
             }
 
-            await axios.put(`http://localhost:5000/api/transactions/${id}/pay`, formData, {
+            await axios.put(`http://chromixheart-production-6072.up.railway.app/api/transactions/${id}/pay`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
