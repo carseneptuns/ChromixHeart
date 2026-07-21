@@ -144,7 +144,7 @@ function Cart() {
 
                             <CartItem
                                 key={item.id}
-                                image={`http://localhost:5000/uploads/products/${item.gambar}`}
+                                image={`http://chromixheart-production-6072.up.railway.app/uploads/products/${item.gambar}`}
                                 title={item.nama_produk}
                                 category={item.kategori}
                                 price={item.harga}
