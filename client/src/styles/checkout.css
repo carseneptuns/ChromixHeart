@@ -1,12 +1,19 @@
-/* checkout page */
+/* ===========================
+   CHECKOUT PAGE
+=========================== */
 
 .checkout-page{
-    min-height: 100vh;
-    padding: 120px 6% 70px;
-    background: 
-    radial-gradient(circle at top, rgba(120,0,0,.10),
-    transparent 40%),
-    
+
+    min-height:100vh;
+
+    padding:120px 6% 70px;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(120,0,0,.10),
+        transparent 40%
+    ),
     linear-gradient(
         180deg,
         #020202,
@@ -14,179 +21,330 @@
         #111111,
         #050505
     );
+
 }
 
-/* card */
+/* ===========================
+   CARD
+=========================== */
+
 .checkout-card{
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    gap:50px;
-    background: #111111;
-    border: 1px solid rgba(150,0,0.18);
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, .55);
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+
+    background:#111111;
+
+    border:1px solid rgba(150,0,0,.18);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.55);
+
 }
 
-/* image */
+/* ===========================
+   IMAGE
+=========================== */
+
 .checkout-image{
-    width: 45%;
-    background: #0d000d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
+
+    width:42%;
+
+    min-height:720px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(120,0,0,.08),
+        transparent 60%
+    ),
+    #0b0b0b;
+
 }
 
 .checkout-image img{
-    width:100;
-    max-width: 360px;
-    height: 470px;
-    object-fit: cover;
-    border-radius: 18px;
-    border: 2px solid #2f2f2f;
-    transition: .4s;
+
+    width:100%;
+
+    max-width:420px;
+
+    aspect-ratio:3/4;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.55);
+
+    transition:.45s ease;
+
 }
 
 .checkout-image img:hover{
-    transform:scale(1.04);
-    border-color: #8b0000;
-    box-shadow: 0 15px 35px rgba(139, 0, 0, .35);
+
+    transform:scale(1.03);
+
+    border-color:#8b0000;
+
+    box-shadow:
+        0 35px 70px rgba(139,0,0,.35);
+
 }
 
-/* content */
+/* ===========================
+   CONTENT
+=========================== */
 
 .checkout-content{
-    flex: 1;
-    padding: 45px;
-    color: white;
+
+    width:58%;
+
+    padding:55px;
+
+    color:white;
+
 }
 
 .checkout-content h2{
-    font-family: "Cormorant Garamond", serif;
-    font-size: 44px;
-    color: #d8b26e;
-    margin-bottom: 20px;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:46px;
+
+    color:#d8b26e;
+
+    margin-bottom:18px;
+
 }
 
 .checkout-content h3{
-    font-family: "Cormorant Garamond", serif;
-    font-size: 34px;
-    margin-bottom: 30px;
-    color: white;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:34px;
+
+    color:#fff;
+
+    margin-bottom:28px;
+
 }
 
 .checkout-content p{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    color: #9f9f9f;
-    font-size: 16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:16px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    color:#9f9f9f;
+
+    font-size:16px;
+
 }
 
 .checkout-content p span{
-    color: white;
-    font-weight: 600;
+
+    color:#fff;
+
+    font-weight:600;
+
 }
 
-/* quantiry */
+/* ===========================
+   QUANTITY
+=========================== */
 
 .quantity-box{
-    margin-top: 35px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
+
+    margin-top:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
 }
 
 .quantity-box button{
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 50%;
-    background: #6d0000;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    transition: .3s;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#6d0000;
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
 
 .quantity-box button:hover{
-    background: #9b0000;
-    transform: scale(1.08);
+
+    background:#9b0000;
+
+    transform:scale(1.08);
+
 }
 
 .quantity-box span{
-    font-size: 26px;
-    font-weight: bold;
-    color: #d8b26e;
-    width: 40px;
-    text-align: center;
+
+    width:45px;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#d8b26e;
+
 }
 
-/* subtotal */
+/* ===========================
+   SUBTOTAL
+=========================== */
+
 .subtotal{
-    margin-top: 40px;
-    padding: 22px;
-    border-radius: 18px;
-    background: #181818;
-    border: 1px solid rgba(255, 255, 255, .05);
+
+    margin-top:40px;
+
+    padding:24px;
+
+    border-radius:18px;
+
+    background:#181818;
+
+    border:1px solid rgba(255,255,255,.05);
+
 }
 
 .subtotal h4{
-    color: #9f9f9f;
-    margin-bottom: 10px;
+
+    color:#9f9f9f;
+
+    margin-bottom:10px;
+
 }
 
 .subtotal h3{
-    color: #d8b26e;
-    font-size: 38px;
-    margin: 0;
+
+    margin:0;
+
+    color:#d8b26e;
+
+    font-size:40px;
+
 }
 
-/* button */
-.place-order{
-    width: 100%;
-    margin-top: 35px;
-    padding: 17px;
-    border: none;
-    border-radius: 50px;
-    font-size: 17px;
-    font-weight: 700;
-    color: white;
-    background: 
-    linear-gradient(
-        135deg, 
-        #3a0000,
-        #8b0000);
+/* ===========================
+   BUTTON
+=========================== */
 
-        transition: .35s;
-        cursor: pointer;
+.place-order{
+
+    width:100%;
+
+    margin-top:35px;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3a0000,
+        #8b0000
+    );
+
+    transition:.35s;
+
 }
 
 .place-order:hover{
-    transform: translateY(-4x);
-    background: 
+
+    transform:translateY(-4px);
+
+    background:
     linear-gradient(
-    135deg,
-    #640000,
-    #b00000);
+        135deg,
+        #640000,
+        #b00000
+    );
 
-    box-shadow: 
-    0 12px 25px rgba(139, 0, 0, .45);
+    box-shadow:
+        0 12px 25px rgba(139,0,0,.45);
+
 }
 
-/* loading */
+.place-order:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
 .loading{
-    margin-top: 180px;
-    text-align: center;
-    color: white;
+
+    margin-top:180px;
+
+    text-align:center;
+
+    color:#fff;
+
 }
 
-/* mobile */
-@media(max-width:900px){
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:900px){
 
 .checkout-card{
 
@@ -198,9 +356,25 @@
 
     width:100%;
 
+    min-height:auto;
+
+    padding:35px;
+
+}
+
+.checkout-image img{
+
+    width:100%;
+
+    max-width:320px;
+
+    aspect-ratio:3/4;
+
 }
 
 .checkout-content{
+
+    width:100%;
 
     padding:30px;
 
@@ -208,13 +382,19 @@
 
 .checkout-content h2{
 
-    font-size:34px;
+    font-size:36px;
 
 }
 
 .checkout-content h3{
 
     font-size:28px;
+
+}
+
+.subtotal h3{
+
+    font-size:32px;
 
 }
 
