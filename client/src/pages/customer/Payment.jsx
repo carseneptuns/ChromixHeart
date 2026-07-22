@@ -137,7 +137,7 @@ function Payment() {
 
                         {transaction.latitude && transaction.longitude && (
                             <a
-                                href={`httpss://www.google.com/maps/search/?api=1&query=${transaction.latitude},${transaction.longitude}`}
+                                href={`https://www.google.com/maps/search/?api=1&query=${transaction.latitude},${transaction.longitude}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
