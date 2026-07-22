@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://chromixheart-production-6072.up.railway.app/api/cart";
+const API = "https://chromixheart-copy-production.up.railway.app/api/cart";
 
 export const addCart = (data) =>
     axios.post(API, data);
