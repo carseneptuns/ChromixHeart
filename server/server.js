@@ -25,7 +25,7 @@ const profileRoutes = require("./routes/profileRoutes");
 
 app.use(
     cors({
-        origin: "https://chromixheart-copy-production.up.railway.app",
+        origin: "https://chromixheart-production.up.railway.app",
         credentials: true
     })
 );
