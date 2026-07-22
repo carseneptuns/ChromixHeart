@@ -144,7 +144,7 @@ function Cart() {
 
                             <CartItem
                                 key={item.id}
-                                image={`https://chromixheart-production-6072.up.railway.app/uploads/products/${item.gambar}`}
+                                image={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
                                 title={item.nama_produk}
                                 category={item.kategori}
                                 price={item.harga}
