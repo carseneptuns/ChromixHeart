@@ -39,7 +39,7 @@ function EditProduct() {
             });
 
             setPreview(
-                `https://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`
+                `https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`
             );
 
         } catch (err) {
