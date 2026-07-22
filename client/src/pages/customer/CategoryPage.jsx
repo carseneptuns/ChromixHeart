@@ -193,7 +193,7 @@ function CategoryPage({
                                 >
 
                                     <img
-                                        src={`http://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`}
+                                        src={`https://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`}
                                         alt={product.nama_produk}
                                     />
 
