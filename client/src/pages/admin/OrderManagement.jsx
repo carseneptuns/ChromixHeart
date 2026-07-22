@@ -14,7 +14,7 @@ function OrderManagement() {
     const fetchOrders = async () => {
         try {
             const res = await axios.get(
-                "httpss://chromixheart-production-6072.up.railway.app/api/orders"
+                "https://chromixheart-production-6072.up.railway.app/api/orders"
             );
             setOrders(res.data);
         } catch (err) {
@@ -25,7 +25,7 @@ function OrderManagement() {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                `httpss://chromixheart-production-6072.up.railway.app/api/orders/${id}`,
+                `https://chromixheart-production-6072.up.railway.app/api/orders/${id}`,
                 { status }
             );
             fetchOrders();
@@ -118,7 +118,7 @@ function OrderManagement() {
 
                             {selectedOrder.latitude && selectedOrder.longitude && (
                                 <a
-                                    href={`httpsss://www.google.com/maps/search/?api=1&query=${selectedOrder.latitude},${selectedOrder.longitude}`}
+                                    href={`httpss://www.google.com/maps/search/?api=1&query=${selectedOrder.latitude},${selectedOrder.longitude}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={{
@@ -156,7 +156,7 @@ function OrderManagement() {
                                 <h4>Bukti Pembayaran</h4>
                                 {selectedOrder.proof_payment ? (
                                     <img
-                                        src={`httpss://chromixheart-production-6072.up.railway.app/uploads/${selectedOrder.proof_payment}`}
+                                        src={`https://chromixheart-production-6072.up.railway.app/uploads/${selectedOrder.proof_payment}`}
                                         alt="Proof of Payment"
                                         style={{
                                             width: "280px",
