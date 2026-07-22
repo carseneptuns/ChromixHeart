@@ -118,7 +118,7 @@ function OrderManagement() {
 
                             {selectedOrder.latitude && selectedOrder.longitude && (
                                 <a
-                                    href={`httpss://www.google.com/maps/search/?api=1&query=${selectedOrder.latitude},${selectedOrder.longitude}`}
+                                    href={`https://www.google.com/maps/search/?api=1&query=${selectedOrder.latitude},${selectedOrder.longitude}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={{
