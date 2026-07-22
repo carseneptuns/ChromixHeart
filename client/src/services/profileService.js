@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://chromixheart-production-6072.up.railway.app/api/profile";
+const API = "https://chromixheart-copy-production.up.railway.app/api/profile";
 
 export const getProfile = (id) =>
     axios.get(`${API}/${id}`);
