@@ -50,7 +50,7 @@ function Payment() {
                 formData.append("proof_payment", proofImage);
             }
 
-            await axios.put(`http://chromixheart-production-6072.up.railway.app/api/transactions/${id}/pay`, formData, {
+            await axios.put(`https://chromixheart-production-6072.up.railway.app/api/transactions/${id}/pay`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -137,7 +137,7 @@ function Payment() {
 
                         {transaction.latitude && transaction.longitude && (
                             <a
-                                href={`https://www.google.com/maps/search/?api=1&query=${transaction.latitude},${transaction.longitude}`}
+                                href={`httpss://www.google.com/maps/search/?api=1&query=${transaction.latitude},${transaction.longitude}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
