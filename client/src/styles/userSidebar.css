@@ -17,20 +17,20 @@
    SIDEBAR
 =========================== */
 
-.sidebar{
-    position:fixed;
-    top:0;
-    left:-320px;
-    width:320px;
-    height:100vh;
-    background:#090909;
+.user-sidebar{
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100vh;
+    background: #090909;
     border-right:1px solid rgba(255,255,255,.08);
-    transition:left .45s cubic-bezier(.22,.61,.36,1);
+    transition:.4s;
     z-index:999;
     padding:30px;
 }
 
-.sidebar.active{
+.user-sidebar.active{
     left:0;
 }
 
