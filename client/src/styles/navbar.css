@@ -117,13 +117,42 @@ body .chromix-navbar{
    MOBILE TOGGLER
 =========================== */
 
-.navbar-toggler {
-    border: none;
-    font-size: 28px;
+.navbar-toggler{
+    border:none !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    outline:none !important;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:6px 10px;
+
+    color:#fff !important;
+    font-size:28px;
 }
 
-.navbar-toggler:focus {
-    box-shadow: none;
+.navbar-toggler:focus,
+.navbar-toggler:active{
+    border:none !important;
+    box-shadow:none !important;
+    outline:none !important;
+}
+
+/* React Icons (FiMenu) */
+.navbar-toggler svg{
+    color:#fff !important;
+    stroke:#fff !important;
+    fill:none !important;
+    width:30px;
+    height:30px;
+    transition:.3s;
+}
+
+.navbar-toggler:hover svg{
+    color:#d8b26e !important;
+    stroke:#d8b26e !important;
 }
 
 /* ===========================
@@ -163,7 +192,15 @@ body .chromix-navbar{
         color:#fff;
         font-size:26px;
     }
+.navbar-toggler{
+    font-size:26px;
+    color:#fff !important;
+}
 
+.navbar-toggler svg{
+    width:28px;
+    height:28px;
+}
     .navbar-collapse{
 
         margin-top:15px;
