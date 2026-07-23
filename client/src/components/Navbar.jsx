@@ -18,46 +18,87 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar chromix-navbar">
+      <nav className="chromix-navbar">
 
-        <div className="container">
+        <div className="container navbar-wrapper">
 
-          <Link className="navbar-brand logo" to="/">
+          {/* Logo */}
+          <Link className="logo" to="/">
             ChromixHeart
           </Link>
 
-          <div className="navbar-collapse">
+          {/* Menu */}
+          <div className="navbar-content">
 
-            <ul className="navbar-nav mx-auto">
+            <ul className="nav-menu">
 
-              <li><Link className="nav-link" to="/">Home</Link></li>
-              <li><Link className="nav-link" to="/shop">Collections</Link></li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/shop">
+                  Collections
+                </Link>
+              </li>
 
               <li className="nav-item dropdown">
 
                 <span
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle custom-dropdown"
                   data-bs-toggle="dropdown"
+                  role="button"
                 >
                   Explore
                 </span>
 
                 <ul className="dropdown-menu custom-menu">
 
-                  <li><Link className="dropdown-item" to="/clothes">Clothes</Link></li>
-                  <li><Link className="dropdown-item" to="/skirt">Skirt</Link></li>
-                  <li><Link className="dropdown-item" to="/shoes">Shoes</Link></li>
-                  <li><Link className="dropdown-item" to="/jewellery">Jewellery</Link></li>
-                  <li><Link className="dropdown-item" to="/accessories">Accessories</Link></li>
+                  <li>
+                    <Link className="dropdown-item" to="/clothes">
+                      Clothes
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/skirt">
+                      Skirt
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/shoes">
+                      Shoes
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/jewellery">
+                      Jewellery
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/accessories">
+                      Accessories
+                    </Link>
+                  </li>
 
                 </ul>
 
               </li>
 
-              <li><Link className="nav-link" to="/about">About Us</Link></li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  About Us
+                </Link>
+              </li>
 
             </ul>
 
+            {/* Icons */}
             <div className="nav-icons">
 
               <button
@@ -95,7 +136,6 @@ function Navbar() {
         isOpen={isUserOpen}
         onClose={() => setIsUserOpen(false)}
       />
-
     </>
   );
 }
