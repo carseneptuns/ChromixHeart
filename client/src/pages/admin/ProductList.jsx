@@ -44,6 +44,10 @@ function ProductList() {
         }
     };
 
+    // Ambil data user dan status admin di atas sebelum return utama
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isAdmin = user?.role === "admin";
+
     if (loading) {
         return (
             <div className="shop-container">
@@ -161,19 +165,24 @@ function ProductList() {
                                                         View More
                                                     </Link>
 
-                                                    <Link
-                                                        to={`/checkout/${product.id}`}
-                                                        className="buy-btn"
-                                                    >
-                                                        Buy Now
-                                                    </Link>
+                                                    {/* Tombol Buy Now & Add to Cart hanya muncul jika BUKAN admin */}
+                                                    {!isAdmin && (
+                                                        <>
+                                                            <Link
+                                                                to={`/checkout/${product.id}`}
+                                                                className="buy-btn"
+                                                            >
+                                                                Buy Now
+                                                            </Link>
 
-                                                    <button
-                                                        className="cart-btn"
-                                                        onClick={() => addToCart(product)}
-                                                    >
-                                                        🛒 Add to Cart
-                                                    </button>
+                                                            <button
+                                                                className="cart-btn"
+                                                                onClick={() => addToCart(product)}
+                                                            >
+                                                                🛒 Add to Cart
+                                                            </button>
+                                                        </>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>

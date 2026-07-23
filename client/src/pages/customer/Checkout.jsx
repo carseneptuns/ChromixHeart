@@ -85,6 +85,19 @@ function Checkout() {
         }
 
     };
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    useEffect(() => {
+
+        if (user?.role === "admin") {
+
+            alert("Admin tidak dapat melakukan pembelian");
+
+            navigate("/shop");
+
+        }
+
+    }, []);
 
     return (
 

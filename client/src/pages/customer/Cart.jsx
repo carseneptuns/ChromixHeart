@@ -119,6 +119,19 @@ function Cart() {
         0
     );
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    useEffect(() => {
+
+        if (user?.role === "admin") {
+
+            alert("Admin tidak dapat mengakses keranjang");
+
+            navigate("/shop");
+
+        }
+
+    }, []);
     return (
 
         <div className="cart-page">
