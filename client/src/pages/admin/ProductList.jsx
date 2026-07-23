@@ -131,7 +131,7 @@ function ProductList() {
                                         className="shop-product-image"
                                         src={
                                             product.gambar
-                                                ? `http://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`
+                                                ? `https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`
                                                 : "/no-image.png"
                                         }
                                         alt={product.nama_produk}

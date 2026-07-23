@@ -97,7 +97,7 @@ function ProductManagement() {
               <td>
 
                 <img
-                  src={`http://chromixheart-production-6072.up.railway.app/uploads/products/${item.gambar}`}
+                  src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
                   width="70"
                 />
 

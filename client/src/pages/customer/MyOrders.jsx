@@ -135,7 +135,7 @@ function MyOrders() {
                                         >
 
                                             <img
-                                                src={`http://chromixheart-production-6072.up.railway.app/uploads/products/${item.gambar}`}
+                                                src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
                                                 alt={item.nama_produk}
                                             />
 

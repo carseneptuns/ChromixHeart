@@ -55,6 +55,31 @@ const orderRoutes = require("./routes/orderRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 
 // ======================
+<<<<<<< HEAD
+=======
+// MIDDLEWARE
+// ======================
+
+app.use(
+    cors({
+        origin: "https://chromixheart-production.up.railway.app",
+        credentials: true
+    })
+);
+
+// WAJIB sebelum semua route
+app.use(express.json());
+
+app.use(
+    session({
+        secret: "chromixheart_secret",
+        resave: false,
+        saveUninitialized: false
+    })
+);
+
+// ======================
+>>>>>>> 4a5f90977a817f6e5f3f7fa728a4a673a9bc83bc
 // STATIC FOLDER
 // ======================
 

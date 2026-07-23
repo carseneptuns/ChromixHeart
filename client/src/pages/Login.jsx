@@ -29,7 +29,7 @@ function Login() {
         try {
 
             const res = await axios.post(
-                "http://chromixheart-production-6072.up.railway.app/api/auth/login",
+                "https://chromixheart-copy-production.up.railway.app/api/auth/login",
                 formData
             );
 
