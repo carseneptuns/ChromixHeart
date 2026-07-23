@@ -1,10 +1,6 @@
 import axios from "axios";
 
-<<<<<<< HEAD
 const API = "https://chromixheart-production-6072.up.railway.app/api/products";
-=======
-const API = "https://chromixheart-copy-production.up.railway.app/api/products";
->>>>>>> 4a5f90977a817f6e5f3f7fa728a4a673a9bc83bc
 
 // Get All Products
 export const getProducts = () => 
