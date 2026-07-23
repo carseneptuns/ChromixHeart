@@ -19,7 +19,7 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://chromixheart-copy-production.up.railway.app"
+    "https://chromixheart-production.up.railway.app"
 ];
 
 app.use(
