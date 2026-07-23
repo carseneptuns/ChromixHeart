@@ -21,7 +21,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173", 
-            "chromixheart-copy-production.up.railway.app" // Tambahkan domain jika frontend/backend digabung
+            "https://chromixheart-copy-production.up.railway.app" // Tambahkan domain jika frontend/backend digabung
             // Masukkan URL frontend production Anda di sini nanti (misal: Vercel/Netlify)
         ],
         credentials: true
