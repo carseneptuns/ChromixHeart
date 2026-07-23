@@ -491,10 +491,30 @@ const getUserTransactions = async (user_id) => {
 
 };
 
+const getUserRole = async (user_id) => {
+
+    const [rows] = await db.query(
+        `
+        SELECT role
+        FROM tbl_login
+        WHERE id = ?
+        `,
+        [user_id]
+    );
+
+    if (rows.length === 0) {
+        return null;
+    }
+
+    return rows[0].role;
+
+};
+
 module.exports = {
     createTransaction,
     checkoutCart,
     getTransaction,
     getUserTransactions,
-    confirmPayment
+    confirmPayment,
+    getUserRole
 };

@@ -19,10 +19,28 @@ const createTransaction = async (req, res) => {
         if (!user_id || !produk_id || !quantity) {
 
             return res.status(400).json({
-
                 success: false,
                 message: "Data tidak lengkap"
+            });
 
+        }
+
+        const role = await transactionModel.getUserRole(user_id);
+
+        if (!role) {
+
+            return res.status(404).json({
+                success: false,
+                message: "User tidak ditemukan"
+            });
+
+        }
+
+        if (role === "admin") {
+
+            return res.status(403).json({
+                success: false,
+                message: "Admin tidak diperbolehkan melakukan pembelian"
             });
 
         }
@@ -66,11 +84,11 @@ const checkout = async (req, res) => {
     console.log(req.body);
     try {
 
-        const { 
-            user_id, 
-            alamat, 
-            latitude, 
-            longitude 
+        const {
+            user_id,
+            alamat,
+            latitude,
+            longitude
         } = req.body;
 
         console.log({
@@ -79,7 +97,7 @@ const checkout = async (req, res) => {
             latitude,
             longitude
         });
-        
+
 
         if (!user_id) {
 
@@ -88,6 +106,25 @@ const checkout = async (req, res) => {
                 success: false,
                 message: "User tidak ditemukan"
 
+            });
+
+        }
+        const role = await transactionModel.getUserRole(user_id);
+
+        if (!role) {
+
+            return res.status(404).json({
+                success: false,
+                message: "User tidak ditemukan"
+            });
+
+        }
+
+        if (role === "admin") {
+
+            return res.status(403).json({
+                success: false,
+                message: "Admin tidak diperbolehkan melakukan checkout"
             });
 
         }
@@ -162,7 +199,7 @@ const confirmPayment = async (req, res) => {
 
         // Ambil payment_method dari req.body dengan aman
         const payment_method = req.body ? req.body.payment_method : null;
-        
+
         // Ambil nama file dari multer jika ada yang diupload
         const proof_payment = req.file ? req.file.filename : null;
 
