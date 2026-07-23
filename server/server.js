@@ -17,14 +17,21 @@ app.set("trust proxy", 1);
 // MIDDLEWARE (Harus di Atas Sebelum Route)
 // ======================
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://chromixheart-copy-production.up.railway.app"
+];
+
 app.use(
     cors({
-        origin: [
-            "http://localhost:5173", 
-            "https://chromixheart-copy-production.up.railway.app" // Tambahkan domain jika frontend/backend digabung
-            // Masukkan URL frontend production Anda di sini nanti (misal: Vercel/Netlify)
-        ],
-        credentials: true
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
+        credentials: true,
     })
 );
 
