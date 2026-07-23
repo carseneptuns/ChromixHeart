@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/navbar.css";
 import Sidebar from "./Sidebar";
-import { FiMenu } from "react-icons/fi";
 
 import {
   FiShoppingCart,
