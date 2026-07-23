@@ -95,16 +95,6 @@ function ProductDetail() {
                     <p>{product.deskripsi}</p>
                 </div>
 
-                {/* DEBUG */}
-                <hr />
-                <p>
-                    <strong>Nama File:</strong> {product.gambar}
-                </p>
-
-                <p>
-                    <strong>URL:</strong><br />
-                    {imageUrl}
-                </p>
 
                 <Link
                     to="/shop"
