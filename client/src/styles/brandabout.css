@@ -498,3 +498,248 @@
     font-weight:700;
     margin-left:4px;
 }
+/* ===================================== */
+/* RESPONSIVE - TABLET */
+/* ===================================== */
+
+@media (max-width:992px){
+
+    .brand-hero{
+        height:80vh;
+        padding:0 20px;
+    }
+
+    .brand-hero-content{
+        max-width:100%;
+        text-align:center;
+        margin:auto;
+    }
+
+    .brand-hero-content span{
+        letter-spacing:3px;
+    }
+
+    .brand-hero-content h1{
+        font-size:52px;
+    }
+
+    .brand-hero-content p{
+        margin:25px auto 0;
+        font-size:17px;
+    }
+
+    /* STORY */
+
+    .story-section{
+        grid-template-columns:1fr;
+        gap:50px;
+        padding:90px 20px;
+    }
+
+    .story-image{
+        max-width:650px;
+        margin:auto;
+    }
+
+    .story-content{
+        padding:50px;
+    }
+
+    .story-content h2{
+        font-size:46px;
+    }
+
+    .story-content p{
+        font-size:16px;
+    }
+
+    /* FOUNDER */
+
+    .founder-message{
+        padding:90px 20px;
+    }
+
+    .founder-message blockquote{
+        font-size:34px;
+        min-height:auto;
+    }
+
+    /* CTA */
+
+    .brand-cta{
+        height:500px;
+        padding:0 20px;
+    }
+
+    .brand-cta h2{
+        font-size:48px;
+    }
+
+    .brand-cta p{
+        font-size:17px;
+    }
+
+}
+
+
+/* ===================================== */
+/* RESPONSIVE - MOBILE */
+/* ===================================== */
+
+@media (max-width:768px){
+
+    .brand-hero{
+        height:75vh;
+        padding:0 20px;
+    }
+
+    .brand-hero-content{
+        text-align:center;
+    }
+
+    .brand-hero-content span{
+        font-size:12px;
+        letter-spacing:2px;
+    }
+
+    .brand-hero-content h1{
+        font-size:38px;
+        line-height:1.2;
+    }
+
+    .brand-hero-content p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    /* STORY */
+
+    .story-section{
+        padding:80px 20px;
+        gap:40px;
+    }
+
+    .story-image img{
+        border-radius:22px;
+    }
+
+    .story-content{
+        padding:35px 28px;
+        border-radius:24px;
+    }
+
+    .story-content span{
+        letter-spacing:3px;
+        font-size:12px;
+    }
+
+    .story-content h2{
+        font-size:34px;
+        margin-bottom:20px;
+    }
+
+    .story-content p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    /* FOUNDER */
+
+    .founder-message{
+        padding:80px 20px;
+    }
+
+    .founder-message blockquote{
+        font-size:26px;
+        line-height:1.6;
+    }
+
+    .founder-message span{
+        font-size:14px;
+    }
+
+    /* CTA */
+
+    .brand-cta{
+        height:430px;
+        padding:0 20px;
+    }
+
+    .brand-cta h2{
+        font-size:36px;
+    }
+
+    .brand-cta p{
+        font-size:15px;
+        line-height:1.8;
+        margin-bottom:30px;
+    }
+
+    .brand-btn{
+        width:100%;
+        max-width:250px;
+        padding:15px;
+    }
+
+}
+
+
+/* ===================================== */
+/* RESPONSIVE - SMALL MOBILE */
+/* ===================================== */
+
+@media (max-width:480px){
+
+    .brand-hero{
+        height:65vh;
+    }
+
+    .brand-hero-content h1{
+        font-size:30px;
+    }
+
+    .brand-hero-content p{
+        font-size:14px;
+    }
+
+    .story-section{
+        padding:65px 16px;
+    }
+
+    .story-content{
+        padding:28px 22px;
+    }
+
+    .story-content h2{
+        font-size:28px;
+    }
+
+    .story-content p{
+        font-size:14px;
+    }
+
+    .founder-message{
+        padding:65px 16px;
+    }
+
+    .founder-message blockquote{
+        font-size:22px;
+    }
+
+    .brand-cta{
+        height:360px;
+    }
+
+    .brand-cta h2{
+        font-size:28px;
+    }
+
+    .brand-cta p{
+        font-size:14px;
+    }
+
+    .brand-btn{
+        width:100%;
+    }
+
+}

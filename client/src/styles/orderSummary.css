@@ -138,3 +138,182 @@
     transform:scale(.98);
 
 }
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .order-summary{
+        padding:26px;
+    }
+
+    .order-summary h3{
+        font-size:30px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+    .order-summary{
+
+        position:static;
+
+        width:100%;
+
+        margin-top:35px;
+
+        padding:24px;
+
+    }
+
+    .order-summary h3{
+
+        font-size:28px;
+
+        text-align:center;
+
+        margin-bottom:24px;
+
+    }
+
+    .summary-row{
+
+        font-size:15px;
+
+        margin:16px 0;
+
+    }
+
+    .summary-total{
+
+        margin-bottom:24px;
+
+    }
+
+    .summary-total span{
+
+        font-size:17px;
+
+    }
+
+    .summary-total strong{
+
+        font-size:24px;
+
+    }
+
+    .checkout-btn{
+
+        height:52px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .order-summary{
+
+        padding:22px;
+
+        border-radius:18px;
+
+    }
+
+    .order-summary h3{
+
+        font-size:26px;
+
+    }
+
+    .summary-row{
+
+        font-size:14px;
+
+        gap:12px;
+
+    }
+
+    .summary-total{
+
+        flex-wrap:wrap;
+
+        gap:10px;
+
+    }
+
+    .summary-total span{
+
+        font-size:16px;
+
+    }
+
+    .summary-total strong{
+
+        font-size:22px;
+
+    }
+
+    .checkout-btn{
+
+        height:50px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+    .order-summary{
+
+        padding:18px;
+
+    }
+
+    .order-summary h3{
+
+        font-size:22px;
+
+        margin-bottom:20px;
+
+    }
+
+    .summary-row{
+
+        font-size:13px;
+
+        margin:14px 0;
+
+    }
+
+    .summary-total span{
+
+        font-size:15px;
+
+    }
+
+    .summary-total strong{
+
+        font-size:20px;
+
+    }
+
+    .checkout-btn{
+
+        height:48px;
+
+        font-size:14px;
+
+    }
+
+}

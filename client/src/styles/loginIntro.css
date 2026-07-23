@@ -359,3 +359,147 @@
 }
 
 }
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+/* Laptop kecil */
+@media (max-width: 1200px){
+
+    .intro-text h1{
+        font-size:96px;
+        letter-spacing:8px;
+    }
+
+    .intro-text h3{
+        font-size:48px;
+        letter-spacing:12px;
+    }
+
+    .smoke{
+        width:700px;
+        height:700px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width: 992px){
+
+    .intro-text{
+        width:90%;
+        padding:0 20px;
+    }
+
+    .intro-text h1{
+        font-size:72px;
+        letter-spacing:6px;
+        line-height:1.1;
+    }
+
+    .intro-text h3{
+        font-size:36px;
+        letter-spacing:8px;
+    }
+
+    .smoke{
+        width:560px;
+        height:560px;
+        filter:
+            blur(55px)
+            saturate(170%)
+            drop-shadow(0 0 60px rgba(180,0,0,.7));
+    }
+
+    .smoke-left{
+        left:-50%;
+    }
+
+    .smoke-right{
+        right:-50%;
+    }
+
+    .login-intro::after{
+        width:240px;
+        height:240px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .intro-text{
+        width:95%;
+        padding:0 18px;
+    }
+
+    .intro-text h1{
+        font-size:48px;
+        letter-spacing:3px;
+        line-height:1.15;
+        word-break:break-word;
+    }
+
+    .intro-text h3{
+        font-size:22px;
+        letter-spacing:4px;
+        line-height:1.5;
+    }
+
+    .smoke{
+        width:420px;
+        height:420px;
+
+        filter:
+            blur(40px)
+            saturate(160%)
+            drop-shadow(0 0 45px rgba(180,0,0,.6));
+    }
+
+    .smoke-left{
+        left:-60%;
+    }
+
+    .smoke-right{
+        right:-60%;
+    }
+
+    .login-intro::after{
+        width:180px;
+        height:180px;
+        filter:blur(35px);
+    }
+
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+    .intro-text h1{
+        font-size:36px;
+        letter-spacing:2px;
+    }
+
+    .intro-text h3{
+        font-size:16px;
+        letter-spacing:2px;
+    }
+
+    .smoke{
+        width:300px;
+        height:300px;
+        filter:
+            blur(30px)
+            saturate(150%)
+            drop-shadow(0 0 30px rgba(180,0,0,.55));
+    }
+
+    .login-intro::after{
+        width:130px;
+        height:130px;
+        filter:blur(28px);
+    }
+
+}

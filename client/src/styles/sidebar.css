@@ -73,3 +73,118 @@
     color:#b30000;
     transform:translateX(8px);
 }
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+/* Laptop kecil */
+@media (max-width: 1024px){
+
+    .sidebar{
+        width:290px;
+        right:-290px;
+        padding:25px;
+    }
+
+    .sidebar-header h2{
+        font-size:28px;
+    }
+
+    .sidebar a{
+        font-size:17px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+    .sidebar{
+        width:270px;
+        right:-270px;
+        padding:22px;
+    }
+
+    .sidebar-header{
+        margin-bottom:30px;
+    }
+
+    .sidebar-header h2{
+        font-size:24px;
+        letter-spacing:1px;
+    }
+
+    .sidebar-header button{
+        font-size:24px;
+    }
+
+    .sidebar li{
+        margin-bottom:15px;
+    }
+
+    .sidebar a{
+        gap:12px;
+        font-size:16px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+    .sidebar{
+        width:100%;
+        right:-100%;
+        border-left:none;
+        padding:25px 22px;
+    }
+
+    .sidebar.active{
+        right:0;
+    }
+
+    .sidebar-header{
+        margin-bottom:35px;
+    }
+
+    .sidebar-header h2{
+        font-size:26px;
+    }
+
+    .sidebar-header button{
+        font-size:26px;
+    }
+
+    .sidebar li{
+        margin-bottom:18px;
+    }
+
+    .sidebar a{
+        font-size:17px;
+        padding:12px 0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .sidebar a:hover{
+        transform:none;
+    }
+
+}
+
+/* HP sangat kecil */
+@media (max-width:400px){
+
+    .sidebar{
+        padding:20px 18px;
+    }
+
+    .sidebar-header h2{
+        font-size:22px;
+    }
+
+    .sidebar a{
+        font-size:15px;
+        gap:10px;
+    }
+
+}

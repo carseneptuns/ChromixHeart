@@ -117,25 +117,153 @@ BOTTOM
     color:#8c8c8c;
 }
 
-/* ==========================
-RESPONSIVE
-========================== */
+/* ===================================== */
+/* RESPONSIVE - TABLET */
+/* ===================================== */
 
-@media(max-width:992px){
+@media (max-width:992px){
 
-.footer-top{
+    .footer{
+        padding:70px 0 30px;
+    }
 
-grid-template-columns:1fr;
-gap:45px;
+    .footer-top{
+        grid-template-columns:repeat(2,1fr);
+        gap:45px;
+    }
+
+    .footer-brand{
+        grid-column:1 / -1;
+    }
+
+    .footer-brand h2{
+        font-size:36px;
+    }
+
+    .footer-brand p{
+        max-width:650px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:14px;
+        text-align:center;
+        margin-top:50px;
+    }
 
 }
 
-.footer-bottom{
 
-flex-direction:column;
-gap:15px;
-text-align:center;
+/* ===================================== */
+/* RESPONSIVE - MOBILE */
+/* ===================================== */
+
+@media (max-width:768px){
+
+    .footer{
+        padding:60px 0 25px;
+    }
+
+    .footer-top{
+        grid-template-columns:1fr;
+        gap:35px;
+        text-align:center;
+    }
+
+    .footer-brand h2{
+        font-size:32px;
+    }
+
+    .footer-brand p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .footer h4{
+        font-size:20px;
+        margin-bottom:18px;
+    }
+
+    .footer li{
+        margin-bottom:12px;
+    }
+
+    .footer-social{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .footer-social a{
+        width:42px;
+        height:42px;
+    }
+
+    .contact li{
+        justify-content:center;
+        text-align:center;
+        flex-wrap:wrap;
+        gap:8px;
+    }
+
+    .footer-bottom{
+        margin-top:40px;
+        padding-top:20px;
+        text-align:center;
+        gap:10px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom span{
+        font-size:14px;
+    }
 
 }
+
+
+/* ===================================== */
+/* RESPONSIVE - SMALL MOBILE */
+/* ===================================== */
+
+@media (max-width:480px){
+
+    .footer{
+        padding:50px 0 20px;
+    }
+
+    .footer-brand h2{
+        font-size:28px;
+    }
+
+    .footer-brand p{
+        font-size:14px;
+    }
+
+    .footer h4{
+        font-size:18px;
+    }
+
+    .footer a{
+        font-size:14px;
+    }
+
+    .footer-social{
+        gap:10px;
+    }
+
+    .footer-social a{
+        width:38px;
+        height:38px;
+        font-size:15px;
+    }
+
+    .contact li{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .footer-bottom p,
+    .footer-bottom span{
+        font-size:13px;
+    }
 
 }

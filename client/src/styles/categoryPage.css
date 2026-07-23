@@ -543,39 +543,277 @@
     opacity: 1;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ===================================== */
+/* RESPONSIVE - TABLET */
+/* ===================================== */
 
-@media(max-width:1200px) {
+@media (max-width:992px){
 
-    .category-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .category-hero{
+        height:80vh;
+    }
+
+    .category-content{
+        max-width:700px;
+        padding:0 30px;
+    }
+
+    .category-content h1{
+        font-size:72px;
+        letter-spacing:5px;
+    }
+
+    .category-content p{
+        width:100%;
+        font-size:16px;
+    }
+
+    .category-subtitle{
+        letter-spacing:5px;
+    }
+
+    .category-subtitle::before,
+    .category-subtitle::after{
+        width:45px;
+    }
+
+    /* Brand Story */
+
+    .brand-story{
+        width:90%;
+        margin:90px auto 50px;
+    }
+
+    .brand-story-title{
+        font-size:46px;
+    }
+
+    .brand-story-text{
+        font-size:16px;
+        line-height:1.9;
+    }
+
+    /* Collection */
+
+    .collection-heading{
+        width:90%;
+    }
+
+    .collection-heading p{
+        width:100%;
+        font-size:16px;
+    }
+
+    .category-title{
+        font-size:52px;
+    }
+
+    /* Editorial */
+
+    .editorial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .editorial-card img{
+        height:520px;
+    }
+
+    /* Product */
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:25px;
+    }
+
+    .category-card img{
+        height:360px;
+    }
+
+    .category-name{
+        font-size:28px;
     }
 
 }
 
-@media(max-width:900px) {
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
 
+/* ===================================== */
+/* RESPONSIVE - MOBILE */
+/* ===================================== */
+
+@media (max-width:768px){
+
+    .category-hero{
+        height:70vh;
     }
-    .category-title {
-        font-size: 52px;
+
+    .category-content{
+        padding:0 20px;
     }
+
+    .category-content h1{
+        font-size:48px;
+        letter-spacing:3px;
+    }
+
+    .category-content p{
+        font-size:15px;
+        line-height:1.8;
+        width:100%;
+    }
+
+    .category-subtitle{
+        font-size:12px;
+        letter-spacing:3px;
+    }
+
+    .category-subtitle::before,
+    .category-subtitle::after{
+        display:none;
+    }
+
+    /* Brand Story */
+
+    .brand-story{
+        width:92%;
+    }
+
+    .brand-story-logo{
+        width:70px;
+    }
+
+    .brand-story-title{
+        font-size:34px;
+    }
+
+    .brand-story-text{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    /* Heading */
+
+    .collection-heading{
+        width:92%;
+        margin-bottom:50px;
+    }
+
+    .collection-heading span{
+        letter-spacing:3px;
+        font-size:12px;
+    }
+
+    .collection-heading span::before,
+    .collection-heading span::after{
+        display:none;
+    }
+
+    .category-title{
+        font-size:38px;
+    }
+
+    .collection-heading p{
+        font-size:15px;
+    }
+
+    /* Editorial */
+
+    .editorial-section{
+        width:92%;
+        margin:70px auto;
+    }
+
+    .editorial-card img{
+        height:420px;
+    }
+
+    .editorial-caption{
+        font-size:18px;
+        bottom:25px;
+    }
+
+    /* Products */
+
+    .category-products{
+        width:92%;
+        margin-top:80px;
+        padding-bottom:80px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+        gap:22px;
+    }
+
+    .category-card{
+        padding:14px;
+        border-radius:28px;
+    }
+
+    .category-card::before{
+        border-radius:24px;
+    }
+
+    .category-card img{
+        height:420px;
+        border-radius:150px 150px 24px 24px;
+    }
+
+    .category-name{
+        font-size:30px;
+    }
+
+    .category-price{
+        font-size:18px;
+    }
+
 }
 
-@media(max-width:600px) {
-    .category-grid {
-        grid-template-columns: 1fr;
+
+/* ===================================== */
+/* RESPONSIVE - SMALL MOBILE */
+/* ===================================== */
+
+@media (max-width:480px){
+
+    .category-hero{
+        height:60vh;
     }
 
-    .category-card img {
-        height: 420px;
+    .category-content h1{
+        font-size:34px;
     }
 
-    .category-title {
-        font-size: 42px;
+    .category-content p{
+        font-size:14px;
+    }
+
+    .brand-story-title{
+        font-size:28px;
+    }
+
+    .brand-story-text{
+        font-size:14px;
+    }
+
+    .category-title{
+        font-size:30px;
+    }
+
+    .editorial-card img{
+        height:320px;
+    }
+
+    .category-card img{
+        height:340px;
+        border-radius:120px 120px 20px 20px;
+    }
+
+    .category-name{
+        font-size:26px;
+    }
+
+    .category-price{
+        font-size:17px;
     }
 
 }

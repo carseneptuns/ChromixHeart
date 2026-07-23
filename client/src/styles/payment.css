@@ -415,3 +415,301 @@
     }
 
 }
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .payment-page{
+        padding:100px 30px 60px;
+    }
+
+    .payment-left,
+    .payment-right{
+        padding:45px;
+    }
+
+    .payment-logo{
+        font-size:48px;
+        letter-spacing:5px;
+    }
+
+    .payment-right h2{
+        font-size:38px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+    .payment-page{
+        padding:90px 20px 40px;
+    }
+
+    .payment-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .payment-left{
+
+        padding:40px 30px;
+
+        text-align:center;
+
+    }
+
+    .payment-logo{
+
+        font-size:40px;
+
+        letter-spacing:4px;
+
+        margin-bottom:30px;
+
+    }
+
+    .payment-banner{
+
+        max-width:350px;
+
+    }
+
+    .payment-right{
+
+        padding:35px 30px;
+
+    }
+
+    .payment-right h2{
+
+        font-size:34px;
+
+    }
+
+    .payment-right h4{
+
+        font-size:22px;
+
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .payment-page{
+
+        padding:80px 15px 30px;
+
+    }
+
+    .payment-wrapper{
+
+        border-radius:22px;
+
+    }
+
+    .payment-left{
+
+        padding:30px 20px;
+
+    }
+
+    .payment-logo{
+
+        font-size:32px;
+
+        letter-spacing:3px;
+
+        margin-bottom:25px;
+
+    }
+
+    .payment-banner{
+
+        max-width:280px;
+
+        border-radius:18px;
+
+    }
+
+    .payment-right{
+
+        padding:25px 20px;
+
+    }
+
+    .payment-right h2{
+
+        font-size:28px;
+
+        text-align:center;
+
+    }
+
+    .payment-right h4{
+
+        font-size:20px;
+
+    }
+
+    .payment-order-item{
+
+        padding:15px;
+
+    }
+
+    .payment-order-item p{
+
+        font-size:16px;
+
+    }
+
+    .payment-order-item span{
+
+        font-size:16px;
+
+    }
+
+    .payment-total{
+
+        font-size:18px;
+
+    }
+
+    .payment-total strong{
+
+        font-size:24px;
+
+    }
+
+    .payment-method-box label{
+
+        padding:15px;
+
+        font-size:14px;
+
+        gap:12px;
+
+    }
+
+    .confirm-payment{
+
+        padding:16px;
+
+        font-size:16px;
+
+    }
+
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+    .payment-page{
+
+        padding:75px 12px 25px;
+
+    }
+
+    .payment-wrapper{
+
+        border-radius:18px;
+
+    }
+
+    .payment-left{
+
+        padding:25px 15px;
+
+    }
+
+    .payment-logo{
+
+        font-size:26px;
+
+        letter-spacing:2px;
+
+    }
+
+    .payment-banner{
+
+        max-width:220px;
+
+    }
+
+    .payment-right{
+
+        padding:20px 15px;
+
+    }
+
+    .payment-right h2{
+
+        font-size:24px;
+
+    }
+
+    .payment-right h4{
+
+        font-size:18px;
+
+    }
+
+    .payment-order-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .payment-order-item p{
+
+        font-size:15px;
+
+    }
+
+    .payment-order-item span{
+
+        font-size:15px;
+
+    }
+
+    .payment-total{
+
+        font-size:16px;
+
+    }
+
+    .payment-total strong{
+
+        font-size:22px;
+
+    }
+
+    .payment-method-box label{
+
+        font-size:13px;
+
+        padding:14px;
+
+    }
+
+    .confirm-payment{
+
+        font-size:15px;
+
+        padding:15px;
+
+    }
+
+}

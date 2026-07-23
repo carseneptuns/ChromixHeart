@@ -281,3 +281,166 @@
 .cover-item:hover{
     z-index:20;
 }
+/* ================================= */
+/* RESPONSIVE - TABLET */
+/* ================================= */
+
+@media (max-width: 992px){
+
+    .best-seller{
+        padding:100px 20px;
+    }
+
+    .best-wrapper{
+        grid-template-columns:1fr;
+        gap:60px;
+        text-align:center;
+    }
+
+    .best-left h2{
+        font-size:50px;
+    }
+
+    .best-left p{
+        max-width:650px;
+        margin:0 auto 35px;
+    }
+
+    .best-right{
+        width:100%;
+    }
+
+    .coverflow{
+        width:700px;
+        height:430px;
+    }
+
+    .cover-item img{
+        width:200px;
+        height:290px;
+    }
+
+}
+
+/* ================================= */
+/* RESPONSIVE - MOBILE */
+/* ================================= */
+
+@media (max-width:768px){
+
+    .best-seller{
+        padding:80px 20px;
+    }
+
+    .best-wrapper{
+        gap:45px;
+    }
+
+    .best-left span{
+        font-size:13px;
+        letter-spacing:3px;
+    }
+
+    .best-left h2{
+        font-size:38px;
+        line-height:1.2;
+    }
+
+    .best-left p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .best-btn{
+        width:100%;
+        max-width:260px;
+    }
+
+    .coverflow{
+        width:100%;
+        max-width:380px;
+        height:340px;
+    }
+
+    .cover-item img{
+        width:150px;
+        height:220px;
+        border-radius:18px;
+    }
+
+    .left{
+        transform:
+            translate(-130%,-50%)
+            rotateY(22deg)
+            scale(.82);
+    }
+
+    .right{
+        transform:
+            translate(30%,-50%)
+            rotateY(-22deg)
+            scale(.82);
+    }
+
+    .far-left,
+    .far-right{
+        opacity:0;
+    }
+
+}
+
+/* ================================= */
+/* RESPONSIVE - SMALL MOBILE */
+/* ================================= */
+
+@media (max-width:480px){
+
+    .best-seller{
+        padding:70px 16px;
+    }
+
+    .best-left h2{
+        font-size:30px;
+    }
+
+    .best-left p{
+        font-size:14px;
+    }
+
+    .best-btn{
+        width:100%;
+        padding:15px;
+    }
+
+    .coverflow{
+        max-width:300px;
+        height:270px;
+    }
+
+    .cover-item img{
+        width:120px;
+        height:180px;
+        border-radius:16px;
+    }
+
+    .center{
+        transform:
+            translate(-50%,-50%)
+            scale(1.05);
+    }
+
+    .left{
+        transform:
+            translate(-115%,-50%)
+            rotateY(18deg)
+            scale(.75);
+    }
+
+    .right{
+        transform:
+            translate(15%,-50%)
+            rotateY(-18deg)
+            scale(.75);
+    }
+
+}

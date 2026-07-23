@@ -267,3 +267,210 @@ font-size:40px;
 }
 
 }
+/* ==========================
+   RESPONSIVE
+========================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .new-arrival{
+        padding:90px 0;
+    }
+
+    .section-title h2{
+        font-size:50px;
+    }
+
+    .large{
+        height:620px;
+    }
+
+    .right-grid .arrival-card{
+        height:300px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+    .new-arrival{
+        padding:80px 0;
+    }
+
+    .arrival-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .right-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+    }
+
+    .large{
+        height:500px;
+    }
+
+    .right-grid .arrival-card{
+        height:260px;
+    }
+
+    .section-title{
+        margin-bottom:45px;
+    }
+
+    .section-title span{
+        font-size:16px;
+        letter-spacing:5px;
+    }
+
+    .section-title h2{
+        font-size:42px;
+    }
+
+    .section-title p{
+        font-size:15px;
+    }
+
+    .arrival-content{
+        left:25px;
+        bottom:25px;
+    }
+
+    .arrival-content h3{
+        font-size:34px;
+    }
+
+    .right-grid h3{
+        font-size:24px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .new-arrival{
+        padding:70px 0;
+    }
+
+    .arrival-grid{
+        gap:18px;
+    }
+
+    .right-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .large{
+        height:420px;
+    }
+
+    .right-grid .arrival-card{
+        height:250px;
+    }
+
+    .section-title{
+        margin-bottom:35px;
+        padding:0 18px;
+    }
+
+    .section-title span{
+        font-size:14px;
+        letter-spacing:3px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .section-title p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    .arrival-content{
+        left:20px;
+        bottom:20px;
+    }
+
+    .arrival-content span{
+        padding:6px 14px;
+        font-size:12px;
+    }
+
+    .arrival-content h3{
+        font-size:28px;
+        margin-bottom:15px;
+    }
+
+    .arrival-btn{
+        padding:10px 20px;
+        font-size:14px;
+    }
+
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+    .new-arrival{
+        padding:60px 0;
+    }
+
+    .section-title{
+        margin-bottom:30px;
+    }
+
+    .section-title span{
+        font-size:12px;
+        letter-spacing:2px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .section-title p{
+        font-size:13px;
+    }
+
+    .large{
+        height:320px;
+    }
+
+    .right-grid .arrival-card{
+        height:200px;
+    }
+
+    .arrival-card{
+        border-radius:20px;
+    }
+
+    .arrival-content{
+        left:16px;
+        bottom:16px;
+    }
+
+    .arrival-content span{
+        padding:5px 12px;
+        font-size:11px;
+        margin-bottom:10px;
+    }
+
+    .arrival-content h3{
+        font-size:22px;
+        margin-bottom:12px;
+    }
+
+    .arrival-btn{
+        width:100%;
+        justify-content:center;
+        padding:10px 16px;
+        font-size:13px;
+    }
+
+}

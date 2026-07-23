@@ -227,3 +227,188 @@
 .btn-logout:hover {
     background: #b91c1c;
 }
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+/* ---------- Tablet ---------- */
+@media (max-width: 992px){
+
+    .profile-container{
+        padding:30px 18px;
+    }
+
+    .profile-card{
+        max-width:600px;
+        padding:30px;
+    }
+
+    .back-btn{
+        top:20px;
+        left:20px;
+        padding:8px 12px;
+        font-size:13px;
+    }
+
+    .avatar{
+        width:80px;
+        height:80px;
+        font-size:34px;
+    }
+
+    .profile-header h2{
+        font-size:22px;
+    }
+
+    .stat-item{
+        padding:14px 20px;
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:768px){
+
+    .profile-container{
+        padding:20px 15px;
+        align-items:flex-start;
+    }
+
+    .profile-card{
+        border-radius:18px;
+        padding:22px;
+    }
+
+    .back-btn{
+        position:static;
+        width:fit-content;
+        margin-bottom:20px;
+    }
+
+    .profile-header{
+        padding-top:0;
+        padding-bottom:20px;
+    }
+
+    .avatar{
+        width:72px;
+        height:72px;
+        font-size:30px;
+    }
+
+    .profile-header h2{
+        font-size:20px;
+    }
+
+    .role-badge{
+        font-size:11px;
+        padding:4px 12px;
+    }
+
+    /* Statistik */
+
+    .stat-item{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+        padding:18px;
+    }
+
+    .stat-icon{
+        font-size:24px;
+    }
+
+    .stat-info h3{
+        font-size:18px;
+    }
+
+    /* Info */
+
+    .profile-info{
+        margin:20px 0;
+    }
+
+    .profile-info h3{
+        font-size:15px;
+    }
+
+    .info-group{
+        padding:12px;
+        gap:12px;
+    }
+
+    .info-icon{
+        font-size:18px;
+    }
+
+    .info-text label{
+        font-size:10px;
+    }
+
+    .info-text p{
+        font-size:13px;
+        word-break:break-word;
+    }
+
+    /* Button */
+
+    .btn-orders,
+    .btn-logout{
+        width:100%;
+        padding:13px;
+        font-size:14px;
+    }
+
+}
+
+/* ---------- Small Mobile ---------- */
+@media (max-width:480px){
+
+    .profile-container{
+        padding:15px 12px;
+    }
+
+    .profile-card{
+        padding:18px;
+        border-radius:15px;
+    }
+
+    .avatar{
+        width:65px;
+        height:65px;
+        font-size:26px;
+    }
+
+    .profile-header h2{
+        font-size:18px;
+    }
+
+    .role-badge{
+        font-size:10px;
+        padding:3px 10px;
+    }
+
+    .stat-item{
+        padding:15px;
+    }
+
+    .stat-info h3{
+        font-size:17px;
+    }
+
+    .info-group{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .info-icon{
+        font-size:20px;
+    }
+
+    .btn-orders,
+    .btn-logout{
+        font-size:13px;
+        padding:12px;
+    }
+
+}

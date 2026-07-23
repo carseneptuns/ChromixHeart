@@ -340,62 +340,200 @@
 
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+/* ===================================== */
+/* RESPONSIVE - TABLET */
+/* ===================================== */
 
-@media (max-width:900px){
+@media (max-width:992px){
 
-.checkout-card{
+    .checkout-page{
+        padding:100px 20px 60px;
+    }
 
-    flex-direction:column;
+    .checkout-card{
+        flex-direction:column;
+    }
 
-}
+    .checkout-image{
+        width:100%;
+        min-height:auto;
+        padding:40px 30px;
+    }
 
-.checkout-image{
+    .checkout-image img{
+        max-width:340px;
+    }
 
-    width:100%;
+    .checkout-content{
+        width:100%;
+        padding:40px;
+    }
 
-    min-height:auto;
+    .checkout-content h2{
+        font-size:40px;
+    }
 
-    padding:35px;
+    .checkout-content h3{
+        font-size:30px;
+    }
 
-}
-
-.checkout-image img{
-
-    width:100%;
-
-    max-width:320px;
-
-    aspect-ratio:3/4;
-
-}
-
-.checkout-content{
-
-    width:100%;
-
-    padding:30px;
-
-}
-
-.checkout-content h2{
-
-    font-size:36px;
+    .subtotal h3{
+        font-size:34px;
+    }
 
 }
 
-.checkout-content h3{
 
-    font-size:28px;
+/* ===================================== */
+/* RESPONSIVE - MOBILE */
+/* ===================================== */
+
+@media (max-width:768px){
+
+    .checkout-page{
+        padding:80px 16px 40px;
+    }
+
+    .checkout-card{
+        border-radius:22px;
+    }
+
+    .checkout-image{
+        padding:28px 20px;
+    }
+
+    .checkout-image img{
+        width:100%;
+        max-width:260px;
+    }
+
+    .checkout-content{
+        padding:25px 20px;
+    }
+
+    .checkout-content h2{
+        font-size:32px;
+        text-align:center;
+    }
+
+    .checkout-content h3{
+        font-size:24px;
+        text-align:center;
+        margin-bottom:22px;
+    }
+
+    .checkout-content p{
+        font-size:15px;
+        padding:14px 0;
+    }
+
+    .quantity-box{
+        justify-content:center;
+        gap:15px;
+        margin-top:28px;
+    }
+
+    .quantity-box button{
+        width:42px;
+        height:42px;
+        font-size:20px;
+    }
+
+    .quantity-box span{
+        width:40px;
+        font-size:22px;
+    }
+
+    .subtotal{
+        margin-top:28px;
+        padding:20px;
+    }
+
+    .subtotal h4{
+        font-size:15px;
+    }
+
+    .subtotal h3{
+        font-size:28px;
+    }
+
+    .place-order{
+        margin-top:28px;
+        padding:15px;
+        font-size:16px;
+    }
 
 }
 
-.subtotal h3{
 
-    font-size:32px;
+/* ===================================== */
+/* RESPONSIVE - SMALL MOBILE */
+/* ===================================== */
 
-}
+@media (max-width:480px){
+
+    .checkout-page{
+        padding:70px 12px 35px;
+    }
+
+    .checkout-card{
+        border-radius:18px;
+    }
+
+    .checkout-image{
+        padding:22px 15px;
+    }
+
+    .checkout-image img{
+        max-width:210px;
+        border-radius:16px;
+    }
+
+    .checkout-content{
+        padding:20px 16px;
+    }
+
+    .checkout-content h2{
+        font-size:28px;
+    }
+
+    .checkout-content h3{
+        font-size:22px;
+    }
+
+    .checkout-content p{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+        font-size:14px;
+    }
+
+    .checkout-content p span{
+        font-size:15px;
+    }
+
+    .quantity-box button{
+        width:38px;
+        height:38px;
+        font-size:18px;
+    }
+
+    .quantity-box span{
+        font-size:20px;
+    }
+
+    .subtotal{
+        padding:18px;
+    }
+
+    .subtotal h3{
+        font-size:24px;
+    }
+
+    .place-order{
+        padding:14px;
+        font-size:15px;
+        border-radius:40px;
+    }
 
 }

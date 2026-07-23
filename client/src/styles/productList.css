@@ -513,3 +513,311 @@
     width: 75%;
     margin: auto;
 }
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+/* ---------- Laptop ---------- */
+@media (max-width:1200px){
+
+    .shop-container{
+        min-height:auto;
+        padding:90px 5%;
+    }
+
+    .shop-title{
+        font-size:58px;
+        letter-spacing:5px;
+    }
+
+    .product-grid-editorial{
+        grid-template-columns:repeat(2,1fr);
+        gap:28px;
+    }
+
+    .product-card-editorial .image-wrapper{
+        height:420px;
+    }
+
+    .shop-hero-content h1{
+        font-size:72px;
+    }
+
+    .banner-title{
+        font-size:46px;
+    }
+
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:992px){
+
+    .shop-container{
+        padding:80px 4%;
+        min-height:auto;
+    }
+
+    .shop-title{
+        font-size:48px;
+        letter-spacing:4px;
+        margin-bottom:50px;
+    }
+
+    .shop-title::before,
+    .shop-title::after{
+        display:none;
+    }
+
+    /* HERO */
+
+    .shop-hero{
+        height:60vh;
+        margin-bottom:70px;
+        border-radius:24px;
+    }
+
+    .shop-hero-content{
+        padding:25px;
+    }
+
+    .shop-hero-content h1{
+        font-size:60px;
+        letter-spacing:3px;
+    }
+
+    .shop-hero-content p{
+        width:100%;
+        font-size:16px;
+    }
+
+    /* PRODUCT */
+
+    .product-grid-editorial{
+        grid-template-columns:repeat(2,1fr);
+        gap:24px;
+    }
+
+    .product-card-editorial .image-wrapper{
+        height:360px;
+    }
+
+    /* Banner */
+
+    .shop-banner{
+        height:auto;
+        min-height:260px;
+    }
+
+    .shop-banner-overlay{
+        padding:40px;
+    }
+
+    .banner-title{
+        font-size:42px;
+    }
+
+    .banner-description{
+        width:100%;
+    }
+
+    .banner-sign{
+        right:35px;
+        bottom:25px;
+    }
+
+    /* Editorial */
+
+    .editorial-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .editorial-card{
+        height:500px;
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:768px){
+
+    .shop-container{
+        padding:70px 18px;
+    }
+
+    .shop-title{
+        font-size:34px;
+        letter-spacing:2px;
+        margin-bottom:40px;
+    }
+
+    .product-grid-editorial{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .product-card-editorial .image-wrapper{
+        height:420px;
+    }
+
+    .product-info h3{
+        font-size:26px;
+    }
+
+    .product-buttons{
+        grid-template-columns:1fr;
+    }
+
+    .cart-btn{
+        grid-column:auto;
+    }
+
+    /* Touch device */
+
+    .product-details-dropdown{
+        max-height:unset;
+        opacity:1;
+        visibility:visible;
+        overflow:visible;
+    }
+
+    /* HERO */
+
+    .shop-hero{
+        height:480px;
+        border-radius:20px;
+        margin-bottom:60px;
+    }
+
+    .shop-hero-content{
+        padding:20px;
+    }
+
+    .shop-hero-content span{
+        letter-spacing:4px;
+        font-size:12px;
+    }
+
+    .shop-hero-content h1{
+        font-size:42px;
+        letter-spacing:2px;
+        margin:18px 0;
+    }
+
+    .shop-hero-content p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    /* Banner */
+
+    .shop-banner{
+        margin-top:70px;
+        min-height:240px;
+        border-radius:20px;
+    }
+
+    .shop-banner-overlay{
+        padding:28px;
+    }
+
+    .banner-subtitle{
+        letter-spacing:2px;
+        font-size:11px;
+    }
+
+    .banner-title{
+        font-size:30px;
+        margin-bottom:12px;
+    }
+
+    .banner-description{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .banner-sign{
+        position:static;
+        margin-top:25px;
+        display:block;
+        font-size:15px;
+    }
+
+    /* Editorial */
+
+    .editorial-card{
+        height:380px;
+        border-radius:18px;
+    }
+
+    .editorial-overlay{
+        padding:25px;
+    }
+
+    .editorial-overlay h3{
+        font-size:30px;
+    }
+
+    .editorial-overlay span{
+        font-size:11px;
+        letter-spacing:3px;
+    }
+
+}
+
+/* ---------- Small Mobile ---------- */
+@media (max-width:480px){
+
+    .shop-title{
+        font-size:28px;
+    }
+
+    .product-card-editorial .image-wrapper{
+        height:340px;
+    }
+
+    .product-info h3{
+        font-size:22px;
+    }
+
+    .description{
+        font-size:12px;
+    }
+
+    .price{
+        font-size:18px;
+    }
+
+    .view-btn,
+    .buy-btn,
+    .cart-btn{
+        height:44px;
+        font-size:11px;
+    }
+
+    .shop-hero{
+        height:380px;
+    }
+
+    .shop-hero-content h1{
+        font-size:32px;
+    }
+
+    .shop-hero-content p{
+        font-size:14px;
+    }
+
+    .banner-title{
+        font-size:26px;
+    }
+
+    .editorial-card{
+        height:320px;
+    }
+
+    .editorial-overlay h3{
+        font-size:24px;
+    }
+
+}

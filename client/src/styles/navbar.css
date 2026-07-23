@@ -130,25 +130,197 @@ body .chromix-navbar{
    RESPONSIVE
 =========================== */
 
-@media (max-width: 991px) {
+/* Laptop */
+@media (max-width:1200px){
 
-    .navbar-collapse {
-        margin-top: 20px;
+    .logo{
+        font-size:28px !important;
     }
 
-    .navbar-nav {
-        gap: 10px;
-        text-align: center;
-    }
-
-    .nav-icons {
-        margin-top: 20px;
-        justify-content: center;
+    .navbar-nav{
+        gap:12px;
     }
 
 }
-/* ================= Dropdown ================= */
 
+/* Tablet */
+@media (max-width:991px){
+
+    body{
+        padding-top:85px;
+    }
+
+    body .chromix-navbar{
+        height:85px;
+        padding:0 15px;
+    }
+
+    .logo{
+        font-size:26px !important;
+    }
+
+    .navbar-toggler{
+        color:#fff;
+        font-size:26px;
+    }
+
+    .navbar-collapse{
+
+        margin-top:15px;
+
+        background:rgba(10,10,10,.97);
+
+        backdrop-filter:blur(18px);
+
+        border-radius:18px;
+
+        padding:25px;
+
+        border:1px solid rgba(255,255,255,.08);
+
+        box-shadow:
+            0 20px 40px rgba(0,0,0,.45);
+
+    }
+
+    .navbar-nav{
+
+        gap:6px;
+
+        text-align:center;
+
+    }
+
+    .nav-link{
+
+        padding:12px 0;
+
+        font-size:16px;
+
+    }
+
+    .nav-link::after{
+        display:none;
+    }
+
+    .nav-icons{
+
+        margin-top:18px;
+
+        justify-content:center;
+
+        gap:16px;
+
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    body{
+        padding-top:75px;
+    }
+
+    body .chromix-navbar{
+        height:75px;
+    }
+
+    .logo{
+        font-size:22px !important;
+        letter-spacing:1px;
+    }
+
+    .navbar-toggler{
+        font-size:24px;
+    }
+
+    .navbar-collapse{
+
+        margin-top:12px;
+
+        padding:20px;
+
+        border-radius:15px;
+
+    }
+
+    .nav-link{
+
+        font-size:15px;
+
+        padding:10px 0;
+
+    }
+
+    .nav-icons{
+
+        margin-top:15px;
+
+        gap:12px;
+
+    }
+
+    .nav-icons button,
+    .icon-btn{
+
+        width:40px;
+        height:40px;
+        font-size:18px;
+
+    }
+
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+    body{
+        padding-top:70px;
+    }
+
+    body .chromix-navbar{
+        height:70px;
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:19px !important;
+    }
+
+    .navbar-toggler{
+        font-size:22px;
+    }
+
+    .navbar-collapse{
+
+        padding:18px;
+
+    }
+
+    .nav-link{
+
+        font-size:14px;
+
+    }
+
+    .nav-icons{
+
+        gap:10px;
+
+    }
+
+    .nav-icons button,
+    .icon-btn{
+
+        width:36px;
+        height:36px;
+
+        font-size:16px;
+
+    }
+
+}
 .custom-dropdown{
     cursor: pointer;
 }

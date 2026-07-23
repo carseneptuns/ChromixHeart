@@ -169,3 +169,146 @@
 .order-modal-card button:nth-of-type(5) {
     background: #757575; /* Close / Batal (Abu-abu) */
 }
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+/* Laptop */
+@media (max-width: 1200px) {
+
+    .order-page{
+        padding:30px;
+    }
+
+}
+
+/* Tablet */
+@media (max-width: 992px){
+
+    .order-page{
+        padding:25px 20px;
+    }
+
+    .order-page h1{
+        font-size:34px;
+        margin-bottom:22px;
+    }
+
+    /* Table bisa digeser */
+    .table-wrapper{
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .order-table{
+        min-width:900px;
+    }
+
+    .order-table th,
+    .order-table td{
+        padding:14px;
+        font-size:13px;
+    }
+
+    .order-table button{
+        padding:7px 14px;
+        font-size:13px;
+    }
+
+    .order-modal-card{
+        width:90%;
+        padding:28px;
+    }
+
+    .order-modal-card h2{
+        font-size:22px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .order-page{
+        padding:20px 15px;
+    }
+
+    .order-page h1{
+        font-size:30px;
+        text-align:center;
+    }
+
+    .table-wrapper{
+        overflow-x:auto;
+    }
+
+    .order-table{
+        min-width:850px;
+    }
+
+    .order-table th,
+    .order-table td{
+        padding:12px;
+        font-size:12px;
+    }
+
+    .status{
+        font-size:11px;
+        padding:5px 12px;
+    }
+
+    .order-modal{
+        padding:15px;
+    }
+
+    .order-modal-card{
+        width:100%;
+        max-width:100%;
+        max-height:90vh;
+        padding:22px;
+        border-radius:16px;
+    }
+
+    .order-modal-card h2{
+        font-size:20px;
+    }
+
+    .order-modal-card h4{
+        font-size:15px;
+    }
+
+    .order-modal-card p{
+        font-size:13px;
+    }
+
+    /* Tombol modal */
+    .order-modal-card button{
+        width:100%;
+        margin-bottom:10px;
+        padding:12px;
+        font-size:14px;
+    }
+
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+    .order-page{
+        padding:18px 12px;
+    }
+
+    .order-page h1{
+        font-size:26px;
+    }
+
+    .order-modal-card{
+        padding:18px;
+    }
+
+    .order-modal-card h2{
+        font-size:18px;
+    }
+
+}
