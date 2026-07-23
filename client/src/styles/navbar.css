@@ -118,43 +118,47 @@ body .chromix-navbar{
 =========================== */
 
 .navbar-toggler{
+    display:none;
     border:none !important;
     background:transparent !important;
     box-shadow:none !important;
     outline:none !important;
-
-    display:flex;
     align-items:center;
     justify-content:center;
-
     padding:6px 10px;
-
     color:#fff !important;
     font-size:28px;
 }
 
 .navbar-toggler:focus,
 .navbar-toggler:active{
-    border:none !important;
     box-shadow:none !important;
     outline:none !important;
 }
 
-/* React Icons (FiMenu) */
 .navbar-toggler svg{
     color:#fff !important;
     stroke:#fff !important;
-    fill:none !important;
     width:30px;
     height:30px;
     transition:.3s;
 }
 
 .navbar-toggler:hover svg{
-    color:#d8b26e !important;
-    stroke:#d8b26e !important;
+    color:#b30000 !important;
+    stroke:#b30000 !important;
 }
 
+/* ===========================
+   DESKTOP
+=========================== */
+
+.navbar-collapse{
+    display:flex !important;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+}
 /* ===========================
    RESPONSIVE
 =========================== */
@@ -188,71 +192,40 @@ body .chromix-navbar{
         font-size:26px !important;
     }
 
+    /* tampilkan hamburger */
     .navbar-toggler{
-        color:#fff;
+        display:flex;
         font-size:26px;
     }
-.navbar-toggler{
-    font-size:26px;
-    color:#fff !important;
-}
 
-.navbar-toggler svg{
-    width:28px;
-    height:28px;
-}
-    .navbar-collapse{
-
-        margin-top:15px;
-
-        background:rgba(10,10,10,.97);
-
-        backdrop-filter:blur(18px);
-
-        border-radius:18px;
-
-        padding:25px;
-
-        border:1px solid rgba(255,255,255,.08);
-
-        box-shadow:
-            0 20px 40px rgba(0,0,0,.45);
-
+    .navbar-toggler svg{
+        width:28px;
+        height:28px;
     }
 
+    /* sembunyikan menu navbar */
     .navbar-nav{
-
-        gap:6px;
-
-        text-align:center;
-
+        display:none !important;
     }
 
-    .nav-link{
-
-        padding:12px 0;
-
-        font-size:16px;
-
-    }
-
-    .nav-link::after{
-        display:none;
+    /* hilangkan dropdown bootstrap */
+    .navbar-collapse{
+        display:flex !important;
+        justify-content:flex-end;
+        align-items:center;
+        margin-top:0;
+        background:transparent;
+        border:none;
+        box-shadow:none;
+        padding:0;
     }
 
     .nav-icons{
-
-        margin-top:18px;
-
-        justify-content:center;
-
+        margin-top:0;
         gap:16px;
-
     }
-
 }
 
-/* Mobile */
 @media (max-width:768px){
 
     body{
@@ -265,48 +238,27 @@ body .chromix-navbar{
 
     .logo{
         font-size:22px !important;
-        letter-spacing:1px;
     }
 
     .navbar-toggler{
         font-size:24px;
     }
 
-    .navbar-collapse{
-
-        margin-top:12px;
-
-        padding:20px;
-
-        border-radius:15px;
-
-    }
-
-    .nav-link{
-
-        font-size:15px;
-
-        padding:10px 0;
-
+    .navbar-toggler svg{
+        width:26px;
+        height:26px;
     }
 
     .nav-icons{
-
-        margin-top:15px;
-
         gap:12px;
-
     }
 
     .nav-icons button,
     .icon-btn{
-
         width:40px;
         height:40px;
         font-size:18px;
-
     }
-
 }
 
 /* Small Mobile */
@@ -329,34 +281,21 @@ body .chromix-navbar{
         font-size:22px;
     }
 
-    .navbar-collapse{
-
-        padding:18px;
-
-    }
-
-    .nav-link{
-
-        font-size:14px;
-
+    .navbar-toggler svg{
+        width:24px;
+        height:24px;
     }
 
     .nav-icons{
-
         gap:10px;
-
     }
 
     .nav-icons button,
     .icon-btn{
-
         width:36px;
         height:36px;
-
         font-size:16px;
-
     }
-
 }
 .custom-dropdown{
     cursor: pointer;

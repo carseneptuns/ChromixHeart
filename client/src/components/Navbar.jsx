@@ -95,15 +95,19 @@ function Navbar() {
 
           <button
             className="navbar-toggler"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarMenu"
+            onClick={() => {
+              if (!user) {
+                navigate("/login");
+                return;
+              }
+
+              setIsSidebarOpen(true);
+            }}
           >
             <FiMenu />
           </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarMenu"
-          >
+
+          <div className="navbar-collapse">
 
             <ul className="navbar-nav mx-auto">
 
@@ -195,22 +199,6 @@ function Navbar() {
                 <FiShoppingCart />
               </button>
 
-              {/* SIDEBAR */}
-              <button
-                className="menu-btn"
-                onClick={() => {
-
-                  if (!user) {
-                    navigate("/login");
-                    return;
-                  }
-
-                  setIsSidebarOpen(true);
-
-                }}
-              >
-                <FiMenu />
-              </button>
 
             </div>
 
