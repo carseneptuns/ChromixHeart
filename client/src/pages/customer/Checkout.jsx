@@ -87,17 +87,17 @@ function Checkout() {
     };
     const user = JSON.parse(localStorage.getItem("user"));
 
-    useEffect(() => {
+useEffect(() => {
 
-        if (user?.role === "admin") {
+    if(user?.role === "admin"){
 
-            alert("Admin tidak dapat melakukan pembelian");
+        alert("Admin tidak dapat melakukan pembelian");
 
-            navigate("/shop");
+        navigate("/shop");
 
-        }
+    }
 
-    }, []);
+}, []);
 
     return (
 
@@ -108,7 +108,7 @@ function Checkout() {
                 <div className="checkout-image">
 
                     <img
-                        src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
+                        src={`http://chromixheart-production-6072.up.railway.app/uploads/products/${product.gambar}`}
                         alt={product.nama_produk}
                     />
 

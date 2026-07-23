@@ -9,41 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ======================
-// TRUST PROXY (Penting untuk Railway/Heroku)
-// ======================
-app.set("trust proxy", 1);
-
-// ======================
-// MIDDLEWARE (Harus di Atas Sebelum Route)
-// ======================
-
-app.use(
-    cors({
-        origin: [
-            "http://localhost:5173", 
-            "https://chromixheart-production-6072.up.railway.app" // Tambahkan domain jika frontend/backend digabung
-            // Masukkan URL frontend production Anda di sini nanti (misal: Vercel/Netlify)
-        ],
-        credentials: true
-    })
-);
-
-app.use(express.json());
-
-app.use(
-    session({
-        secret: "chromixheart_secret",
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            secure: process.env.NODE_ENV === "production", // true jika sudah HTTPS di production
-            httpOnly: true,
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax" // "none" wajib jika frontend & backend beda domain (cross-site)
-        }
-    })
-);
-
-// ======================
 // ROUTES
 // ======================
 
@@ -55,14 +20,12 @@ const orderRoutes = require("./routes/orderRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 
 // ======================
-<<<<<<< HEAD
-=======
 // MIDDLEWARE
 // ======================
 
 app.use(
     cors({
-        origin: "https://chromixheart-production.up.railway.app",
+        origin: "http://localhost:5173",
         credentials: true
     })
 );
@@ -79,7 +42,6 @@ app.use(
 );
 
 // ======================
->>>>>>> 4a5f90977a817f6e5f3f7fa728a4a673a9bc83bc
 // STATIC FOLDER
 // ======================
 
@@ -101,10 +63,15 @@ console.log("Products Folder  :", path.join(__dirname, "uploads", "products"));
 // ======================
 
 app.use("/api/profile", profileRoutes);
+
 app.use("/api/auth", authRoutes);
+
 app.use("/api/products", productRoutes);
+
 app.use("/api/cart", cartRoutes);
+
 app.use("/api/transactions", transactionRoutes);
+
 app.use("/api/orders", orderRoutes);
 
 // ======================
@@ -130,7 +97,9 @@ app.get("/test-image", (req, res) => {
 // ======================
 
 app.get("/cekdb", async (req, res) => {
+
     try {
+
         const [rows] = await db.query(`
             SELECT *
             FROM tbl_transaksi
@@ -145,12 +114,16 @@ app.get("/cekdb", async (req, res) => {
         });
 
     } catch (err) {
+
         console.log(err);
+
         res.status(500).json({
             success: false,
             message: err.message
         });
+
     }
+
 });
 
 // ======================
