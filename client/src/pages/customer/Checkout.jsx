@@ -11,15 +11,27 @@ function Checkout() {
     const { id } = useParams();
     const navigate = useNavigate();
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
-    const [position, setPosition] = useState(null);
-
+    const [position, setPosition] =useState(null);
     const [address, setAddress] = useState("");
 
     useEffect(() => {
         fetchProduct();
     }, [id]);
+
+    useEffect(() => {
+
+        if (user?.role === "admin") {
+
+            alert("Admin tidak dapat melakukan pembelian");
+            navigate("/shop");
+
+        }
+
+    }, [user, navigate]);
 
     const fetchProduct = async () => {
 
@@ -47,13 +59,11 @@ function Checkout() {
 
         try {
 
-            const user = JSON.parse(
-                localStorage.getItem("user")
-            );
-
             if (!user) {
+
                 alert("Silakan login terlebih dahulu.");
                 return;
+
             }
 
             const res = await createTransaction({
@@ -65,13 +75,12 @@ function Checkout() {
                 alamat: address,
                 latitude: position ? position[0] : null,
                 longitude: position ? position[1] : null
+
             });
 
             alert("Order berhasil dibuat!");
 
-            navigate(
-                `/payment/${res.data.transaction_id}`
-            );
+            navigate(`/payment/${res.data.transaction_id}`);
 
         } catch (err) {
 
@@ -85,19 +94,6 @@ function Checkout() {
         }
 
     };
-    const user = JSON.parse(localStorage.getItem("user"));
-
-useEffect(() => {
-
-    if(user?.role === "admin"){
-
-        alert("Admin tidak dapat melakukan pembelian");
-
-        navigate("/shop");
-
-    }
-
-}, []);
 
     return (
 
@@ -108,7 +104,7 @@ useEffect(() => {
                 <div className="checkout-image">
 
                     <img
-                       src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
+                        src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
                         alt={product.nama_produk}
                     />
 
@@ -166,13 +162,10 @@ useEffect(() => {
                     </div>
 
                     <LocationPicker
-
                         position={position}
                         setPosition={setPosition}
-
                         address={address}
                         setAddress={setAddress}
-
                     />
 
                     <button
