@@ -87,7 +87,10 @@ function Login() {
                                 required
                             />
 
-                            <button type="submit">
+                            <button
+                                type="submit"
+                                className="auth-submit"
+                            >
                                 Login
                             </button>
 
