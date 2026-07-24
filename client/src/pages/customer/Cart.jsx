@@ -15,17 +15,28 @@ function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate();
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
     useEffect(() => {
+
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+
+        if (user.role === "admin") {
+            alert("Admin tidak dapat mengakses keranjang");
+            navigate("/shop");
+            return;
+        }
+
         fetchCart();
+
     }, []);
 
     const fetchCart = async () => {
 
         try {
-
-            const user = JSON.parse(
-                localStorage.getItem("user")
-            );
 
             const res = await getCart(user.id);
 
@@ -48,11 +59,11 @@ function Cart() {
             (item) => item.id === id
         );
 
-        const newQuantity = item.quantity + 1;
+        if (!item) return;
 
         try {
 
-            await updateCart(id, newQuantity);
+            await updateCart(id, item.quantity + 1);
 
             fetchCart();
 
@@ -73,13 +84,11 @@ function Cart() {
             (item) => item.id === id
         );
 
-        if (item.quantity <= 1) return;
-
-        const newQuantity = item.quantity - 1;
+        if (!item || item.quantity <= 1) return;
 
         try {
 
-            await updateCart(id, newQuantity);
+            await updateCart(id, item.quantity - 1);
 
             fetchCart();
 
@@ -114,24 +123,13 @@ function Cart() {
     // Hitung subtotal
     // =========================
     const subtotal = cartItems.reduce(
-        (total, item) =>
-            total + Number(item.harga) * item.quantity,
+
+        (total, item) => total + Number(item.harga) * item.quantity,
+
         0
+
     );
 
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    useEffect(() => {
-
-        if (user?.role === "admin") {
-
-            alert("Admin tidak dapat mengakses keranjang");
-
-            navigate("/shop");
-
-        }
-
-    }, []);
     return (
 
         <div className="cart-page">
@@ -141,6 +139,7 @@ function Cart() {
                 <h1 className="cart-title">
                     My Cart
                 </h1>
+
                 <button
                     className="back-btn"
                     onClick={() => navigate("/shop")}
@@ -153,30 +152,37 @@ function Cart() {
                     {/* LEFT */}
                     <div className="cart-list">
 
-                        {cartItems.map((item) => (
+                        {cartItems.length === 0 ? (
 
-                            <CartItem
-                                key={item.id}
-                                image={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
-                                title={item.nama_produk}
-                                category={item.kategori}
-                                price={item.harga}
-                                quantity={item.quantity}
+                            <p
+                                style={{
+                                    color: "#999",
+                                    textAlign: "center",
+                                    marginTop: "30px"
+                                }}
+                            >
+                                Keranjang masih kosong.
+                            </p>
 
-                                onIncrease={() =>
-                                    increaseQuantity(item.id)
-                                }
+                        ) : (
 
-                                onDecrease={() =>
-                                    decreaseQuantity(item.id)
-                                }
+                            cartItems.map((item) => (
 
-                                onDelete={() =>
-                                    removeItem(item.id)
-                                }
-                            />
+                                <CartItem
+                                    key={item.id}
+                                    image={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
+                                    title={item.nama_produk}
+                                    category={item.kategori}
+                                    price={item.harga}
+                                    quantity={item.quantity}
+                                    onIncrease={() => increaseQuantity(item.id)}
+                                    onDecrease={() => decreaseQuantity(item.id)}
+                                    onDelete={() => removeItem(item.id)}
+                                />
 
-                        ))}
+                            ))
+
+                        )}
 
                     </div>
 

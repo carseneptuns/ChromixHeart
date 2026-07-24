@@ -90,6 +90,73 @@
     color:#d8b26e;
 
 }
+/* ===========================
+   ADDRESS
+=========================== */
+
+.address-box{
+
+    margin:25px 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.address-box label{
+
+    color:#d8b26e;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.address-box textarea{
+
+    width:100%;
+
+    min-height:110px;
+
+    resize:vertical;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#141414;
+
+    color:#fff;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+    font-family:inherit;
+
+}
+
+.address-box textarea::placeholder{
+
+    color:#777;
+
+}
+
+.address-box textarea:focus{
+
+    border-color:#8b0000;
+
+    box-shadow:0 0 15px rgba(139,0,0,.25);
+
+}
 
 .checkout-btn{
 

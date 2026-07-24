@@ -107,35 +107,36 @@ function OrderManagement() {
                             <strong>Customer :</strong> {selectedOrder.customer_name}
                         </p>
 
-                        {/* BAGIAN ALAMAT */}
-                        <div style={{ margin: "15px 0", background: "#f8f9fa", padding: "12px", borderRadius: "8px" }}>
-                            <p style={{ margin: "0 0 8px 0" }}>
-                                <strong>Alamat Pengiriman:</strong>
-                            </p>
-                            <p style={{ margin: 0, color: "#333" }}>
-                                {selectedOrder.alamat || "Alamat tidak tersedia"}
+                        {/* ALAMAT PENGIRIMAN */}
+                        <div
+                            style={{
+                                margin: "15px 0",
+                                background: "#f8f9fa",
+                                padding: "14px",
+                                borderRadius: "8px",
+                                border: "1px solid #ddd"
+                            }}
+                        >
+                            <p
+                                style={{
+                                    marginBottom: "8px",
+                                    fontWeight: "bold",
+                                    color: "#222"
+                                }}
+                            >
+                                📦 Alamat Pengiriman
                             </p>
 
-                            {selectedOrder.latitude && selectedOrder.longitude && (
-                                <a
-                                    href={`https://www.google.com/maps/search/?api=1&query=${selectedOrder.latitude},${selectedOrder.longitude}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: "inline-block",
-                                        marginTop: "10px",
-                                        padding: "8px 12px",
-                                        backgroundColor: "#2563eb",
-                                        color: "#ffffff",
-                                        borderRadius: "6px",
-                                        textDecoration: "none",
-                                        fontSize: "13px",
-                                        fontWeight: "500"
-                                    }}
-                                >
-                                    📍 Buka Lokasi di Google Maps
-                                </a>
-                            )}
+                            <p
+                                style={{
+                                    margin: 0,
+                                    whiteSpace: "pre-wrap",
+                                    lineHeight: "1.6",
+                                    color: "#444"
+                                }}
+                            >
+                                {selectedOrder.alamat || "Alamat belum tersedia"}
+                            </p>
                         </div>
 
                         <p>

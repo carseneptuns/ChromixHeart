@@ -1,3 +1,8 @@
+.order-summary{
+
+    min-width:360px;
+
+}
 .cart-layout{
     display:flex;
     gap:35px;

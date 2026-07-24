@@ -1,54 +1,52 @@
 import "../styles/orderSummary.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import LocationPicker from "./LocationPicker";
 import { checkoutCart } from "../services/transactionService";
 
 function OrderSummary({ cart, subtotal }) {
 
-     const navigate = useNavigate();
-
-     const [position, setPosition] = useState(null);
+    const navigate = useNavigate();
 
     const [address, setAddress] = useState("");
-const handleCheckout = async () => {
 
-    try {
+    const handleCheckout = async () => {
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        try {
 
-        if (!address) {
+            const user = JSON.parse(localStorage.getItem("user"));
 
-            alert("Silakan pilih alamat pengiriman terlebih dahulu.");
+            if (!address.trim()) {
 
-            return;
+                alert("Silakan masukkan alamat pengiriman.");
+
+                return;
+
+            }
+
+            const res = await checkoutCart({
+
+                user_id: user.id,
+                alamat: address
+
+            });
+
+            navigate(`/payment/${res.data.transaction_id}`);
+
+        } catch (err) {
+
+            console.log(err);
+
+            alert(
+                err.response?.data?.message ||
+                "Checkout gagal."
+            );
 
         }
 
-        console.log("Checkout diklik");
+    };
 
-        const res = await checkoutCart({
-
-            user_id: user.id,
-            alamat: address,
-            latitude: position[0],
-            longitude: position[1] 
-
-        });
-
-        console.log(res.data);
-
-        navigate(`/payment/${res.data.transaction_id}`);
-
-    } catch (err) {
-
-        console.log(err.response);
-        console.log(err);
-
-    }
-
-};
     return (
+
         <div className="order-summary">
 
             <h3>Order Summary</h3>
@@ -80,23 +78,29 @@ const handleCheckout = async () => {
                 </strong>
             </div>
 
-            <LocationPicker
+            <div className="address-box">
 
-                position={position}
-                setPosition={setPosition}
+                <label>Shipping Address</label>
 
-                address={address}
-                setAddress={setAddress}
+                <textarea
+                    placeholder="Masukkan alamat lengkap pengiriman..."
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
 
-            />
-             <button
+            </div>
+
+            <button
                 className="checkout-btn"
                 onClick={handleCheckout}
             >
                 Proceed Payment
             </button>
+
         </div>
+
     );
+
 }
 
 export default OrderSummary;
