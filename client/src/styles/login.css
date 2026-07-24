@@ -106,6 +106,20 @@
 .auth-card a:hover{
     color:#9d0000;
 }
+.password-error{
+
+    margin-top:6px;
+    margin-bottom:14px;
+
+    color:#ff4d4d;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    text-align:left;
+
+}
 /* ==========================
    RESPONSIVE
 ========================== */

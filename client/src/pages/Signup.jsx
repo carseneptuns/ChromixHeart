@@ -10,55 +10,87 @@ function Signup() {
     const [formData, setFormData] = useState({
         username: "",
         nama_lengkap: "",
-        alamat:"",
+        alamat: "",
         password: "",
         confirmPassword: ""
     });
+    const [passwordError, setPasswordError] = useState("");
 
     const handleChange = (e) => {
 
-        setFormData({
+        const { name, value } = e.target;
+
+        const updatedForm = {
             ...formData,
-            [e.target.name]: e.target.value
-        });
+            [name]: value
+        };
 
-    };
+        setFormData(updatedForm);
 
-    const handleSignup = async (e) => {
+        // Validasi realtime
+        if (
+            name === "password" ||
+            name === "confirmPassword"
+        ) {
 
-        e.preventDefault();
+            if (
+                updatedForm.confirmPassword &&
+                updatedForm.password !== updatedForm.confirmPassword
+            ) {
 
-        if (formData.password !== formData.confirmPassword) {
-            alert("Password dan Confirm Password tidak sama!");
-            return;
-        }
+                setPasswordError("Password dan Confirm Password tidak sama");
 
-        try {
+            } else {
 
-            const res = await axios.post(
-                "https://chromixheart-copy-production.up.railway.app/api/auth/register",
-                {
-                    username: formData.username,
-                    nama_lengkap: formData.nama_lengkap,
-                    alamat: formData.alamat,
-                    password: formData.password
-                }
-            );
+                setPasswordError("");
 
-            alert(res.data.message);
-
-            navigate("/login");
-
-        } catch (error) {
-
-            alert(
-                error.response?.data?.message ||
-                "Register gagal"
-            );
+            }
 
         }
 
     };
+
+   const handleSignup = async (e) => {
+
+    e.preventDefault();
+
+    if (passwordError) {
+        return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+
+        setPasswordError("Password dan Confirm Password tidak sama");
+        return;
+
+    }
+
+    try {
+
+        const res = await axios.post(
+            "https://chromixheart-copy-production.up.railway.app/api/auth/register",
+            {
+                username: formData.username,
+                nama_lengkap: formData.nama_lengkap,
+                alamat: formData.alamat,
+                password: formData.password
+            }
+        );
+
+        alert(res.data.message);
+
+        navigate("/login");
+
+    } catch (error) {
+
+        alert(
+            error.response?.data?.message ||
+            "Register gagal"
+        );
+
+    }
+
+};
 
     return (
 
@@ -85,8 +117,13 @@ function Signup() {
                         required
                     />
 
+                    {passwordError && (
+                        <p className="password-error">
+                            {passwordError}
+                        </p>
+                    )}
                     <input
-                        type="text"
+                        type="text"s
                         name="nama_lengkap"
                         placeholder="Full Name"
                         value={formData.nama_lengkap}
