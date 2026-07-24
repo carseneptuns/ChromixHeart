@@ -120,11 +120,6 @@ function Signup() {
                         required
                     />
 
-                    {passwordError && (
-                        <p className="password-error">
-                            {passwordError}
-                        </p>
-                    )}
                     <input
                         type="text"
                         name="nama_lengkap"
@@ -144,6 +139,7 @@ function Signup() {
                     />
 
                     <div className="password-group">
+
                         <input
                             type={showPassword ? "text" : "password"}
                             name="password"
@@ -160,6 +156,7 @@ function Signup() {
                         >
                             {showPassword ? <FiEyeOff /> : <FiEye />}
                         </button>
+
                     </div>
 
                     <div className="password-group">
@@ -190,6 +187,13 @@ function Signup() {
                             {passwordError}
                         </p>
                     )}
+
+                    <button
+                        type="submit"
+                        className="auth-submit"
+                    >
+                        Create Account
+                    </button>
 
                 </form>
 
