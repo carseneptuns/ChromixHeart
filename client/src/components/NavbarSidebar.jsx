@@ -82,7 +82,7 @@ function NavbarSidebar({ isOpen, onClose, isMobile }) {
                             </li>
 
                             <li>
-                                <Link to="/about" onClick={onClose}>
+                                <Link to="/brand-about" onClick={onClose}>
                                     About Us
                                 </Link>
                             </li>
