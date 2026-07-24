@@ -105,7 +105,40 @@
 .table-hover tbody tr:hover{
     box-shadow:inset 4px 0 0 #8b0000;
 }
+/* ===================================================
+   TABLE WRAPPER
+=================================================== */
 
+.table-responsive-custom{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+
+    border-radius:18px;
+}
+
+/* Scrollbar Chrome */
+
+.table-responsive-custom::-webkit-scrollbar{
+    height:8px;
+}
+
+.table-responsive-custom::-webkit-scrollbar-track{
+    background:#1a1a1a;
+    border-radius:20px;
+}
+
+.table-responsive-custom::-webkit-scrollbar-thumb{
+    background:#7b1113;
+    border-radius:20px;
+}
+
+.table-responsive-custom::-webkit-scrollbar-thumb:hover{
+    background:#a31212;
+}
 /* ===================================================
    IMAGE
 =================================================== */
@@ -414,14 +447,14 @@
     }
 
     /* Table */
-    .table-responsive{
-        overflow-x:auto;
-        border-radius:18px;
-    }
+    .table-responsive-custom{
+    overflow-x:auto;
+}
 
-    .table{
-        min-width:900px;
-    }
+.table{
+    width:900px;
+    min-width:900px;
+}
 
     /* Detail */
 
@@ -474,10 +507,11 @@
 
     /* Table */
 
-    .table{
-        min-width:800px;
-        font-size:13px;
-    }
+   .table{
+    width:820px;
+    min-width:820px;
+    font-size:13px;
+}
 
     .table th,
     .table td{
@@ -566,6 +600,10 @@
 
     .detail-description p{
         font-size:13px;
+    }
+    .table{
+        width:780px;
+        min-width:780px;
     }
 
     .table td img{

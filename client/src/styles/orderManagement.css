@@ -1,3 +1,12 @@
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+    background: #fff;
+    margin-bottom: 20px;
+}
 .order-page {
     padding: 40px;
     background-color: #f4f6f9;
@@ -16,9 +25,7 @@
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+    min-width: 850px;
 }
 
 .order-table th {

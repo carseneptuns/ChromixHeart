@@ -55,90 +55,91 @@ function ProductManagement() {
 
       </div>
 
-      <table className="table table-hover">
+      <div className="table-responsive-custom">
 
-        <thead>
+        <table className="table table-hover">
 
-          <tr>
+          <thead>
 
-            <th>ID</th>
-            <th>Kode</th>
-            <th>Nama Produk</th>
-            <th>Kategori</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Gambar</th>
-            <th>Aksi</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {products.map((item) => (
-
-            <tr key={item.id}>
-
-              <td>{item.id}</td>
-
-              <td>{item.kode_produk}</td>
-
-              <td>{item.nama_produk}</td>
-
-              <td>{item.kategori}</td>
-
-              <td>
-                Rp {Number(item.harga).toLocaleString("id-ID")}
-              </td>
-
-              <td>{item.stok}</td>
-
-              <td>
-
-                <img
-                  src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
-                  width="70"
-                />
-
-              </td>
-
-              <td>
-
-                <Link
-                  to={`/admin/products/${item.id}`}
-                  className="btn btn-info btn-sm"
-                >
-                  Detail
-                </Link>
-
-                {" "}
-
-                <Link
-                  to={`/admin/products/edit/${item.id}`}
-                  className="btn btn-warning btn-sm"
-                >
-                  Edit
-                </Link>
-
-                {" "}
-
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  Delete
-                </button>
-
-              </td>
-
+            <tr>
+              <th>ID</th>
+              <th>Kode</th>
+              <th>Nama Produk</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Stok</th>
+              <th>Gambar</th>
+              <th>Aksi</th>
             </tr>
 
-          ))}
+          </thead>
 
-        </tbody>
+          <tbody>
 
-      </table>
+            {products.map((item) => (
+
+              <tr key={item.id}>
+
+                <td>{item.id}</td>
+
+                <td>{item.kode_produk}</td>
+
+                <td>{item.nama_produk}</td>
+
+                <td>{item.kategori}</td>
+
+                <td>
+                  Rp {Number(item.harga).toLocaleString("id-ID")}
+                </td>
+
+                <td>{item.stok}</td>
+
+                <td>
+                  <img
+                    src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
+                    alt={item.nama_produk}
+                    width="70"
+                  />
+                </td>
+
+                <td>
+
+                  <Link
+                    to={`/admin/products/${item.id}`}
+                    className="btn btn-info btn-sm"
+                  >
+                    Detail
+                  </Link>
+
+                  {" "}
+
+                  <Link
+                    to={`/admin/products/edit/${item.id}`}
+                    className="btn btn-warning btn-sm"
+                  >
+                    Edit
+                  </Link>
+
+                  {" "}
+
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
