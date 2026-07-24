@@ -193,21 +193,39 @@ function OrderManagement() {
                                 flexWrap: "wrap"
                             }}
                         >
-                            <button onClick={() => updateStatus(selectedOrder.id, "Paid")}>
+
+                            <button
+                                disabled={selectedOrder.status !== "Pending"}
+                                onClick={() => updateStatus(selectedOrder.id, "Paid")}
+                            >
                                 Approve
                             </button>
-                            <button onClick={() => updateStatus(selectedOrder.id, "Rejected")}>
+
+                            <button
+                                disabled={selectedOrder.status !== "Pending"}
+                                onClick={() => updateStatus(selectedOrder.id, "Rejected")}
+                            >
                                 Reject
                             </button>
-                            <button onClick={() => updateStatus(selectedOrder.id, "Shipped")}>
+
+                            <button
+                                disabled={selectedOrder.status !== "Paid"}
+                                onClick={() => updateStatus(selectedOrder.id, "Shipped")}
+                            >
                                 Ship
                             </button>
-                            <button onClick={() => updateStatus(selectedOrder.id, "Completed")}>
+
+                            <button
+                                disabled={selectedOrder.status !== "Shipped"}
+                                onClick={() => updateStatus(selectedOrder.id, "Completed")}
+                            >
                                 Complete
                             </button>
+
                             <button onClick={() => setSelectedOrder(null)}>
                                 Close
                             </button>
+
                         </div>
                     </div>
                 </div>

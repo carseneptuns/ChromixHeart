@@ -169,6 +169,23 @@
 .order-modal-card button:nth-of-type(5) {
     background: #757575; /* Close / Batal (Abu-abu) */
 }
+/* ================= BUTTON DISABLED ================= */
+
+.order-modal-card button:disabled{
+    background:#cfcfcf !important;
+    color:#7a7a7a !important;
+    cursor:not-allowed;
+    opacity:.65;
+    transform:none !important;
+    box-shadow:none;
+}
+
+.order-modal-card button:disabled:hover{
+    background:#cfcfcf !important;
+    color:#7a7a7a !important;
+    opacity:.65;
+    transform:none;
+}
 /* ===================================
    RESPONSIVE
 =================================== */
