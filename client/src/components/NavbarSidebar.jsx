@@ -4,7 +4,6 @@ import {
     FiPackage,
     FiShoppingCart,
     FiUser,
-    FiLogOut,
     FiShoppingBag
 } from "react-icons/fi";
 
@@ -26,7 +25,7 @@ function NavbarSidebar({ isOpen, onClose, isMobile }) {
                 <div className="navbar-sidebar-header">
 
                     <h2>
-                        {isMobile ? "Menu" : "Account"}
+                        {isMobile ? "Menu" : "Navigation"}
                     </h2>
 
                     <button onClick={onClose}>
@@ -37,113 +36,126 @@ function NavbarSidebar({ isOpen, onClose, isMobile }) {
 
                 <ul>
 
+                    {/* Menu Navbar (Mobile Only) */}
                     {isMobile && (
                         <>
+                            <li>
+                                <Link to="/" onClick={onClose}>
+                                    Home
+                                </Link>
+                            </li>
 
-                            <li><Link to="/" onClick={onClose}>Home</Link></li>
+                            <li>
+                                <Link to="/shop" onClick={onClose}>
+                                    Collections
+                                </Link>
+                            </li>
 
-                            <li><Link to="/shop" onClick={onClose}>Collections</Link></li>
+                            <li>
+                                <Link to="/clothes" onClick={onClose}>
+                                    Clothes
+                                </Link>
+                            </li>
 
-                            <li><Link to="/clothes" onClick={onClose}>Clothes</Link></li>
+                            <li>
+                                <Link to="/skirt" onClick={onClose}>
+                                    Skirt
+                                </Link>
+                            </li>
 
-                            <li><Link to="/skirt" onClick={onClose}>Skirt</Link></li>
+                            <li>
+                                <Link to="/shoes" onClick={onClose}>
+                                    Shoes
+                                </Link>
+                            </li>
 
-                            <li><Link to="/shoes" onClick={onClose}>Shoes</Link></li>
+                            <li>
+                                <Link to="/jewellery" onClick={onClose}>
+                                    Jewellery
+                                </Link>
+                            </li>
 
-                            <li><Link to="/jewellery" onClick={onClose}>Jewellery</Link></li>
+                            <li>
+                                <Link to="/accessories" onClick={onClose}>
+                                    Accessories
+                                </Link>
+                            </li>
 
-                            <li><Link to="/accessories" onClick={onClose}>Accessories</Link></li>
-
-                            <li><Link to="/about" onClick={onClose}>About Us</Link></li>
+                            <li>
+                                <Link to="/about" onClick={onClose}>
+                                    About Us
+                                </Link>
+                            </li>
 
                             <hr />
-
                         </>
                     )}
 
+                    {/* CUSTOMER */}
                     {user?.role === "customer" && (
                         <>
 
                             <li>
-
                                 <Link to="/shop" onClick={onClose}>
                                     <FiShoppingBag />
                                     Shop
                                 </Link>
-
                             </li>
 
                             <li>
-
-                                <Link to="/my-orders" onClick={onClose}>
-                                    <FiPackage />
-                                    My Orders
-                                </Link>
-
-                            </li>
-
-                            <li>
-
                                 <Link to="/cart" onClick={onClose}>
                                     <FiShoppingCart />
                                     My Cart
                                 </Link>
-
                             </li>
 
                             <li>
+                                <Link to="/my-orders" onClick={onClose}>
+                                    <FiPackage />
+                                    My Orders
+                                </Link>
+                            </li>
 
+                            <li>
                                 <Link to="/profile" onClick={onClose}>
                                     <FiUser />
                                     Profile
                                 </Link>
-
                             </li>
 
                         </>
                     )}
 
+                    {/* ADMIN */}
                     {user?.role === "admin" && (
                         <>
-                            <li>
 
+                            <li>
                                 <Link to="/admin/products" onClick={onClose}>
                                     <FiPackage />
                                     Product Management
                                 </Link>
-
                             </li>
 
                             <li>
-
                                 <Link to="/admin/orders" onClick={onClose}>
                                     <FiPackage />
                                     Order Management
                                 </Link>
-
                             </li>
 
                         </>
                     )}
 
-                    <li>
-
-                        <Link
-                            to="/login"
-                            onClick={() => {
-
-                                localStorage.removeItem("user");
-                                onClose();
-
-                            }}
-                        >
-
-                            <FiLogOut />
-                            Logout
-
-                        </Link>
-
-                    </li>
+                    {/* BELUM LOGIN */}
+                    {!user && (
+                        <li>
+                            <Link to="/login" onClick={onClose}>
+                                <FiUser />
+                                Login
+                            </Link>
+                        </li>
+                    )}
 
                 </ul>
 

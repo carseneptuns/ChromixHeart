@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/navbar.css";
 
 import NavbarSidebar from "./NavbarSidebar";
-import UserSidebar from "./UserSidebar";
 
 import {
   FiShoppingCart,
@@ -13,10 +12,12 @@ import {
 
 function Navbar() {
 
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const [isUserOpen, setIsUserOpen] = useState(false);
+  const navigate = useNavigate();
 
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
 
@@ -30,6 +31,27 @@ function Navbar() {
       window.removeEventListener("resize", handleResize);
 
   }, []);
+
+  const handleLogout = () => {
+
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    const confirmLogout = window.confirm(
+      "Are you sure you want to log out?"
+    );
+
+    if (confirmLogout) {
+
+      localStorage.removeItem("user");
+
+      navigate("/login");
+
+    }
+
+  };
 
   return (
     <>
@@ -117,20 +139,23 @@ function Navbar() {
 
             <div className="nav-icons">
 
-              {/* User Sidebar */}
+              {/* User / Logout */}
               <button
                 className="icon-btn"
-                onClick={() => setIsUserOpen(true)}
+                onClick={handleLogout}
               >
                 <FiUser />
               </button>
 
               {/* Cart */}
-              <button className="icon-btn">
+              <Link
+                to="/cart"
+                className="icon-btn"
+              >
                 <FiShoppingCart />
-              </button>
+              </Link>
 
-              {/* Hamburger */}
+              {/* Menu */}
               <button
                 className="menu-btn"
                 onClick={() => setIsNavbarOpen(true)}
@@ -152,10 +177,6 @@ function Navbar() {
         isMobile={isMobile}
       />
 
-      <UserSidebar
-        isOpen={isUserOpen}
-        onClose={() => setIsUserOpen(false)}
-      />
     </>
   );
 }
