@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "../../styles/payment.css";
 import paymentBanner from "../../assets/payment-banner.png";
-import qrisImage from "../../assets/qris.png"; 
+import qrisImage from "../../assets/qris.png";
 import {
     getTransaction,
     confirmPayment
@@ -190,58 +190,57 @@ function Payment() {
 
                     {/* ================= KONDISI JIKA PILIH BANK TRANSFER ================= */}
                     {paymentMethod === "Bank Transfer" && (
-                        <div style={{ background: "#1a1a1a", padding: "15px", borderRadius: "8px", marginTop: "15px" }}>
-                            <p style={{ fontWeight: "bold", marginBottom: "5px" }}>Silakan transfer ke nomor rekening berikut:</p>
-                            <p style={{ fontSize: "16px", color: "#38bdf8", marginBottom: "10px" }}>BCA: 1234567890 a.n ChromixHeart</p>
-                            
-                            <p style={{ color: "red", fontSize: "13px", fontWeight: "bold", marginBottom: "10px" }}>
+                        <div className="payment-info-box">
+                            <p className="payment-info-title">Silakan transfer ke nomor rekening berikut:</p>
+                            <p className="payment-bank-number">BCA: 1234567890 a.n ChromixHeart</p>
+
+                            <p className="payment-warning">
                                 *Masukkan nominal harga sesuai dengan harganya, jika tidak, pemesanan tidak akan diproses.
                             </p>
 
-                            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px" }}>Upload Bukti Transfer:</label>
-                            <input 
-                                type="file" 
+                            <label className="payment-upload-label">Upload Bukti Transfer:</label>
+                            <input
+                                type="file"
                                 accept="image/*"
                                 onChange={(e) => setProofImage(e.target.files[0])}
-                                style={{ color: "#fff" }}
+                                className="payment-upload-input"
                             />
                         </div>
                     )}
 
                     {/* ================= KONDISI JIKA PILIH QRIS ================= */}
                     {paymentMethod === "QRIS" && (
-                        <div style={{ background: "#1a1a1a", padding: "15px", borderRadius: "8px", marginTop: "15px", textAlign: "center" }}>
+                        <div className="payment-info-box payment-qris-box">
                             <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Scan QR Code di bawah ini:</p>
-                            
-                            <img 
-                                src={qrisImage} 
-                                alt="QRIS Code" 
-                                style={{ width: "180px", height: "180px", background: "#fff", padding: "10px", borderRadius: "8px", marginBottom: "10px", objectFit: "contain" }} 
+
+                            <img
+                                src={qrisImage}
+                                alt="QRIS"
+                                className="payment-qris-image"
                             />
 
                             <p style={{ color: "red", fontSize: "13px", fontWeight: "bold", marginBottom: "10px" }}>
                                 *Masukkan nominal harga sesuai dengan harganya, jika tidak, pemesanan tidak akan diproses.
                             </p>
-
-                            <label style={{ display: "block", textAlign: "left", marginBottom: "5px", fontSize: "14px" }}>Upload Bukti Pembayaran QRIS:</label>
-                            <input 
-                                type="file" 
+                            <label className="payment-upload-label">Upload Bukti Pembayaran QRIS:</label>
+                            <input
+                                type="file"
                                 accept="image/*"
                                 onChange={(e) => setProofImage(e.target.files[0])}
-                                style={{ color: "#fff", display: "block", width: "100%" }}
+                               className="payment-upload-input"
                             />
                         </div>
                     )}
 
                     {/* ================= KONDISI JIKA PILIH CASH ON DELIVERY ================= */}
                     {paymentMethod === "Cash On Delivery" && (
-                        <div style={{ background: "#1a1a1a", padding: "15px", borderRadius: "8px", marginTop: "15px" }}>
-                            <p style={{ color: "#38bdf8", fontSize: "14px", fontWeight: "bold" }}>
+                       <div className="payment-info-box">
+                            <p className="payment-cod-text">
                                 Siapkan uang sesuai dengan harganya, jika pesanan akan datang
                             </p>
                         </div>
                     )}
-                    
+
                     <button
                         className="confirm-payment"
                         onClick={handlePayment}
