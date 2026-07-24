@@ -75,10 +75,8 @@ function App() {
         <Route path="/jewellery" element={<Jewellery />} />
         <Route path="/accessories" element={<Accessories />} />
 
-        <Route
-          path="/brand-about"
-          element={<h1 style={{ color: "white" }}>HALAMAN ABOUT</h1>}
-        />
+        <Route path="/brand-about" element={<BrandAbout />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
