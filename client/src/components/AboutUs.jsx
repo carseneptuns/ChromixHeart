@@ -50,6 +50,7 @@ function About() {
             </h3>
 
             <p>
+              
 
               ChromixHeart was created for those who find
               beauty within darkness. Every collection blends

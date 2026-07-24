@@ -128,11 +128,10 @@ function Navbar() {
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">
+                  <Link className="nav-link" to="/brand-about">
                     About Us
                   </Link>
                 </li>
-
               </ul>
 
             )}
