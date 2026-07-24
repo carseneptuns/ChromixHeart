@@ -7,7 +7,7 @@ function OrderManagement() {
     const [orders, setOrders] = useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
 
-    useEffect(() => {
+     useEffect(() => {
         fetchOrders();
     }, []);
 
@@ -76,7 +76,10 @@ function OrderManagement() {
                                 {new Date(order.created_at).toLocaleDateString()}
                             </td>
                             <td>
-                                <button onClick={() => setSelectedOrder(order)}>
+                                <button onClick={() => {
+                                    console.log("Data order lengkap:", order);
+                                    setSelectedOrder(order);
+                                }}>
                                     Detail
                                 </button>
                             </td>
