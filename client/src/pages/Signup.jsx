@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from "axios";
 import "../styles/login.css";
 
@@ -15,6 +16,8 @@ function Signup() {
         confirmPassword: ""
     });
     const [passwordError, setPasswordError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleChange = (e) => {
 
@@ -50,47 +53,47 @@ function Signup() {
 
     };
 
-   const handleSignup = async (e) => {
+    const handleSignup = async (e) => {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    if (passwordError) {
-        return;
-    }
+        if (passwordError) {
+            return;
+        }
 
-    if (formData.password !== formData.confirmPassword) {
+        if (formData.password !== formData.confirmPassword) {
 
-        setPasswordError("Password dan Confirm Password tidak sama");
-        return;
+            setPasswordError("Password dan Confirm Password tidak sama");
+            return;
 
-    }
+        }
 
-    try {
+        try {
 
-        const res = await axios.post(
-            "https://chromixheart-copy-production.up.railway.app/api/auth/register",
-            {
-                username: formData.username,
-                nama_lengkap: formData.nama_lengkap,
-                alamat: formData.alamat,
-                password: formData.password
-            }
-        );
+            const res = await axios.post(
+                "https://chromixheart-copy-production.up.railway.app/api/auth/register",
+                {
+                    username: formData.username,
+                    nama_lengkap: formData.nama_lengkap,
+                    alamat: formData.alamat,
+                    password: formData.password
+                }
+            );
 
-        alert(res.data.message);
+            alert(res.data.message);
 
-        navigate("/login");
+            navigate("/login");
 
-    } catch (error) {
+        } catch (error) {
 
-        alert(
-            error.response?.data?.message ||
-            "Register gagal"
-        );
+            alert(
+                error.response?.data?.message ||
+                "Register gagal"
+            );
 
-    }
+        }
 
-};
+    };
 
     return (
 
@@ -123,7 +126,7 @@ function Signup() {
                         </p>
                     )}
                     <input
-                        type="text"s
+                        type="text"
                         name="nama_lengkap"
                         placeholder="Full Name"
                         value={formData.nama_lengkap}
@@ -140,27 +143,53 @@ function Signup() {
                         required
                     />
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
+                    <div className="password-group">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
 
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                    />
+                        <button
+                            type="button"
+                            className="toggle-password"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <FiEyeOff /> : <FiEye />}
+                        </button>
+                    </div>
 
-                    <button type="submit">
-                        Sign Up
-                    </button>
+                    <div className="password-group">
+
+                        <input
+                            type={showConfirmPassword ? "text" : "password"}
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <button
+                            type="button"
+                            className="toggle-password"
+                            onClick={() =>
+                                setShowConfirmPassword(!showConfirmPassword)
+                            }
+                        >
+                            {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                        </button>
+
+                    </div>
+
+                    {passwordError && (
+                        <p className="password-error">
+                            {passwordError}
+                        </p>
+                    )}
 
                 </form>
 

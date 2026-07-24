@@ -120,6 +120,48 @@
     text-align:left;
 
 }
+.password-group{
+    position:relative;
+    width:100%;
+}
+
+.password-group input{
+    width:100%;
+    padding-right:50px;
+}
+
+.toggle-password{
+    position:absolute;
+    top:50%;
+    right:15px;
+    transform:translateY(-50%);
+
+    border:none;
+    background:none;
+
+    color:#999;
+    cursor:pointer;
+
+    font-size:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.toggle-password:hover{
+    color:#740000;
+}
+
+.password-error{
+    margin-top:8px;
+    margin-bottom:15px;
+
+    color:#ff4d4d;
+    font-size:14px;
+
+    text-align:left;
+}
 /* ==========================
    RESPONSIVE
 ========================== */
