@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProduct } from "../../services/productService";
 import { createTransaction } from "../../services/transactionService";
-import LocationPicker from "../../components/LocationPicker";
 
 import "../../styles/checkout.css";
 
@@ -15,7 +14,6 @@ function Checkout() {
 
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
-    const [position, setPosition] =useState(null);
     const [address, setAddress] = useState("");
 
     useEffect(() => {
@@ -66,15 +64,19 @@ function Checkout() {
 
             }
 
+            if (!address.trim()) {
+
+                alert("Silakan masukkan alamat pengiriman.");
+                return;
+
+            }
+
             const res = await createTransaction({
 
                 user_id: user.id,
                 produk_id: product.id,
-                quantity: quantity,
-
-                alamat: address,
-                latitude: position ? position[0] : null,
-                longitude: position ? position[1] : null
+                quantity,
+                alamat: address
 
             });
 
@@ -161,13 +163,17 @@ function Checkout() {
 
                     </div>
 
-                    <LocationPicker
-                        position={position}
-                        setPosition={setPosition}
-                        address={address}
-                        setAddress={setAddress}
-                    />
+                    <div className="shipping-address">
 
+                        <label>Shipping Address</label>
+
+                        <textarea
+                            placeholder="Enter your complete shipping address..."
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+
+                    </div>
                     <button
                         className="place-order"
                         onClick={handleOrder}

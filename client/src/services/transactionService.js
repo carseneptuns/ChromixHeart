@@ -18,12 +18,19 @@ export const getTransaction = (id) => {
 };
 
 // CONFIRM PAYMENT
-export const confirmPayment = (id, payment_method) => {
-    return axios.put(`${API}/${id}/payment`, {
-        payment_method
-    });
+export const confirmPayment = (id, formData) => {
+    return axios.put(
+        `${API}/${id}/pay`,
+        formData,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
+    );
 };
 
+// GET USER TRANSACTIONS
 export const getUserTransactions = (user_id) => {
     return axios.get(`${API}/user/${user_id}`);
 };
