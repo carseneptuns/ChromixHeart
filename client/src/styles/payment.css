@@ -43,8 +43,9 @@
     box-shadow:
     0 30px 80px rgba(0,0,0,.7);
 
-}
+    margin:auto;
 
+}
 /* ========================= */
 /* LEFT */
 /* ========================= */
@@ -123,19 +124,19 @@
 .payment-banner{
 
     width:100%;
-
     max-width:470px;
+    height:auto;
+
+    display:block;
 
     border-radius:22px;
 
     object-fit:cover;
 
     box-shadow:
-
     0 0 45px rgba(120,0,0,.25);
 
 }
-
 /* ========================= */
 /* RIGHT */
 /* ========================= */
@@ -447,7 +448,9 @@
 @media (max-width:992px){
 
     .payment-page{
-        padding:90px 20px 40px;
+
+        padding:95px 20px 40px;
+
     }
 
     .payment-wrapper{
@@ -458,97 +461,76 @@
 
     .payment-left{
 
-        padding:40px 30px;
+        padding:40px 25px;
 
         text-align:center;
 
     }
 
-    .payment-logo{
-
-        font-size:40px;
-
-        letter-spacing:4px;
-
-        margin-bottom:30px;
-
-    }
-
     .payment-banner{
 
-        max-width:350px;
+        max-width:330px;
 
     }
 
     .payment-right{
 
-        padding:35px 30px;
+        padding:35px 25px;
 
     }
 
     .payment-right h2{
 
         font-size:34px;
-
-    }
-
-    .payment-right h4{
-
-        font-size:22px;
+        text-align:center;
 
     }
 
 }
 
-/* Mobile */
 @media (max-width:768px){
 
     .payment-page{
 
-        padding:80px 15px 30px;
+        padding:85px 15px 25px;
 
     }
 
     .payment-wrapper{
 
-        border-radius:22px;
+        border-radius:20px;
 
     }
 
     .payment-left{
 
-        padding:30px 20px;
+        padding:30px 18px;
 
     }
 
     .payment-logo{
 
-        font-size:32px;
-
+        font-size:30px;
         letter-spacing:3px;
-
-        margin-bottom:25px;
+        margin-bottom:22px;
 
     }
 
     .payment-banner{
 
-        max-width:280px;
-
-        border-radius:18px;
+        max-width:260px;
 
     }
 
     .payment-right{
 
-        padding:25px 20px;
+        padding:22px 18px;
 
     }
 
     .payment-right h2{
 
         font-size:28px;
-
         text-align:center;
 
     }
@@ -561,7 +543,9 @@
 
     .payment-order-item{
 
-        padding:15px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
 
     }
 
@@ -573,7 +557,7 @@
 
     .payment-order-item span{
 
-        font-size:16px;
+        font-size:17px;
 
     }
 
@@ -591,19 +575,16 @@
 
     .payment-method-box label{
 
-        padding:15px;
+        padding:14px;
 
         font-size:14px;
-
-        gap:12px;
 
     }
 
     .confirm-payment{
 
-        padding:16px;
-
         font-size:16px;
+        padding:15px;
 
     }
 
@@ -614,45 +595,46 @@
 
     .payment-page{
 
-        padding:75px 12px 25px;
+        padding:75px 12px 20px;
 
     }
 
     .payment-wrapper{
 
-        border-radius:18px;
+        border-radius:16px;
 
     }
 
     .payment-left{
 
-        padding:25px 15px;
+        padding:22px 15px;
 
     }
 
     .payment-logo{
 
-        font-size:26px;
-
+        font-size:24px;
         letter-spacing:2px;
+        text-align:center;
 
     }
 
     .payment-banner{
 
-        max-width:220px;
+        max-width:190px;
 
     }
 
     .payment-right{
 
-        padding:20px 15px;
+        padding:18px 15px;
 
     }
 
     .payment-right h2{
 
         font-size:24px;
+        text-align:center;
 
     }
 
@@ -664,9 +646,7 @@
 
     .payment-order-item{
 
-        flex-direction:column;
-
-        align-items:flex-start;
+        padding:14px;
 
         gap:8px;
 
@@ -674,7 +654,13 @@
 
     .payment-order-item p{
 
-        font-size:15px;
+        font-size:14px;
+
+    }
+
+    .payment-order-item small{
+
+        font-size:12px;
 
     }
 
@@ -686,29 +672,36 @@
 
     .payment-total{
 
-        font-size:16px;
+        font-size:15px;
 
     }
 
     .payment-total strong{
 
-        font-size:22px;
+        font-size:21px;
 
     }
 
     .payment-method-box label{
 
         font-size:13px;
+        padding:12px;
 
-        padding:14px;
+        gap:10px;
+
+    }
+
+    .payment-method-box input{
+
+        width:16px;
+        height:16px;
 
     }
 
     .confirm-payment{
 
+        padding:14px;
         font-size:15px;
-
-        padding:15px;
 
     }
 
