@@ -36,20 +36,24 @@ function Cart() {
 
     const fetchCart = async () => {
 
-        try {
+    try {
 
-            const res = await getCart(user.id);
+        const res = await getCart(user.id);
 
-            setCartItems(res.data.data);
+        console.log("========== CART API ==========");
+        console.log("User :", user);
+        console.log("Response :", res.data);
+        console.log("Items :", res.data.data);
 
-        } catch (err) {
+        setCartItems(res.data.data);
 
-            console.log(err);
+    } catch (err) {
 
-        }
+        console.log(err);
 
-    };
+    }
 
+};
     // =========================
     // Quantity +
     // =========================
@@ -119,16 +123,31 @@ function Cart() {
 
     };
 
-    // =========================
-    // Hitung subtotal
-    // =========================
-    const subtotal = cartItems.reduce(
+   // =========================
+// Hitung subtotal
+// =========================
 
-        (total, item) => total + Number(item.harga) * item.quantity,
+const subtotal = cartItems.reduce((total, item) => {
 
-        0
+    console.log("Item :", item);
 
+    const harga = Number(item.harga);
+    const qty = Number(item.quantity);
+
+    console.log(
+        "Harga =", harga,
+        "| Qty =", qty,
+        "| Total =", harga * qty
     );
+
+    return total + (harga * qty);
+
+}, 0);
+
+console.log("================================");
+console.log("Cart Items :", cartItems);
+console.log("Subtotal :", subtotal);
+console.log("================================");
 
     return (
 

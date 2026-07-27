@@ -9,6 +9,15 @@ function OrderSummary({ cart, subtotal }) {
 
     const [address, setAddress] = useState("");
 
+    // =========================
+    // DEBUG
+    // =========================
+    console.log("===== ORDER SUMMARY =====");
+    console.log("Cart :", cart);
+    console.log("Items :", cart.length);
+    console.log("Subtotal :", subtotal);
+    console.log("=========================");
+
     const handleCheckout = async () => {
 
         try {
@@ -18,7 +27,6 @@ function OrderSummary({ cart, subtotal }) {
             if (!address.trim()) {
 
                 alert("Silakan masukkan alamat pengiriman.");
-
                 return;
 
             }
@@ -53,13 +61,13 @@ function OrderSummary({ cart, subtotal }) {
 
             <div className="summary-row">
                 <span>Items</span>
-                <span>{cart.length}</span>
+                <span translate="no">{cart.length}</span>
             </div>
 
             <div className="summary-row">
                 <span>Subtotal</span>
-                <span>
-                    Rp {subtotal.toLocaleString("id-ID")}
+                <span translate="no">
+                    {`Rp ${subtotal.toLocaleString("id-ID")}`}
                 </span>
             </div>
 
@@ -71,11 +79,13 @@ function OrderSummary({ cart, subtotal }) {
             <hr />
 
             <div className="summary-total">
+
                 <span>Total</span>
 
-                <strong>
-                    Rp {subtotal.toLocaleString("id-ID")}
+                <strong translate="no">
+                    {`Rp ${subtotal.toLocaleString("id-ID")}`}
                 </strong>
+
             </div>
 
             <div className="address-box">

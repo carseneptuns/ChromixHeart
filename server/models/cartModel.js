@@ -84,6 +84,7 @@ const getCart = async (user_id) => {
             tbl_produk.id AS produk_id,
             tbl_produk.nama_produk,
             tbl_produk.harga,
+            tbl_produk.harga AS price,
             tbl_produk.gambar,
             tbl_produk.kategori
 
