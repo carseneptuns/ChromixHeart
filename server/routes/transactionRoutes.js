@@ -14,7 +14,13 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024
+    }
+});
+
 
 router.post(
     "/checkout",
@@ -34,10 +40,27 @@ router.get(
 // Pasang middleware upload.single("proof_payment") di sini
 router.put(
     "/:id/pay",
-    upload.single("proof_payment"),
+    (req, res, next) => {
+        console.log("ROUTE MASUK");
+        next();
+    },
+    (req, res, next) => {
+        upload.single("proof_payment")(req, res, function (err) {
+
+            if (err) {
+                console.log("MULTER ERROR");
+                console.log(err);
+                return res.status(500).json({
+                    success: false,
+                    message: err.message
+                });
+            }
+
+            next();
+        });
+    },
     transactionController.confirmPayment
 );
-
 router.get(
     "/user/:user_id",
     transactionController.getUserTransactions
