@@ -333,18 +333,24 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             throw new Error("Transaksi tidak ditemukan");
         }
 
-        if (trx[0].status === "Paid") {
-            throw new Error("Transaksi sudah dibayar");
+        if (
+            trx[0].status === "Rejected" ||
+            trx[0].status === "Completed"
+        ) {
+            throw new Error("Transaksi sudah selesai.");
         }
 
-        // Update transaksi
+        // ===============================
+        // Customer upload bukti pembayaran
+        // Menunggu verifikasi admin
+        // ===============================
         await connection.query(
             `
             UPDATE tbl_transaksi
             SET
                 payment_method = ?,
                 proof_payment = ?,
-                status = 'Paid'
+                status = 'Waiting Verification'
             WHERE id = ?
             `,
             [
@@ -354,7 +360,9 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             ]
         );
 
+        // ===============================
         // Simpan ke orders
+        // ===============================
         await connection.query(
             `
             INSERT INTO orders
@@ -374,7 +382,7 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
                 trx[0].nama_lengkap,
                 payment_method,
                 trx[0].total,
-                "Paid",
+                "Waiting Verification",
                 trx[0].alamat,
                 proof_payment
             ]

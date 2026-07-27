@@ -114,11 +114,9 @@ function MyOrders() {
                                     </div>
 
                                     <span
-                                        className={
-                                            order.status === "Paid"
-                                                ? "order-status paid"
-                                                : "order-status pending"
-                                        }
+                                        className={`order-status ${order.status
+                                            .toLowerCase()
+                                            .replace(/\s+/g, "-")}`}
                                     >
                                         {order.status}
                                     </span>
@@ -150,8 +148,7 @@ function MyOrders() {
                                                 </p>
 
                                                 <p>
-                                                    Price :
-                                                    {" "}
+                                                    Price :{" "}
                                                     Rp {Number(item.harga).toLocaleString("id-ID")}
                                                 </p>
 
@@ -167,8 +164,7 @@ function MyOrders() {
 
                                     <p>
 
-                                        Payment :
-                                        {" "}
+                                        Payment :{" "}
                                         {order.payment_method || "-"}
 
                                     </p>

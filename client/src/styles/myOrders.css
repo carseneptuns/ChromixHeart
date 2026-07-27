@@ -133,12 +133,34 @@
     min-width:110px;
 }
 
-.order-status.paid{
-    background:#006b2f;
-}
-
 .order-status.pending{
     background:#7b0000;
+    color:#fff;
+}
+
+.order-status.waiting-verification{
+    background:#d4a017;
+    color:#fff;
+}
+
+.order-status.processing{
+    background:#0b63ce;
+    color:#fff;
+}
+
+.order-status.shipped{
+    background:#6f42c1;
+    color:#fff;
+}
+
+.order-status.completed{
+    background:#198754;
+    color:#fff;
+}
+
+.order-status.rejected{
+    background:#dc3545;
+    color:#fff;
 }
 
 /* ==========================

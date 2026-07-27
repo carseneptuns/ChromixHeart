@@ -73,129 +73,129 @@ const changeStatus = async (req, res) => {
         ) {
             throw new Error("Order sudah selesai.");
         }
+// =====================================
+// VALIDASI STATUS BARU
+// =====================================
 
-        // =====================================
-        // VALIDASI STATUS
-        // =====================================
+// Customer sudah upload bukti pembayaran
+// Admin boleh Approve atau Reject
+if (
+    currentStatus === "Waiting Verification" &&
+    status !== "Processing" &&
+    status !== "Rejected"
+) {
+    throw new Error("Status tidak valid.");
+}
 
-        if (
-            (currentStatus === "Waiting Verification" ||
-                currentStatus === "Pending") &&
-            status !== "Processing" &&
-            status !== "Rejected"
-        ) {
-            throw new Error("Status tidak valid.");
+// Kalau sudah di-Approve baru boleh Ship
+if (
+    currentStatus === "Processing" &&
+    status !== "Shipped"
+) {
+    throw new Error("Status tidak valid.");
+}
+
+// Kalau sudah dikirim baru boleh Complete
+if (
+    currentStatus === "Shipped" &&
+    status !== "Completed"
+) {
+    throw new Error("Status tidak valid.");
+}
+
+// =====================================
+// APPROVE
+// =====================================
+
+if (status === "Processing") {
+
+    // Jika bukan COD harus upload bukti pembayaran
+    if (
+        !order[0].proof_payment &&
+        order[0].payment_method !== "Cash On Delivery"
+    ) {
+        throw new Error("Customer belum upload bukti pembayaran.");
+    }
+
+    const [trx] = await connection.query(
+        `
+        SELECT id
+        FROM tbl_transaksi
+        WHERE
+            user_id = ?
+            AND total = ?
+            AND alamat = ?
+            AND payment_method = ?
+        ORDER BY id DESC
+        LIMIT 1
+        `,
+        [
+            order[0].customer_id,
+            order[0].total,
+            order[0].alamat,
+            order[0].payment_method
+        ]
+    );
+
+    if (trx.length === 0) {
+        throw new Error("Transaksi tidak ditemukan.");
+    }
+
+    const transaksiId = trx[0].id;
+
+    const [items] = await connection.query(
+        `
+        SELECT
+            produk_id,
+            quantity
+        FROM detail_transaksi
+        WHERE transaksi_id = ?
+        `,
+        [transaksiId]
+    );
+
+    for (const item of items) {
+
+        const [product] = await connection.query(
+            `
+            SELECT stok
+            FROM tbl_produk
+            WHERE id = ?
+            `,
+            [item.produk_id]
+        );
+
+        if (product.length === 0) {
+            throw new Error("Produk tidak ditemukan.");
         }
 
-        if (
-            currentStatus === "Processing" &&
-            status !== "Shipped"
-        ) {
-            throw new Error("Status tidak valid.");
+        if (product[0].stok < item.quantity) {
+            throw new Error("Stok tidak mencukupi.");
         }
 
-        if (
-            currentStatus === "Shipped" &&
-            status !== "Completed"
-        ) {
-            throw new Error("Status tidak valid.");
-        }
+        await connection.query(
+            `
+            UPDATE tbl_produk
+            SET stok = stok - ?
+            WHERE id = ?
+            `,
+            [
+                item.quantity,
+                item.produk_id
+            ]
+        );
+    }
 
-        // =====================================
-        // APPROVE
-        // =====================================
+    await connection.query(
+        `
+        UPDATE tbl_transaksi
+        SET status = 'Processing'
+        WHERE id = ?
+        `,
+        [transaksiId]
+    );
 
-        if (status === "Processing") {
-
-            if (
-                !order[0].proof_payment &&
-                order[0].payment_method !== "Cash On Delivery"
-            ) {
-                throw new Error(
-                    "Customer belum upload bukti pembayaran."
-                );
-            }
-
-            const [trx] = await connection.query(
-                `
-                SELECT id
-                FROM tbl_transaksi
-                WHERE
-                    user_id = ?
-                    AND total = ?
-                    AND alamat = ?
-                    AND payment_method = ?
-                ORDER BY id DESC
-                LIMIT 1
-                `,
-                [
-                    order[0].customer_id,
-                    order[0].total,
-                    order[0].alamat,
-                    order[0].payment_method
-                ]
-            );
-
-            if (trx.length === 0) {
-                throw new Error("Transaksi tidak ditemukan.");
-            }
-
-            const transaksiId = trx[0].id;
-
-            const [items] = await connection.query(
-                `
-                SELECT
-                    produk_id,
-                    quantity
-                FROM detail_transaksi
-                WHERE transaksi_id = ?
-                `,
-                [transaksiId]
-            );
-
-            for (const item of items) {
-
-                const [product] = await connection.query(
-                    `
-                    SELECT stok
-                    FROM tbl_produk
-                    WHERE id = ?
-                    `,
-                    [item.produk_id]
-                );
-
-                if (product.length === 0) {
-                    throw new Error("Produk tidak ditemukan.");
-                }
-
-                if (product[0].stok < item.quantity) {
-                    throw new Error("Stok tidak mencukupi.");
-                }
-
-                await connection.query(
-                    `
-                    UPDATE tbl_produk
-                    SET stok = stok - ?
-                    WHERE id = ?
-                    `,
-                    [
-                        item.quantity,
-                        item.produk_id
-                    ]
-                );
-
-            }
-
-            await connection.query(
-                `
-                UPDATE tbl_transaksi
-                SET status = 'Processing'
-                WHERE id = ?
-                `,
-                [transaksiId]
-            );
-
-        }
+}
 
         // =====================================
         // REJECT / SHIPPED / COMPLETED

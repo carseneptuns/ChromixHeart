@@ -206,61 +206,67 @@ function OrderManagement() {
                             </div>
                         )}
 
-                        <div
-    style={{
-        marginTop: "25px",
-        display: "flex",
-        gap: "10px",
-        flexWrap: "wrap"
-    }}
->
-    {/* Tombol Approve (Hanya aktif jika status Pending / Waiting Verification) */}
-    <button
-        disabled={
-            selectedOrder.status?.toLowerCase() !== "pending" &&
-            selectedOrder.status?.toLowerCase() !== "waiting verification"
-        }
-        onClick={() => updateStatus(selectedOrder.id, "Paid")}
-    >
-        Approve
-    </button>
+                                       <div
+                        style={{
+                            marginTop: "25px",
+                            display: "flex",
+                            gap: "10px",
+                            flexWrap: "wrap"
+                        }}
+                    >
 
-    {/* Tombol Reject (Hanya aktif jika status Pending / Waiting Verification) */}
-    <button
-        disabled={
-            selectedOrder.status?.toLowerCase() !== "pending" &&
-            selectedOrder.status?.toLowerCase() !== "waiting verification"
-        }
-        onClick={() => updateStatus(selectedOrder.id, "Rejected")}
-    >
-        Reject
-    </button>
+                        {/* Approve */}
+                        <button
+                            disabled={selectedOrder.status !== "Waiting Verification"}
+                            onClick={() =>
+                                updateStatus(selectedOrder.id, "Processing")
+                            }
+                        >
+                            Approve
+                        </button>
 
-    {/* Tombol Ship (Hanya aktif jika status sudah Paid) */}
-    <button
-        disabled={selectedOrder.status?.toLowerCase() !== "paid"}
-        onClick={() => updateStatus(selectedOrder.id, "Shipped")}
-    >
-        Ship
-    </button>
+                        {/* Reject */}
+                        <button
+                            disabled={selectedOrder.status !== "Waiting Verification"}
+                            onClick={() =>
+                                updateStatus(selectedOrder.id, "Rejected")
+                            }
+                        >
+                            Reject
+                        </button>
 
-    {/* Tombol Complete (Hanya aktif jika status sudah Shipped) */}
-    <button
-        disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
-        onClick={() => updateStatus(selectedOrder.id, "Completed")}
-    >
-        Complete
-    </button>
+                        {/* Ship */}
+                        <button
+                            disabled={selectedOrder.status !== "Processing"}
+                            onClick={() =>
+                                updateStatus(selectedOrder.id, "Shipped")
+                            }
+                        >
+                            Ship
+                        </button>
 
-    <button onClick={() => setSelectedOrder(null)}>
-        Close
-    </button>
-</div>
+                        {/* Complete */}
+                        <button
+                            disabled={selectedOrder.status !== "Shipped"}
+                            onClick={() =>
+                                updateStatus(selectedOrder.id, "Completed")
+                            }
+                        >
+                            Complete
+                        </button>
+
+                        <button onClick={() => setSelectedOrder(null)}>
+                            Close
+                        </button>
+
                     </div>
+
                 </div>
-            )}
-        </div>
-    );
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default OrderManagement;
