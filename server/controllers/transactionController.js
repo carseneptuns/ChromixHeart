@@ -167,11 +167,15 @@ const getTransaction = async (req, res) => {
 // ==========================================
 const confirmPayment = async (req, res) => {
 
+    console.log("========== MASUK CONTROLLER ==========");
+    console.log("Transaction ID :", req.params.id);
+    console.log("Body :", req.body);
+    console.log("File :", req.file);
+
     try {
 
         const { payment_method } = req.body;
-        
-        // Ambil nama file dari multer jika ada yang di-upload
+
         const proof_payment = req.file ? req.file.filename : null;
 
         if (!payment_method) {
@@ -186,7 +190,7 @@ const confirmPayment = async (req, res) => {
         await transactionModel.confirmPayment(
             req.params.id,
             payment_method,
-            proof_payment // <-- Masukkan variabel file di sini
+            proof_payment
         );
 
         res.json({
@@ -196,7 +200,9 @@ const confirmPayment = async (req, res) => {
 
     } catch (err) {
 
+        console.log("========== CONTROLLER ERROR ==========");
         console.log(err);
+        console.log("======================================");
 
         res.status(500).json({
             success: false,

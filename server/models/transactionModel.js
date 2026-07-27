@@ -340,10 +340,9 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             throw new Error("Transaksi sudah selesai.");
         }
 
-        // ===============================
-        // Customer upload bukti pembayaran
-        // Menunggu verifikasi admin
-        // ===============================
+        console.log("===== DATA TRANSAKSI =====");
+        console.log(trx[0]);
+
         await connection.query(
             `
             UPDATE tbl_transaksi
@@ -360,9 +359,17 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             ]
         );
 
-        // ===============================
-        // Simpan ke orders
-        // ===============================
+        console.log("===== INSERT ORDERS =====");
+        console.log({
+            customer_id: trx[0].user_id,
+            customer_name: trx[0].nama_lengkap,
+            payment_method,
+            total: trx[0].total,
+            status: "Waiting Verification",
+            alamat: trx[0].alamat,
+            proof_payment
+        });
+
         await connection.query(
             `
             INSERT INTO orders
@@ -388,6 +395,8 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             ]
         );
 
+        console.log("===== INSERT BERHASIL =====");
+
         await connection.commit();
 
         return {
@@ -395,6 +404,16 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
         };
 
     } catch (err) {
+
+        console.log("======================================");
+        console.log("CONFIRM PAYMENT ERROR");
+        console.log(err);
+        console.log("code :", err.code);
+        console.log("errno :", err.errno);
+        console.log("sqlState :", err.sqlState);
+        console.log("sqlMessage :", err.sqlMessage);
+        console.log("sql :", err.sql);
+        console.log("======================================");
 
         await connection.rollback();
         throw err;
