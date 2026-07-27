@@ -1,11 +1,11 @@
 const transactionModel = require("../models/transactionModel");
 
-// buy now
+// ==========================================
+// BUY NOW
+// ==========================================
 const createTransaction = async (req, res) => {
 
     try {
-
-        console.log(req.body);
 
         const {
             user_id,
@@ -51,11 +51,9 @@ const createTransaction = async (req, res) => {
         );
 
         res.status(201).json({
-
             success: true,
             message: "Checkout berhasil",
             transaction_id: result.transaction_id
-
         });
 
     } catch (err) {
@@ -63,21 +61,19 @@ const createTransaction = async (req, res) => {
         console.log(err);
 
         res.status(500).json({
-
             success: false,
             message: err.message
-
         });
 
     }
 
 };
 
-// CART CHECKOUT
+// ==========================================
+// CHECKOUT CART
+// ==========================================
 const checkout = async (req, res) => {
 
-    console.log("=== checkout===");
-    console.log(req.body);
     try {
 
         const {
@@ -85,22 +81,15 @@ const checkout = async (req, res) => {
             alamat
         } = req.body;
 
-        console.log({
-            user_id,
-            alamat
-        });
-
-
         if (!user_id) {
 
             return res.status(400).json({
-
                 success: false,
                 message: "User tidak ditemukan"
-
             });
 
         }
+
         const role = await transactionModel.getUserRole(user_id);
 
         if (!role) {
@@ -124,14 +113,11 @@ const checkout = async (req, res) => {
         const result = await transactionModel.checkoutCart(
             user_id,
             alamat
-
         );
 
         res.json({
-
             success: true,
             transaction_id: result.transaction_id
-
         });
 
     } catch (err) {
@@ -139,17 +125,17 @@ const checkout = async (req, res) => {
         console.log(err);
 
         res.status(500).json({
-
             success: false,
             message: err.message
-
         });
 
     }
 
 };
 
+// ==========================================
 // GET TRANSACTION
+// ==========================================
 const getTransaction = async (req, res) => {
 
     try {
@@ -159,10 +145,8 @@ const getTransaction = async (req, res) => {
         );
 
         res.json({
-
             success: true,
             data: transaction
-
         });
 
     } catch (err) {
@@ -170,66 +154,70 @@ const getTransaction = async (req, res) => {
         console.log(err);
 
         res.status(500).json({
-
             success: false,
             message: err.message
-
         });
 
     }
 
 };
 
+// ==========================================
 // CONFIRM PAYMENT
+// ==========================================
 const confirmPayment = async (req, res) => {
+
     try {
-        console.log("=== confirmPayment ===");
-        console.log("Body:", req.body);
-        console.log("File:", req.file);
 
         const { payment_method } = req.body;
-        const proof_payment = req.file?.filename || null;
+
         if (!payment_method) {
+
             return res.status(400).json({
                 success: false,
-                message: "Metode pembayaran tidak boleh kosong"
+                message: "Metode pembayaran harus dipilih"
             });
+
         }
 
-        // Panggil model dengan menyertakan proof_payment
         await transactionModel.confirmPayment(
             req.params.id,
             payment_method,
-            proof_payment
+            null
         );
 
         res.json({
             success: true,
-            message: "Pembayaran berhasil dikonfirmasi"
+            message: "Pembayaran berhasil"
         });
 
     } catch (err) {
+
         console.log(err);
+
         res.status(500).json({
             success: false,
             message: err.message
         });
+
     }
+
 };
+
+// ==========================================
+// GET USER TRANSACTIONS
+// ==========================================
 const getUserTransactions = async (req, res) => {
 
     try {
 
-        const data =
-            await transactionModel.getUserTransactions(
-                req.params.user_id
-            );
+        const data = await transactionModel.getUserTransactions(
+            req.params.user_id
+        );
 
         res.json({
-
             success: true,
             data
-
         });
 
     } catch (err) {
@@ -237,10 +225,8 @@ const getUserTransactions = async (req, res) => {
         console.log(err);
 
         res.status(500).json({
-
             success: false,
             message: err.message
-
         });
 
     }
@@ -252,7 +238,7 @@ module.exports = {
     createTransaction,
     checkout,
     getTransaction,
-    getUserTransactions,
-    confirmPayment
+    confirmPayment,
+    getUserTransactions
 
 };
