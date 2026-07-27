@@ -238,36 +238,35 @@ const getTransaction = async (id) => {
 
     const [rows] = await db.query(
         `
-        SELECT
+       SELECT
 
-            tt.id,
-            tt.user_id,
-            tt.tanggal,
-            tt.total,
-            tt.status,
-            tt.payment_method,
-            tt.alamat,
-            tt.proof_payment
+    tt.id,
+    tt.user_id,
+    tt.tanggal,
+    tt.total,
+    tt.status,
+    tt.payment_method,
+    tt.alamat,
+    tt.proof_payment,
 
+    dt.produk_id,
+    dt.quantity,
+    dt.harga,
+    dt.subtotal,
 
-            dt.produk_id,
-            dt.quantity,
-            dt.harga,
-            dt.subtotal,
+    p.nama_produk,
+    p.gambar,
+    p.kategori
 
-            p.nama_produk,
-            p.gambar,
-            p.kategori
+FROM tbl_transaksi tt
 
-        FROM tbl_transaksi tt
+JOIN detail_transaksi dt
+ON tt.id = dt.transaksi_id
 
-        JOIN detail_transaksi dt
-        ON tt.id = dt.transaksi_id
+JOIN tbl_produk p
+ON dt.produk_id = p.id
 
-        JOIN tbl_produk p
-        ON dt.produk_id = p.id
-
-        WHERE tt.id = ?
+WHERE tt.id = ?
         `,
         [id]
     );
