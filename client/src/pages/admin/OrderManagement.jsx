@@ -22,19 +22,44 @@ function OrderManagement() {
         }
     };
 
-    const updateStatus = async (id, status) => {
-        try {
-            await axios.put(
-                `https://chromixheart-copy-production.up.railway.app/api/orders/${id}`,
-                { status }
-            );
-            fetchOrders();
-            setSelectedOrder(null);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+   const updateStatus = async (id, status) => {
 
+    try {
+
+        await axios.put(
+            `https://chromixheart-copy-production.up.railway.app/api/orders/${id}`,
+            { status }
+        );
+
+        // Ambil ulang semua data order terbaru
+        const res = await axios.get(
+            "https://chromixheart-copy-production.up.railway.app/api/orders"
+        );
+
+        // Update tabel
+        setOrders(res.data);
+
+        // Update popup detail dengan data terbaru
+        const updatedOrder = res.data.find(
+            (order) => order.id === id
+        );
+
+        if (updatedOrder) {
+            setSelectedOrder(updatedOrder);
+        }
+
+    } catch (err) {
+
+        console.log(err);
+
+        alert(
+            err.response?.data?.message ||
+            "Gagal mengubah status."
+        );
+
+    }
+
+};
     return (
         <div className="order-page">
             <h1>Order Management</h1>

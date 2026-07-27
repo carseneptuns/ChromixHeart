@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const getOrders = async (req, res) => {
     try {
+
         const [orders] = await db.query(`
             SELECT
                 id,
@@ -11,7 +12,7 @@ const getOrders = async (req, res) => {
                 total,
                 status,
                 alamat,
-                proof_payment, -- Pastikan baris ini ada!
+                proof_payment,
                 created_at
             FROM orders
             ORDER BY id DESC
@@ -20,29 +21,34 @@ const getOrders = async (req, res) => {
         res.json(orders);
 
     } catch (err) {
+
         console.log(err);
+
         res.status(500).json({
             success: false,
             message: err.message
         });
+
     }
 };
 
-// ===============================
+// ==========================================
 // CHANGE STATUS
-// ===============================
+// ==========================================
 const changeStatus = async (req, res) => {
+
     const connection = await db.getConnection();
 
     try {
+
         await connection.beginTransaction();
 
         const { id } = req.params;
         const { status } = req.body;
 
-        // ============================
+        // =====================================
         // Ambil Order
-        // ============================
+        // =====================================
         const [order] = await connection.query(
             `
             SELECT *
@@ -58,9 +64,9 @@ const changeStatus = async (req, res) => {
 
         const currentStatus = order[0].status;
 
-        // ============================
-        // Status final
-        // ============================
+        // =====================================
+        // Status Final
+        // =====================================
         if (
             currentStatus === "Rejected" ||
             currentStatus === "Completed"
@@ -68,19 +74,21 @@ const changeStatus = async (req, res) => {
             throw new Error("Order sudah selesai.");
         }
 
-        // ============================
-        // Validasi Perpindahan Status
-        // ============================
+        // =====================================
+        // VALIDASI STATUS
+        // =====================================
+
         if (
-            (currentStatus === "Waiting Verification" || currentStatus === "Pending") &&
-            status !== "Paid" &&
+            (currentStatus === "Waiting Verification" ||
+                currentStatus === "Pending") &&
+            status !== "Processing" &&
             status !== "Rejected"
         ) {
             throw new Error("Status tidak valid.");
         }
 
         if (
-            currentStatus === "Paid" &&
+            currentStatus === "Processing" &&
             status !== "Shipped"
         ) {
             throw new Error("Status tidak valid.");
@@ -93,14 +101,19 @@ const changeStatus = async (req, res) => {
             throw new Error("Status tidak valid.");
         }
 
-        // =====================================================
-        // 1. PROSES BERDASARKAN STATUS BARU
-        // =====================================================
+        // =====================================
+        // APPROVE
+        // =====================================
 
-        if (status === "Paid") {
-            // Validasi wajib ada bukti pembayaran jika metodenya bukan COD
-            if (!order[0].proof_payment && order[0].payment_method !== "Cash On Delivery") {
-                throw new Error("Customer belum mengupload bukti pembayaran, tidak bisa di-approve.");
+        if (status === "Processing") {
+
+            if (
+                !order[0].proof_payment &&
+                order[0].payment_method !== "Cash On Delivery"
+            ) {
+                throw new Error(
+                    "Customer belum upload bukti pembayaran."
+                );
             }
 
             const [trx] = await connection.query(
@@ -141,6 +154,7 @@ const changeStatus = async (req, res) => {
             );
 
             for (const item of items) {
+
                 const [product] = await connection.query(
                     `
                     SELECT stok
@@ -155,7 +169,7 @@ const changeStatus = async (req, res) => {
                 }
 
                 if (product[0].stok < item.quantity) {
-                    throw new Error("Stok produk tidak mencukupi.");
+                    throw new Error("Stok tidak mencukupi.");
                 }
 
                 await connection.query(
@@ -169,20 +183,30 @@ const changeStatus = async (req, res) => {
                         item.produk_id
                     ]
                 );
+
             }
 
-            // Update status di tbl_transaksi
             await connection.query(
                 `
                 UPDATE tbl_transaksi
-                SET status = 'Paid'
+                SET status = 'Processing'
                 WHERE id = ?
                 `,
                 [transaksiId]
             );
-        } 
-        else if (status === "Rejected" || status === "Shipped" || status === "Completed") {
-            // Update status di tbl_transaksi untuk status selain Paid (Rejected, Shipped, Completed)
+
+        }
+
+        // =====================================
+        // REJECT / SHIPPED / COMPLETED
+        // =====================================
+
+        else if (
+            status === "Rejected" ||
+            status === "Shipped" ||
+            status === "Completed"
+        ) {
+
             await connection.query(
                 `
                 UPDATE tbl_transaksi
@@ -203,18 +227,23 @@ const changeStatus = async (req, res) => {
                     order[0].payment_method
                 ]
             );
+
         }
 
-        // =====================================================
-        // 2. UPDATE STATUS DI TABEL ORDERS (UTAMA)
-        // =====================================================
+        // =====================================
+        // UPDATE ORDERS
+        // =====================================
+
         await connection.query(
             `
             UPDATE orders
             SET status = ?
             WHERE id = ?
             `,
-            [status, id]
+            [
+                status,
+                id
+            ]
         );
 
         await connection.commit();
@@ -225,7 +254,9 @@ const changeStatus = async (req, res) => {
         });
 
     } catch (err) {
+
         await connection.rollback();
+
         console.log(err);
 
         res.status(500).json({
@@ -234,8 +265,11 @@ const changeStatus = async (req, res) => {
         });
 
     } finally {
+
         connection.release();
+
     }
+
 };
 
 module.exports = {
