@@ -189,17 +189,23 @@ function OrderManagement() {
         flexWrap: "wrap"
     }}
 >
-    {/* Tombol Approve (Aktif saat status masih Pending) */}
+    {/* Tombol Approve (Aktif saat status Pending / Waiting Verification) */}
     <button
-        disabled={selectedOrder.status?.toLowerCase() !== "pending"}
+        disabled={
+            selectedOrder.status?.toLowerCase() !== "pending" &&
+            selectedOrder.status?.toLowerCase() !== "waiting verification"
+        }
         onClick={() => updateStatus(selectedOrder.id, "Paid")}
     >
         Approve
     </button>
 
-    {/* Tombol Reject (Aktif saat status masih Pending - bisa dipakai jika bukti kosong/palsu) */}
+    {/* Tombol Reject */}
     <button
-        disabled={selectedOrder.status?.toLowerCase() !== "pending"}
+        disabled={
+            selectedOrder.status?.toLowerCase() !== "pending" &&
+            selectedOrder.status?.toLowerCase() !== "waiting verification"
+        }
         onClick={() => updateStatus(selectedOrder.id, "Rejected")}
     >
         Reject
