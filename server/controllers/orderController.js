@@ -83,8 +83,9 @@ const changeStatus = async (req, res) => {
         // Validasi Perpindahan Status
         // ============================
 
+        // Mendukung status awal "Pending" atau "Waiting Verification"
         if (
-            currentStatus === "Waiting Verification" &&
+            (currentStatus === "Waiting Verification" || currentStatus === "Pending") &&
             status !== "Paid" &&
             status !== "Rejected"
         ) {
@@ -106,10 +107,15 @@ const changeStatus = async (req, res) => {
         }
 
         // =====================================================
-        // APPROVE
+        // APPROVE (PAID)
         // =====================================================
 
         if (status === "Paid") {
+
+            // Validasi wajib ada bukti pembayaran jika metodenya bukan COD
+            if (!order[0].proof_payment && order[0].payment_method !== "Cash On Delivery") {
+                throw new Error("Customer belum mengupload bukti pembayaran, tidak bisa di-approve.");
+            }
 
             const [trx] = await connection.query(
                 `
