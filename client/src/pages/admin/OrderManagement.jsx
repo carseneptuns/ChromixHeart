@@ -182,47 +182,49 @@ function OrderManagement() {
                         )}
 
                         <div
-                            style={{
-                                marginTop: "25px",
-                                display: "flex",
-                                gap: "10px",
-                                flexWrap: "wrap"
-                            }}
-                        >
+    style={{
+        marginTop: "25px",
+        display: "flex",
+        gap: "10px",
+        flexWrap: "wrap"
+    }}
+>
+    {/* Tombol Approve (Aktif saat status masih Pending) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "pending"}
+        onClick={() => updateStatus(selectedOrder.id, "Paid")}
+    >
+        Approve
+    </button>
 
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "pending"}
-                                onClick={() => updateStatus(selectedOrder.id, "Paid")}
-                            >
-                                Approve
-                            </button>
+    {/* Tombol Reject (Aktif saat status masih Pending - bisa dipakai jika bukti kosong/palsu) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "pending"}
+        onClick={() => updateStatus(selectedOrder.id, "Rejected")}
+    >
+        Reject
+    </button>
 
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "pending"}
-                                onClick={() => updateStatus(selectedOrder.id, "Rejected")}
-                            >
-                                Reject
-                            </button>
+    {/* Tombol Ship (Aktif setelah di-approve / status Paid) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "paid"}
+        onClick={() => updateStatus(selectedOrder.id, "Shipped")}
+    >
+        Ship
+    </button>
 
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "paid"}
-                                onClick={() => updateStatus(selectedOrder.id, "Shipped")}
-                            >
-                                Ship
-                            </button>
+    {/* Tombol Complete (Aktif setelah barang dikirim / status Shipped) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
+        onClick={() => updateStatus(selectedOrder.id, "Completed")}
+    >
+        Complete
+    </button>
 
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
-                                onClick={() => updateStatus(selectedOrder.id, "Completed")}
-                            >
-                                Complete
-                            </button>
-
-                            <button onClick={() => setSelectedOrder(null)}>
-                                Close
-                            </button>
-
-                        </div>
+    <button onClick={() => setSelectedOrder(null)}>
+        Close
+    </button>
+</div>
                     </div>
                 </div>
             )}
