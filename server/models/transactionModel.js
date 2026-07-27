@@ -304,12 +304,16 @@ const getTransaction = async (id) => {
 // CONFIRM PAYMENT
 // ==========================================
 const confirmPayment = async (id, payment_method, proof_payment) => {
+
     const connection = await db.getConnection();
 
     try {
+
         await connection.beginTransaction();
 
+        // =========================
         // Cek transaksi
+        // =========================
         const [trx] = await connection.query(
             `
             SELECT
@@ -331,62 +335,25 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             throw new Error("Transaksi tidak ditemukan");
         }
 
-        if (trx[0].status === "Paid") {
-            throw new Error("Transaksi sudah dibayar");
+        if (
+            trx[0].status === "Waiting Verification" ||
+            trx[0].status === "Paid"
+        ) {
+            throw new Error("Pembayaran sudah dikirim");
         }
 
-        // Ambil semua item transaksi
-        const [items] = await connection.query(
-            `
-            SELECT
-                produk_id,
-                quantity
-            FROM detail_transaksi
-            WHERE transaksi_id = ?
-            `,
-            [id]
-        );
+        // =========================
+        // JANGAN kurangi stok di sini
+        // Admin yang menentukan nanti
+        // =========================
 
-        // Kurangi stok
-        for (const item of items) {
-            const [product] = await connection.query(
-                `
-                SELECT stok
-                FROM tbl_produk
-                WHERE id = ?
-                `,
-                [item.produk_id]
-            );
-
-            if (product.length === 0) {
-                throw new Error("Produk tidak ditemukan");
-            }
-
-            if (product[0].stok < item.quantity) {
-                throw new Error("Stok tidak mencukupi");
-            }
-
-            await connection.query(
-                `
-                UPDATE tbl_produk
-                SET stok = stok - ?
-                WHERE id = ?
-                `,
-                [
-                    item.quantity,
-                    item.produk_id
-                ]
-            );
-        }
-
-        // Update transaksi (Menyimpan payment_method, proof_payment, dan status)
         await connection.query(
             `
-           UPDATE tbl_transaksi
-           SET
-             payment_method = ?,
-             proof_payment = ?,
-             status = 'Paid'
+            UPDATE tbl_transaksi
+            SET
+                payment_method = ?,
+                proof_payment = ?,
+                status = 'Waiting Verification'
             WHERE id = ?
             `,
             [
@@ -396,40 +363,52 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
             ]
         );
 
-        // Simpan ke tabel orders (untuk OrderManagement admin)
+        // =========================
+        // Simpan ke Order Management
+        // =========================
+
         await connection.query(
             `
-    INSERT INTO orders
-    (
-        customer_id,
-        customer_name,
-        payment_method,
-        total,
-        status,
-        alamat,
-        proof_payment
-    )
-    VALUES (?,?,?,?,?,?,?)
-    `,
+            INSERT INTO orders
+            (
+                customer_id,
+                customer_name,
+                payment_method,
+                total,
+                status,
+                alamat,
+                proof_payment
+            )
+            VALUES (?,?,?,?,?,?,?)
+            `,
             [
                 trx[0].user_id,
                 trx[0].nama_lengkap,
                 payment_method,
                 trx[0].total,
-                "Paid",
+                "Waiting Verification",
                 trx[0].alamat,
                 proof_payment
             ]
         );
+
         await connection.commit();
-        return { success: true };
+
+        return {
+            success: true
+        };
 
     } catch (err) {
+
         await connection.rollback();
         throw err;
+
     } finally {
+
         connection.release();
+
     }
+
 };
 const getUserTransactions = async (user_id) => {
 
