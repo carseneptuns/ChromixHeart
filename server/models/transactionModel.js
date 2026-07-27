@@ -247,6 +247,7 @@ const getTransaction = async (id) => {
             tt.status,
             tt.payment_method,
             tt.alamat,
+            tt.proof_payment
 
 
             dt.produk_id,
@@ -284,6 +285,7 @@ const getTransaction = async (id) => {
         status: rows[0].status,
         payment_method: rows[0].payment_method,
         alamat: rows[0].alamat,
+        proof_payment: rows[0].proof_payment,
 
 
         items: rows.map(item => ({

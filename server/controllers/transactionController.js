@@ -170,6 +170,9 @@ const confirmPayment = async (req, res) => {
     try {
 
         const { payment_method } = req.body;
+        
+        // Ambil nama file dari multer jika ada yang di-upload
+        const proof_payment = req.file ? req.file.filename : null;
 
         if (!payment_method) {
 
@@ -183,7 +186,7 @@ const confirmPayment = async (req, res) => {
         await transactionModel.confirmPayment(
             req.params.id,
             payment_method,
-            null
+            proof_payment // <-- Masukkan variabel file di sini
         );
 
         res.json({
