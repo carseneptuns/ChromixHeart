@@ -191,28 +191,28 @@ function OrderManagement() {
                         >
 
                             <button
-                                disabled={selectedOrder.status !== "Pending"}
+                                disabled={selectedOrder.status?.toLowerCase() !== "pending"}
                                 onClick={() => updateStatus(selectedOrder.id, "Paid")}
                             >
                                 Approve
                             </button>
 
                             <button
-                                disabled={selectedOrder.status !== "Pending"}
+                                disabled={selectedOrder.status?.toLowerCase() !== "pending"}
                                 onClick={() => updateStatus(selectedOrder.id, "Rejected")}
                             >
                                 Reject
                             </button>
 
                             <button
-                                disabled={selectedOrder.status !== "Paid"}
+                                disabled={selectedOrder.status?.toLowerCase() !== "paid"}
                                 onClick={() => updateStatus(selectedOrder.id, "Shipped")}
                             >
                                 Ship
                             </button>
 
                             <button
-                                disabled={selectedOrder.status !== "Shipped"}
+                                disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
                                 onClick={() => updateStatus(selectedOrder.id, "Completed")}
                             >
                                 Complete
