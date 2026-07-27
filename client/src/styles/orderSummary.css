@@ -287,53 +287,38 @@
 @media (max-width:768px){
 
     .order-summary{
-
         padding:22px;
-
         border-radius:18px;
-
     }
 
     .order-summary h3{
-
         font-size:26px;
-
     }
 
     .summary-row{
-
         font-size:14px;
-
         gap:12px;
-
     }
 
     .summary-total{
-
-        flex-wrap:wrap;
-
-        gap:10px;
-
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap; /* Ubah dari wrap menjadi nowrap agar tidak turun ke bawah */
+        margin-bottom:20px;
     }
 
     .summary-total span{
-
         font-size:16px;
-
     }
 
     .summary-total strong{
-
         font-size:22px;
-
     }
 
     .checkout-btn{
-
         height:50px;
-
         font-size:15px;
-
     }
 
 }
