@@ -182,55 +182,55 @@ function OrderManagement() {
                         )}
 
                         <div
-                            style={{
-                                marginTop: "25px",
-                                display: "flex",
-                                gap: "10px",
-                                flexWrap: "wrap"
-                            }}
-                        >
-                            {/* Tombol Approve (Aktif saat status Pending / Waiting Verification) */}
-                            <button
-                                disabled={
-                                    selectedOrder.status?.toLowerCase() !== "pending" &&
-                                    selectedOrder.status?.toLowerCase() !== "waiting verification"
-                                }
-                                onClick={() => updateStatus(selectedOrder.id, "Paid")}
-                            >
-                                Approve
-                            </button>
+    style={{
+        marginTop: "25px",
+        display: "flex",
+        gap: "10px",
+        flexWrap: "wrap"
+    }}
+>
+    {/* Tombol Approve (Hanya aktif jika status Pending / Waiting Verification) */}
+    <button
+        disabled={
+            selectedOrder.status?.toLowerCase() !== "pending" &&
+            selectedOrder.status?.toLowerCase() !== "waiting verification"
+        }
+        onClick={() => updateStatus(selectedOrder.id, "Paid")}
+    >
+        Approve
+    </button>
 
-                            {/* Tombol Reject (Aktif saat status Pending / Waiting Verification) */}
-                            <button
-                                disabled={
-                                    selectedOrder.status?.toLowerCase() !== "pending" &&
-                                    selectedOrder.status?.toLowerCase() !== "waiting verification"
-                                }
-                                onClick={() => updateStatus(selectedOrder.id, "Rejected")}
-                            >
-                                Reject
-                            </button>
+    {/* Tombol Reject (Hanya aktif jika status Pending / Waiting Verification) */}
+    <button
+        disabled={
+            selectedOrder.status?.toLowerCase() !== "pending" &&
+            selectedOrder.status?.toLowerCase() !== "waiting verification"
+        }
+        onClick={() => updateStatus(selectedOrder.id, "Rejected")}
+    >
+        Reject
+    </button>
 
-                            {/* Tombol Ship (Aktif setelah di-approve / status Paid) */}
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "paid"}
-                                onClick={() => updateStatus(selectedOrder.id, "Shipped")}
-                            >
-                                Ship
-                            </button>
+    {/* Tombol Ship (Hanya aktif jika status sudah Paid) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "paid"}
+        onClick={() => updateStatus(selectedOrder.id, "Shipped")}
+    >
+        Ship
+    </button>
 
-                            {/* Tombol Complete (Aktif setelah barang dikirim / status Shipped) */}
-                            <button
-                                disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
-                                onClick={() => updateStatus(selectedOrder.id, "Completed")}
-                            >
-                                Complete
-                            </button>
+    {/* Tombol Complete (Hanya aktif jika status sudah Shipped) */}
+    <button
+        disabled={selectedOrder.status?.toLowerCase() !== "shipped"}
+        onClick={() => updateStatus(selectedOrder.id, "Completed")}
+    >
+        Complete
+    </button>
 
-                            <button onClick={() => setSelectedOrder(null)}>
-                                Close
-                            </button>
-                        </div>
+    <button onClick={() => setSelectedOrder(null)}>
+        Close
+    </button>
+</div>
                     </div>
                 </div>
             )}
