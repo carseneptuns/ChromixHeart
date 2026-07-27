@@ -1,8 +1,5 @@
 const db = require("../config/db");
 
-// ===============================
-// GET ALL ORDERS
-// ===============================
 const getOrders = async (req, res) => {
     try {
         const [orders] = await db.query(`
@@ -14,7 +11,7 @@ const getOrders = async (req, res) => {
                 total,
                 status,
                 alamat,
-                proof_payment,
+                proof_payment, -- Pastikan baris ini ada!
                 created_at
             FROM orders
             ORDER BY id DESC
