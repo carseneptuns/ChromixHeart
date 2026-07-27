@@ -7,9 +7,7 @@ const createTransaction = async (
     user_id,
     produk_id,
     quantity,
-    alamat,
-    latitude,
-    longitude
+    alamat
 ) => {
 
     const connection = await db.getConnection();
@@ -45,19 +43,15 @@ const createTransaction = async (
                 tanggal,
                 total,
                 status,
-                alamat,
-                latitude,
-                longitude
+                alamat
             )
             VALUES
-            (?, NOW(), ?, 'Pending', ?, ?, ?)
+            (?, NOW(), ?, 'Pending', ?)
             `,
             [
                 user_id,
                 total,
-                alamat,
-                latitude,
-                longitude
+                alamat
             ]
         );
 
@@ -105,7 +99,7 @@ const createTransaction = async (
 // ==========================================
 // CHECKOUT CART
 // ==========================================
-const checkoutCart = async (user_id, alamat, latitude, longitude) => {
+const checkoutCart = async (user_id, alamat) => {
 
     const connection = await db.getConnection();
 
@@ -158,19 +152,15 @@ const checkoutCart = async (user_id, alamat, latitude, longitude) => {
                 tanggal,
                 total,
                 status,
-                alamat,
-                latitude,
-                longitude
+                alamat
             )
             VALUES
-            (?, NOW(), ?, 'Pending', ?, ?, ?)
+            (?, NOW(), ?, 'Pending', ?)
             `,
             [
                 user_id,
                 total,
-                alamat,
-                latitude,
-                longitude
+                alamat
             ]
         );
 
@@ -257,8 +247,7 @@ const getTransaction = async (id) => {
             tt.status,
             tt.payment_method,
             tt.alamat,
-            tt.latitude,
-            tt.longitude,
+
 
             dt.produk_id,
             dt.quantity,
@@ -295,8 +284,7 @@ const getTransaction = async (id) => {
         status: rows[0].status,
         payment_method: rows[0].payment_method,
         alamat: rows[0].alamat,
-        latitude: rows[0].latitude,
-        longitude: rows[0].longitude,
+
 
         items: rows.map(item => ({
             produk_id: item.produk_id,
@@ -330,8 +318,6 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
                 tt.total,
                 tt.status,
                 tt.alamat,
-                tt.latitude,
-                tt.longitude,
                 u.nama_lengkap
             FROM tbl_transaksi tt
             JOIN tbl_login u
@@ -413,20 +399,18 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
         // Simpan ke tabel orders (untuk OrderManagement admin)
         await connection.query(
             `
-            INSERT INTO orders
-            (
-                customer_id,
-                customer_name,
-                payment_method,
-                total,
-                status,
-                alamat,
-                latitude,
-                longitude,
-                proof_payment
-            )
-            VALUES (?,?,?,?,?,?,?,?,?)
-            `,
+    INSERT INTO orders
+    (
+        customer_id,
+        customer_name,
+        payment_method,
+        total,
+        status,
+        alamat,
+        proof_payment
+    )
+    VALUES (?,?,?,?,?,?,?)
+    `,
             [
                 trx[0].user_id,
                 trx[0].nama_lengkap,
@@ -434,12 +418,9 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
                 trx[0].total,
                 "Paid",
                 trx[0].alamat,
-                trx[0].latitude,
-                trx[0].longitude,
                 proof_payment
             ]
         );
-
         await connection.commit();
         return { success: true };
 

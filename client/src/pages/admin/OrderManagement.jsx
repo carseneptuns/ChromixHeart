@@ -7,7 +7,7 @@ function OrderManagement() {
     const [orders, setOrders] = useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
 
-     useEffect(() => {
+    useEffect(() => {
         fetchOrders();
     }, []);
 
@@ -37,58 +37,58 @@ function OrderManagement() {
 
     return (
         <div className="order-page">
-    <h1>Order Management</h1>
+            <h1>Order Management</h1>
 
-    {/* TAMBAHKAN WRAPPER INI */}
-    <div className="table-wrapper">
-        <table className="order-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Customer</th>
-                    <th>Total</th>
-                    <th>Payment</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {orders.length === 0 ? (
-                    <tr>
-                        <td colSpan="7">No Orders</td>
-                    </tr>
-                ) : (
-                    orders.map((order) => (
-                        <tr key={order.id}>
-                            <td>{order.id}</td>
-                            <td>{order.customer_name}</td>
-                            <td>
-                                Rp {Number(order.total).toLocaleString("id-ID")}
-                            </td>
-                            <td>{order.payment_method}</td>
-                            <td>
-                                <span className={`status ${order.status}`}>
-                                    {order.status}
-                                </span>
-                            </td>
-                            <td>
-                                {new Date(order.created_at).toLocaleDateString()}
-                            </td>
-                            <td>
-                                <button onClick={() => {
-                                    console.log("Data order lengkap:", order);
-                                    setSelectedOrder(order);
-                                }}>
-                                    Detail
-                                </button>
-                            </td>
+            {/* TAMBAHKAN WRAPPER INI */}
+            <div className="table-wrapper">
+                <table className="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
-                    ))
-                )}
-            </tbody>
-        </table>
-    </div>
+                    </thead>
+                    <tbody>
+                        {orders.length === 0 ? (
+                            <tr>
+                                <td colSpan="7">No Orders</td>
+                            </tr>
+                        ) : (
+                            orders.map((order) => (
+                                <tr key={order.id}>
+                                    <td>{order.id}</td>
+                                    <td>{order.customer_name}</td>
+                                    <td>
+                                        Rp {Number(order.total).toLocaleString("id-ID")}
+                                    </td>
+                                    <td>{order.payment_method}</td>
+                                    <td>
+                                        <span className={`status ${order.status}`}>
+                                            {order.status}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {new Date(order.created_at).toLocaleDateString()}
+                                    </td>
+                                    <td>
+                                        <button onClick={() => {
+                                            console.log("Data order lengkap:", order);
+                                            setSelectedOrder(order);
+                                        }}>
+                                            Detail
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
             {selectedOrder && (
                 <div className="order-modal">

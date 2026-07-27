@@ -1,57 +1,47 @@
-const Order = require("../models/orderModel");
+const db = require("../config/db");
 
-// =========================
-// GET ALL ORDERS
-// =========================
+// Ambil semua data order untuk halaman Order Management Admin
 const getOrders = async (req, res) => {
-
     try {
-
-        const result = await Order.getAllOrders();
-
-        res.json(result);
-
+        const [orders] = await db.query(`
+            SELECT 
+                id,
+                customer_id,
+                customer_name,
+                payment_method,
+                total,
+                status,
+                alamat,
+                proof_payment,
+                created_at
+            FROM orders
+            ORDER BY id DESC
+        `);
+        res.json(orders);
     } catch (err) {
-
         console.log(err);
-
-        res.status(500).json({
-            message: err.message
-        });
-
+        res.status(500).json({ success: false, message: err.message });
     }
-
 };
 
-// =========================
-// UPDATE STATUS
-// =========================
+// Ubah status order (Approve, Reject, Ship, Complete)
 const changeStatus = async (req, res) => {
-
-    console.log(req.body);
-
     try {
-
         const { id } = req.params;
         const { status } = req.body;
 
-        await Order.updateStatus(id, status);
+        await db.query(
+            `UPDATE orders SET status = ? WHERE id = ?`,
+            [status, id]
+        );
 
-        res.json({
-            message: "Status Updated"
-        });
-
+        res.json({ success: true, message: "Status order berhasil diubah" });
     } catch (err) {
-
         console.log(err);
-
-        res.status(500).json({
-            message: err.message
-        });
-
+        res.status(500).json({ success: false, message: err.message });
     }
-
 };
+
 module.exports = {
     getOrders,
     changeStatus

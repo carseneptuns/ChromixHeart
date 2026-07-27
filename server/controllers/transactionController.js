@@ -11,9 +11,7 @@ const createTransaction = async (req, res) => {
             user_id,
             produk_id,
             quantity,
-            alamat,
-            latitude,
-            longitude
+            alamat
         } = req.body;
 
         if (!user_id || !produk_id || !quantity) {
@@ -49,9 +47,7 @@ const createTransaction = async (req, res) => {
             user_id,
             produk_id,
             quantity,
-            alamat,
-            latitude,
-            longitude
+            alamat
         );
 
         res.status(201).json({
@@ -86,16 +82,12 @@ const checkout = async (req, res) => {
 
         const {
             user_id,
-            alamat,
-            latitude,
-            longitude
+            alamat
         } = req.body;
 
         console.log({
             user_id,
-            alamat,
-            latitude,
-            longitude
+            alamat
         });
 
 
@@ -131,9 +123,7 @@ const checkout = async (req, res) => {
 
         const result = await transactionModel.checkoutCart(
             user_id,
-            alamat,
-            latitude,
-            longitude
+            alamat
 
         );
 
@@ -197,12 +187,8 @@ const confirmPayment = async (req, res) => {
         console.log("Body:", req.body);
         console.log("File:", req.file);
 
-        // Ambil payment_method dari req.body dengan aman
-        const payment_method = req.body ? req.body.payment_method : null;
-
-        // Ambil nama file dari multer jika ada yang diupload
-        const proof_payment = req.file ? req.file.filename : null;
-
+        const { payment_method } = req.body;
+        const proof_payment = req.file?.filename || null;
         if (!payment_method) {
             return res.status(400).json({
                 success: false,
