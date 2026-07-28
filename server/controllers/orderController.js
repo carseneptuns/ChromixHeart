@@ -193,11 +193,7 @@ WHERE id = ?
             );
         }
 
-        // =====================================
-        // REJECT / SHIPPED / COMPLETED
-        // =====================================
-
-       else if (
+     else if (
     status === "Rejected" ||
     status === "Ship" ||
     status === "Completed"
