@@ -26,11 +26,10 @@ function OrderManagement() {
 
     try {
 
-        await axios.put(
-            `https://chromixheart-copy-production.up.railway.app/api/orders/${id}`,
-            { status }
-        );
-
+      await axios.put(
+    `https://chromixheart-copy-production.up.railway.app/api/orders/${id}/status`,
+    { status }
+);
         // Ambil ulang semua data order terbaru
         const res = await axios.get(
             "https://chromixheart-copy-production.up.railway.app/api/orders"
