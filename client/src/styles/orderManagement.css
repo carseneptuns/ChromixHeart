@@ -80,7 +80,11 @@
     background: #4caf50;
 }
 
-.status.Shipped {
+.status.Approve {
+    background: #2e7d32;
+}
+
+.status.Ship {
     background: #2196f3;
 }
 
@@ -91,7 +95,6 @@
 .status.Rejected {
     background: #e53935;
 }
-
 /* ================= MODAL STYLING ================= */
 .order-modal {
     position: fixed;
