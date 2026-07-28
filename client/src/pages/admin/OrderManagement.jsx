@@ -206,60 +206,60 @@ function OrderManagement() {
                             </div>
                         )}
 
-                                       <div
-                        style={{
-                            marginTop: "25px",
-                            display: "flex",
-                            gap: "10px",
-                            flexWrap: "wrap"
-                        }}
-                    >
+                                      <div
+    style={{
+        marginTop: "25px",
+        display: "flex",
+        gap: "10px",
+        flexWrap: "wrap"
+    }}
+>
 
-                        {/* Approve */}
-                        <button
-                            disabled={selectedOrder.status !== "Waiting Verification"}
-                            onClick={() =>
-                                updateStatus(selectedOrder.id, "Processing")
-                            }
-                        >
-                            Approve
-                        </button>
+    {/* APPROVE */}
+    <button
+        disabled={selectedOrder.status !== "Paid"}
+        onClick={() =>
+            updateStatus(selectedOrder.id, "Approve")
+        }
+    >
+        Approve
+    </button>
 
-                        {/* Reject */}
-                        <button
-                            disabled={selectedOrder.status !== "Waiting Verification"}
-                            onClick={() =>
-                                updateStatus(selectedOrder.id, "Rejected")
-                            }
-                        >
-                            Reject
-                        </button>
+    {/* REJECT */}
+    <button
+        disabled={selectedOrder.status !== "Paid"}
+        onClick={() =>
+            updateStatus(selectedOrder.id, "Rejected")
+        }
+    >
+        Reject
+    </button>
 
-                        {/* Ship */}
-                        <button
-                            disabled={selectedOrder.status !== "Processing"}
-                            onClick={() =>
-                                updateStatus(selectedOrder.id, "Shipped")
-                            }
-                        >
-                            Ship
-                        </button>
+    {/* SHIP */}
+    <button
+        disabled={selectedOrder.status !== "Approve"}
+        onClick={() =>
+            updateStatus(selectedOrder.id, "Ship")
+        }
+    >
+        Ship
+    </button>
 
-                        {/* Complete */}
-                        <button
-                            disabled={selectedOrder.status !== "Shipped"}
-                            onClick={() =>
-                                updateStatus(selectedOrder.id, "Completed")
-                            }
-                        >
-                            Complete
-                        </button>
+    {/* COMPLETE */}
+    <button
+        disabled={selectedOrder.status !== "Ship"}
+        onClick={() =>
+            updateStatus(selectedOrder.id, "Completed")
+        }
+    >
+        Complete
+    </button>
 
-                        <button onClick={() => setSelectedOrder(null)}>
-                            Close
-                        </button>
+    <button onClick={() => setSelectedOrder(null)}>
+        Close
+    </button>
 
-                    </div>
+</div>
 
                 </div>
             </div>

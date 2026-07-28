@@ -344,56 +344,56 @@ const confirmPayment = async (id, payment_method, proof_payment) => {
         console.log(trx[0]);
 
         await connection.query(
-            `
-            UPDATE tbl_transaksi
-            SET
-                payment_method = ?,
-                proof_payment = ?,
-                status = 'Waiting Verification'
-            WHERE id = ?
-            `,
-            [
-                payment_method,
-                proof_payment,
-                id
-            ]
-        );
+    `
+    UPDATE tbl_transaksi
+    SET
+        payment_method = ?,
+        proof_payment = ?,
+        status = 'Paid'
+    WHERE id = ?
+    `,
+    [
+        payment_method,
+        proof_payment,
+        id
+    ]
+);
 
         console.log("===== INSERT ORDERS =====");
-        console.log({
-            customer_id: trx[0].user_id,
-            customer_name: trx[0].nama_lengkap,
-            payment_method,
-            total: trx[0].total,
-            status: "Waiting Verification",
-            alamat: trx[0].alamat,
-            proof_payment
-        });
+       console.log({
+    customer_id: trx[0].user_id,
+    customer_name: trx[0].nama_lengkap,
+    payment_method,
+    total: trx[0].total,
+    status: "Paid",
+    alamat: trx[0].alamat,
+    proof_payment
+});
 
         await connection.query(
-            `
-            INSERT INTO orders
-            (
-                customer_id,
-                customer_name,
-                payment_method,
-                total,
-                status,
-                alamat,
-                proof_payment
-            )
-            VALUES (?,?,?,?,?,?,?)
-            `,
-            [
-                trx[0].user_id,
-                trx[0].nama_lengkap,
-                payment_method,
-                trx[0].total,
-                "Waiting Verification",
-                trx[0].alamat,
-                proof_payment
-            ]
-        );
+    `
+    INSERT INTO orders
+    (
+        customer_id,
+        customer_name,
+        payment_method,
+        total,
+        status,
+        alamat,
+        proof_payment
+    )
+    VALUES (?,?,?,?,?,?,?)
+    `,
+    [
+        trx[0].user_id,
+        trx[0].nama_lengkap,
+        payment_method,
+        trx[0].total,
+        "Paid",
+        trx[0].alamat,
+        proof_payment
+    ]
+);
 
         console.log("===== INSERT BERHASIL =====");
 
