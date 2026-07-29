@@ -80,7 +80,7 @@ body{
 }
 
 .nav-link{
-    color:#fff !important;
+    color:#262525 !important;
     text-decoration:none;
     font-family:"Inter",sans-serif;
     font-size:15px;
@@ -106,7 +106,7 @@ body{
 }
 
 .custom-menu .dropdown-item{
-    color:#fff;
+    color:#b76b6b;
 }
 
 .custom-menu .dropdown-item:hover{
