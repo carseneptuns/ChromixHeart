@@ -4,6 +4,7 @@ import { getProduct } from "../../services/productService";
 import { createTransaction } from "../../services/transactionService";
 
 import "../../styles/checkout.css";
+import { uploadUrl } from "../../services/apiConfig";
 
 function Checkout() {
 
@@ -106,7 +107,7 @@ function Checkout() {
                 <div className="checkout-image">
 
                     <img
-                        src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
+                        src={uploadUrl(product.gambar)}
                         alt={product.nama_produk}
                     />
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/login.css";
 import LoginIntro from "../components/LoginIntro";
+import { API_BASE_URL } from "../services/apiConfig";
 
 function Login() {
 
@@ -29,7 +30,7 @@ function Login() {
         try {
 
             const res = await axios.post(
-                "https://chromixheart-copy-production.up.railway.app/api/auth/login",
+                `${API_BASE_URL}/auth/login`,
                 formData
             );
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../../services/productService";
 import "../../styles/productList.css";
 import { addCart } from "../../services/cartService";
+import { uploadUrl } from "../../services/apiConfig";
 import bannerImage from "../../assets/banner1.png";
 import bannerVideo from "../../assets/video/shopVideo.mp4";
 import imgo from "../../assets/editorial/photo1.jpg";
@@ -131,7 +132,7 @@ function ProductList() {
                                         className="shop-product-image"
                                         src={
                                             product.gambar
-                                                ? `https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`
+                                                ? uploadUrl(product.gambar)
                                                 : "/no-image.png"
                                         }
                                         alt={product.nama_produk}

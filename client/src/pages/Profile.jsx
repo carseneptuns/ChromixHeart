@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FiUser, FiMail, FiShield, FiPackage, FiLogOut, FiArrowLeft } from "react-icons/fi";
 import axios from "axios";
 import "../styles/profile.css";
+import { API_BASE_URL } from "../services/apiConfig";
 
 function Profile() {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Profile() {
 
     const fetchUserOrders = async (userId) => {
         try {
-            const res = await axios.get(`https://chromixheart-copy-production.up.railway.app/api/transactions/user/${userId}`);
+            const res = await axios.get(`${API_BASE_URL}/transactions/user/${userId}`);
             const orderList = Array.isArray(res.data) ? res.data : (res.data.data || []);
             const uniqueOrders = Array.from(new Set(orderList.map(item => item.id)));
             setOrderCount(uniqueOrders.length);

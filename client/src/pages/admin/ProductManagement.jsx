@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "../../services/productService";
+import { uploadUrl } from "../../services/apiConfig";
 
 import "../../styles/product.css";
 
@@ -96,7 +97,7 @@ function ProductManagement() {
 
                 <td>
                   <img
-                    src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
+                    src={uploadUrl(item.gambar)}
                     alt={item.nama_produk}
                     width="70"
                   />

@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start ChromixHeart frontend on LAN",
+			"type": "shell",
+			"command": "C:\\Program Files\\nodejs\\node.exe",
+			"args": [
+				"node_modules/vite/bin/vite.js",
+				"--host",
+				"0.0.0.0",
+				"--port",
+				"5173"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}\\client"
+			},
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "chromixheart-vite",
+				"pattern": {
+					"regexp": "^$"
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": "Network:.*5173"
+				}
+			}
+		},
+		{
+			"label": "Start ChromixHeart backend",
+			"type": "shell",
+			"command": "C:\\Program Files\\nodejs\\node.exe",
+			"args": [
+				"server.js"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}\\server"
+			},
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "chromixheart-server",
+				"pattern": {
+					"regexp": "^$"
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": "Server running at"
+				}
+			}
+		}
+	]
+}

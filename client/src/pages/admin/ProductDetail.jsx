@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProduct } from "../../services/productService";
 import "../../styles/product.css";
+import { uploadUrl } from "../../services/apiConfig";
 
 function ProductDetail() {
 
@@ -42,7 +43,7 @@ function ProductDetail() {
             <div className="detail-image">
 
                 <img
-                    src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
+                    src={uploadUrl(product.gambar)}
                     alt={product.nama_produk}
                 />
 

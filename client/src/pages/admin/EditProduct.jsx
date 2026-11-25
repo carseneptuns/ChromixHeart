@@ -4,6 +4,7 @@ import {
     getProduct,
     updateProduct
 } from "../../services/productService";
+import { uploadUrl } from "../../services/apiConfig";
 
 function EditProduct() {
 
@@ -39,7 +40,7 @@ function EditProduct() {
             });
 
             setPreview(
-                `https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`
+                uploadUrl(product.gambar)
             );
 
         } catch (err) {

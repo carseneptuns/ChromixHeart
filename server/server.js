@@ -3,6 +3,8 @@ const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
 
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+
 const db = require("./config/db");
 
 const app = express();
@@ -19,8 +21,9 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://chromixheart-production.up.railway.app"
-];
+    "https://chromixheart-production.up.railway.app",
+    process.env.CLIENT_ORIGIN
+].filter(Boolean);
 
 app.use(
     cors({

@@ -9,6 +9,7 @@ import {
     updateCart,
     deleteCart
 } from "../../services/cartService";
+import { uploadUrl } from "../../services/apiConfig";
 
 function Cart() {
 
@@ -189,7 +190,7 @@ console.log("================================");
 
                                 <CartItem
                                     key={item.id}
-                                    image={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
+                                    image={uploadUrl(item.gambar)}
                                     title={item.nama_produk}
                                     category={item.kategori}
                                     price={item.harga}

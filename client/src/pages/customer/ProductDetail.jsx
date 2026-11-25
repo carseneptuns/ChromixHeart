@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProduct } from "../../services/productService";
 import "../../styles/product.css";
+import { uploadUrl } from "../../services/apiConfig";
 
 function ProductDetail() {
     const { id } = useParams();
@@ -33,7 +34,7 @@ function ProductDetail() {
         );
     }
 
-    const imageUrl = `https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`;
+    const imageUrl = uploadUrl(product.gambar);
 
     console.log("Nama gambar :", product.gambar);
     console.log("Image URL   :", imageUrl);

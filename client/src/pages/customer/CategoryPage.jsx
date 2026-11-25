@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../services/productService";
 import "../../styles/categoryPage.css";
+import { uploadUrl } from "../../services/apiConfig";
 
 import heroVideo from "../../assets/video/categoryHero.mp4";
 import editorial1 from "../../assets/editorial/editorial1.jpg";
@@ -193,7 +194,7 @@ function CategoryPage({
                                 >
 
                                     <img
-                                        src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${product.gambar}`}
+                                        src={uploadUrl(product.gambar)}
                                         alt={product.nama_produk}
                                     />
 

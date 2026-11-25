@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/orderManagement.css";
+import { API_BASE_URL, uploadUrl } from "../../services/apiConfig";
 
 function OrderManagement() {
 
@@ -14,7 +15,7 @@ function OrderManagement() {
     const fetchOrders = async () => {
         try {
             const res = await axios.get(
-                "https://chromixheart-copy-production.up.railway.app/api/orders"
+                `${API_BASE_URL}/orders`
             );
             setOrders(res.data);
         } catch (err) {
@@ -27,12 +28,12 @@ function OrderManagement() {
     try {
 
       await axios.put(
-    `https://chromixheart-copy-production.up.railway.app/api/orders/${id}/status`,
+    `${API_BASE_URL}/orders/${id}/status`,
     { status }
 );
         // Ambil ulang semua data order terbaru
         const res = await axios.get(
-            "https://chromixheart-copy-production.up.railway.app/api/orders"
+            `${API_BASE_URL}/orders`
         );
 
         // Update tabel
@@ -177,7 +178,7 @@ function OrderManagement() {
                                 <h4>Bukti Pembayaran</h4>
                                 {selectedOrder.proof_payment ? (
                                     <img
-                                        src={`https://chromixheart-copy-production.up.railway.app/uploads/${selectedOrder.proof_payment}`}
+                                        src={uploadUrl(selectedOrder.proof_payment, "")}
                                         alt="Proof of Payment"
                                         style={{
                                             width: "280px",

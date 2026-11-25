@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from "axios";
 import "../styles/login.css";
+import { API_BASE_URL } from "../services/apiConfig";
 
 function Signup() {
 
@@ -71,7 +72,7 @@ function Signup() {
         try {
 
             const res = await axios.post(
-                "https://chromixheart-copy-production.up.railway.app/api/auth/register",
+                `${API_BASE_URL}/auth/register`,
                 {
                     username: formData.username,
                     nama_lengkap: formData.nama_lengkap,

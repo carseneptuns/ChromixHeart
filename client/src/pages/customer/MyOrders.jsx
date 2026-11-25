@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserTransactions } from "../../services/transactionService";
 import "../../styles/myOrders.css";
+import { uploadUrl } from "../../services/apiConfig";
 
 function MyOrders() {
 
@@ -133,7 +134,7 @@ function MyOrders() {
                                         >
 
                                             <img
-                                                src={`https://chromixheart-copy-production.up.railway.app/uploads/products/${item.gambar}`}
+                                                src={uploadUrl(item.gambar)}
                                                 alt={item.nama_produk}
                                             />
 

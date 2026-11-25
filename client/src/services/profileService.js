@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_BASE_URL } from "./apiConfig";
 
-const API = "https://chromixheart-copy-production.up.railway.app/api/profile";
+const API = `${API_BASE_URL}/profile`;
 
 export const getProfile = (id) =>
     axios.get(`${API}/${id}`);
